@@ -1,0 +1,993 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unit 1 – Punjabi Level 1</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+Gurmukhi:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy:    #1A2744;
+    --teal:    #0D7E74;
+    --teal-lt: #12A091;
+    --teal-bg: #EBF6F5;
+    --gold:    #E8A020;
+    --gold-bg: #FEF3E0;
+    --cream:   #F7F4EF;
+    --white:   #FFFFFF;
+    --ink:     #1A2744;
+    --muted:   #6B7590;
+    --border:  #E4E1DA;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    width: 100%;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+  }
+
+  /* ══ HERO ══ */
+  .hero {
+    background: var(--navy);
+    padding: 28px 36px 24px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background-image: radial-gradient(circle, rgba(255,255,255,.05) 1px, transparent 1px);
+    background-size: 26px 26px;
+    pointer-events: none;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--teal), var(--gold));
+  }
+  .hero-inner {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    flex-wrap: wrap;
+  }
+  .hero-back {
+    background: rgba(255,255,255,.1);
+    border: 1px solid rgba(255,255,255,.2);
+    border-radius: 10px;
+    color: rgba(255,255,255,.75);
+    font-size: .78rem;
+    font-weight: 700;
+    padding: 7px 14px;
+    cursor: pointer;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    flex-shrink: 0;
+    transition: background .2s;
+  }
+  .hero-back:hover { background: rgba(255,255,255,.18); }
+  .hero-text { flex: 1; }
+  .hero-eyebrow {
+    font-size: .68rem;
+    font-weight: 700;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+    color: var(--teal-lt);
+    margin-bottom: 5px;
+  }
+  .hero-title {
+    font-size: clamp(1.3rem, 3vw, 1.9rem);
+    font-weight: 800;
+    color: var(--white);
+    line-height: 1.2;
+  }
+  .hero-title span { color: var(--gold); }
+  .hero-gurmukhi {
+    font-family: 'Noto Sans Gurmukhi', sans-serif;
+    font-size: .95rem;
+    color: rgba(255,255,255,.4);
+    margin-top: 4px;
+  }
+  .hero-pills {
+    display: flex; gap: 8px; flex-wrap: wrap;
+  }
+  .hero-pill {
+    background: rgba(255,255,255,.1);
+    border: 1px solid rgba(255,255,255,.15);
+    border-radius: 20px;
+    padding: 5px 13px;
+    font-size: .72rem;
+    font-weight: 600;
+    color: rgba(255,255,255,.75);
+  }
+
+  /* ══ TABS ══ */
+  .tabs-bar {
+    background: var(--white);
+    border-bottom: 2px solid var(--border);
+    display: flex;
+    overflow-x: auto;
+    scrollbar-width: none;
+    padding: 0 28px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 8px rgba(0,0,0,.06);
+  }
+  .tabs-bar::-webkit-scrollbar { display: none; }
+  .tab-btn {
+    flex-shrink: 0;
+    padding: 15px 20px 13px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: .85rem;
+    font-weight: 700;
+    color: var(--muted);
+    border-bottom: 3px solid transparent;
+    margin-bottom: -2px;
+    transition: color .2s, border-color .2s;
+    display: flex; align-items: center; gap: 7px;
+    white-space: nowrap;
+  }
+  .tab-btn:hover { color: var(--teal); }
+  .tab-btn.active { color: var(--teal); border-bottom-color: var(--teal); }
+
+  /* ══ PANELS ══ */
+  .panel { display: none; padding: 32px 36px 56px; }
+  .panel.active { display: block; }
+
+  .section-label {
+    font-size: .68rem;
+    font-weight: 700;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 16px;
+  }
+
+  /* ══ INTRO CARD ══ */
+  .intro-card {
+    background: linear-gradient(135deg, var(--teal), #0a5855);
+    border-radius: 18px;
+    padding: 26px 30px;
+    color: var(--white);
+    margin-bottom: 28px;
+    position: relative;
+    overflow: hidden;
+  }
+  .intro-card::before {
+    content: 'ਕ';
+    font-family: 'Noto Sans Gurmukhi', sans-serif;
+    font-size: 8rem;
+    font-weight: 700;
+    color: rgba(255,255,255,.05);
+    position: absolute;
+    right: 20px; bottom: -15px;
+    line-height: 1;
+    pointer-events: none;
+  }
+  .intro-card h2 { font-size: 1.2rem; font-weight: 800; margin-bottom: 8px; }
+  .intro-card p  { font-size: .9rem; color: rgba(255,255,255,.82); line-height: 1.7; max-width: 520px; }
+
+  .info-note {
+    background: var(--white);
+    border: 1.5px solid var(--border);
+    border-left: 5px solid var(--gold);
+    border-radius: 14px;
+    padding: 14px 18px;
+    margin-bottom: 24px;
+    font-size: .87rem;
+    color: var(--muted);
+    line-height: 1.65;
+  }
+  .info-note strong { color: var(--ink); }
+
+  /* ══ LETTER TABLE ══ */
+  .letter-table-wrap {
+    overflow-x: auto;
+    border-radius: 16px;
+    box-shadow: 0 2px 14px rgba(0,0,0,.08);
+    margin-bottom: 12px;
+  }
+  table.letter-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--white);
+    font-size: .88rem;
+  }
+  table.letter-table thead tr { background: var(--navy); color: var(--white); }
+  table.letter-table thead th {
+    padding: 13px 16px;
+    text-align: left;
+    font-size: .68rem;
+    font-weight: 700;
+    letter-spacing: 1.1px;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+  table.letter-table tbody tr {
+    border-bottom: 1px solid var(--border);
+    transition: background .15s;
+  }
+  table.letter-table tbody tr:last-child { border-bottom: none; }
+  table.letter-table tbody tr:hover { background: var(--teal-bg); }
+  table.letter-table td {
+    padding: 12px 16px;
+    vertical-align: middle;
+  }
+
+  .lt-num {
+    width: 28px; height: 28px;
+    border-radius: 8px;
+    background: var(--navy);
+    color: var(--white);
+    display: inline-flex; align-items: center; justify-content: center;
+    font-size: .75rem; font-weight: 800;
+  }
+  .lt-letter {
+    font-family: 'Noto Sans Gurmukhi', sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--teal);
+    line-height: 1;
+  }
+  .lt-name   { font-weight: 700; color: var(--ink); font-size: .92rem; }
+  .lt-roman  { font-size: .78rem; color: var(--muted); margin-top: 2px; }
+  .lt-sound  {
+    display: inline-flex;
+    background: var(--teal-bg);
+    color: var(--teal);
+    border-radius: 20px;
+    padding: 4px 13px;
+    font-size: .78rem;
+    font-weight: 700;
+  }
+  .lt-mukta {
+    font-family: 'Noto Sans Gurmukhi', sans-serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--navy);
+  }
+  .lt-mukta-roman { font-size: .72rem; color: var(--muted); display: block; margin-top: 2px; }
+  .lt-example {
+    font-family: 'Noto Sans Gurmukhi', sans-serif;
+    font-size: .95rem;
+    font-weight: 600;
+    color: var(--navy);
+  }
+  .lt-example-en { font-size: .78rem; color: var(--muted); }
+
+  .group-row td {
+    background: var(--gold-bg) !important;
+    color: var(--gold);
+    font-size: .67rem;
+    font-weight: 800;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    padding: 7px 16px !important;
+  }
+
+  /* ══ WORD LIST ══ */
+  .word-intro {
+    background: var(--white);
+    border: 1.5px solid var(--border);
+    border-left: 5px solid var(--teal);
+    border-radius: 14px;
+    padding: 14px 18px;
+    margin-bottom: 24px;
+    font-size: .87rem;
+    color: var(--muted);
+    line-height: 1.65;
+  }
+  .word-intro strong { color: var(--ink); }
+
+  .words-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 12px;
+    margin-bottom: 32px;
+  }
+  .word-card {
+    background: var(--white);
+    border: 1.5px solid var(--border);
+    border-radius: 16px;
+    padding: 18px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    transition: border-color .2s, transform .2s, box-shadow .2s;
+    cursor: default;
+    position: relative;
+    overflow: hidden;
+  }
+  .word-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--teal), var(--teal-lt));
+    border-radius: 16px 16px 0 0;
+  }
+  .word-card:hover {
+    border-color: var(--teal);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 22px rgba(13,126,116,.11);
+  }
+  .wc-num {
+    font-size: .65rem;
+    font-weight: 800;
+    color: var(--muted);
+    letter-spacing: .5px;
+    text-transform: uppercase;
+  }
+  .wc-gurmukhi {
+    font-family: 'Noto Sans Gurmukhi', sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--teal);
+    line-height: 1.1;
+  }
+  .wc-roman   { font-size: .82rem; font-weight: 700; color: var(--muted); }
+  .wc-english { font-size: .9rem; font-weight: 700; color: var(--ink); }
+  .wc-letters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    margin-top: 4px;
+  }
+  .wc-letter-chip {
+    font-family: 'Noto Sans Gurmukhi', sans-serif;
+    font-size: .82rem;
+    font-weight: 700;
+    background: var(--teal-bg);
+    color: var(--teal);
+    border-radius: 6px;
+    padding: 2px 7px;
+  }
+
+  /* ══ QUIZ SECTION ══ */
+  .quiz-wrap {
+    background: var(--white);
+    border-radius: 18px;
+    box-shadow: 0 2px 14px rgba(0,0,0,.08);
+    overflow: hidden;
+  }
+  .quiz-head {
+    background: linear-gradient(135deg, #C2185B, #8B0037);
+    padding: 20px 26px;
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+  .quiz-head h3 { font-size: 1.15rem; font-weight: 800; }
+  .quiz-head p  { font-size: .83rem; opacity: .85; margin-top: 2px; }
+  .quiz-score {
+    margin-left: auto;
+    background: rgba(255,255,255,.2);
+    border-radius: 30px;
+    padding: 6px 18px;
+    font-weight: 800;
+    font-size: 1rem;
+  }
+  .quiz-body   { padding: 24px; display: flex; flex-direction: column; gap: 20px; }
+  .quiz-footer { padding: 0 24px 24px; display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+
+  .q-card {
+    border: 2px solid var(--border);
+    border-radius: 14px;
+    padding: 20px;
+    background: #FDFAF5;
+    transition: border-color .3s;
+  }
+  .q-card.correct-card { border-color: var(--teal); background: #F0FAFA; }
+  .q-card.wrong-card   { border-color: #E57373; background: #FFF5F5; }
+
+  .q-label {
+    font-size: .68rem;
+    font-weight: 800;
+    color: #C2185B;
+    text-transform: uppercase;
+    letter-spacing: .8px;
+    margin-bottom: 8px;
+  }
+  .q-text {
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 14px;
+    line-height: 1.5;
+  }
+  .q-gurmukhi {
+    font-family: 'Noto Sans Gurmukhi', sans-serif;
+    font-size: 1.6rem;
+    color: var(--teal);
+    display: block;
+    margin-bottom: 4px;
+  }
+  .options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 9px;
+  }
+  .opt {
+    padding: 11px 14px;
+    border-radius: 11px;
+    border: 2px solid var(--border);
+    background: var(--white);
+    cursor: pointer;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: .88rem;
+    font-weight: 700;
+    text-align: left;
+    transition: background .15s, border-color .15s, transform .1s;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .opt:hover:not(:disabled) { background: var(--teal-bg); border-color: var(--teal-lt); transform: scale(1.02); }
+  .opt:disabled { cursor: default; }
+  .opt.correct { background: #E0F7F5; border-color: var(--teal); color: #005f5a; }
+  .opt.wrong   { background: #FFEBEE; border-color: #E57373; color: #C62828; }
+  .opt.reveal  { background: #E0F7F5; border-color: var(--teal); color: #005f5a; opacity: .7; }
+
+  .q-feedback {
+    margin-top: 12px;
+    padding: 10px 14px;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: .88rem;
+    display: none;
+    align-items: center;
+    gap: 8px;
+  }
+  .q-feedback.show { display: flex; }
+  .fb-correct { background: #E0F7F5; color: #005f5a; }
+  .fb-wrong   { background: #FFEBEE; color: #C62828; }
+
+  .quiz-result {
+    flex: 1;
+    padding: 13px 16px;
+    border-radius: 12px;
+    background: #F5F5F5;
+    font-weight: 700;
+    font-size: .9rem;
+    color: var(--muted);
+    min-width: 160px;
+  }
+  .reset-btn {
+    padding: 12px 26px;
+    background: linear-gradient(135deg, #C2185B, #8B0037);
+    color: var(--white);
+    border: none;
+    border-radius: 30px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: .9rem;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 4px 14px rgba(194,24,91,.3);
+    transition: transform .2s, box-shadow .2s;
+  }
+  .reset-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(194,24,91,.4); }
+
+  /* ══ RESPONSIVE ══ */
+  @media (max-width: 560px) {
+    .panel { padding: 20px 14px 48px; }
+    .hero  { padding: 20px 16px 18px; }
+    .tabs-bar { padding: 0 8px; }
+    .tab-btn  { padding: 12px 12px 10px; font-size: .78rem; }
+    .options  { grid-template-columns: 1fr; }
+    .hero-pills { display: none; }
+    .words-grid { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══ HERO ═══ -->
+<header class="hero">
+  <div class="hero-inner">
+    <a class="hero-back" href="index.html">← Home</a>
+    <div class="hero-text">
+      <div class="hero-eyebrow">Sehaj Singh · Punjabi Level 1</div>
+      <div class="hero-title">Unit 1 — <span>Hello, Punjabi World!</span></div>
+      <div class="hero-gurmukhi">ਸਤਿ ਸ੍ਰੀ ਅਕਾਲ, ਦੁਨੀਆ!</div>
+    </div>
+    <div class="hero-pills">
+      <span class="hero-pill">🔤 15 Letters</span>
+      <span class="hero-pill">📝 18 Words</span>
+      <span class="hero-pill">🧠 Quiz</span>
+    </div>
+  </div>
+</header>
+
+<!-- ═══ TABS ═══ -->
+<nav class="tabs-bar">
+  <button class="tab-btn active" onclick="showTab('letters',this)">🔤 Letters 1–15</button>
+  <button class="tab-btn" onclick="showTab('words',this)">📝 Word List</button>
+  <button class="tab-btn" onclick="showTab('quiz',this)">🧠 Quiz</button>
+</nav>
+
+<!-- ═══════════════════════
+     LETTERS TAB
+═══════════════════════ -->
+<div id="tab-letters" class="panel active">
+
+  <div class="intro-card">
+    <h2>Your First 15 Gurmukhi Letters 🎉</h2>
+    <p>These are the first 15 letters of the Gurmukhi alphabet. In this unit we learn each letter in its <strong>mukta</strong> form — the base sound with no extra vowel signs attached. Master these and you are on your way!</p>
+  </div>
+
+  <div class="info-note">
+    💡 <strong>Mukta</strong> means the letter is read with its natural short <em>"uh"</em> sound — no matra (vowel sign) added. For example ਕ = "kuh", ਗ = "guh", ਜ = "juh".
+  </div>
+
+  <div class="letter-table-wrap">
+    <table class="letter-table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Letter</th>
+          <th>Name</th>
+          <th>Romanised</th>
+          <th>Mukta Sound</th>
+          <th>Example Word</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="group-row"><td colspan="6">Group 1 — Vowel Carriers (ਊੜਾ · ਐੜਾ · ਈੜੀ)</td></tr>
+        <tr>
+          <td><div class="lt-num">1</div></td>
+          <td><span class="lt-letter">ੳ</span></td>
+          <td><div class="lt-name">Ura</div><div class="lt-roman">oo-raa</div></td>
+          <td>U</td>
+          <td><span class="lt-sound">oo</span></td>
+          <td><span class="lt-example">ਊਠ</span> <span class="lt-example-en">— camel</span></td>
+        </tr>
+        <tr>
+          <td><div class="lt-num">2</div></td>
+          <td><span class="lt-letter">ਅ</span></td>
+          <td><div class="lt-name">Airaa</div><div class="lt-roman">ay-raa</div></td>
+          <td>A</td>
+          <td><span class="lt-sound">a</span></td>
+          <td><span class="lt-example">ਅੰਬ</span> <span class="lt-example-en">— mango</span></td>
+        </tr>
+        <tr>
+          <td><div class="lt-num">3</div></td>
+          <td><span class="lt-letter">ੲ</span></td>
+          <td><div class="lt-name">Iree</div><div class="lt-roman">ee-ree</div></td>
+          <td>I</td>
+          <td><span class="lt-sound">ee</span></td>
+          <td><span class="lt-example">ਇੱਟ</span> <span class="lt-example-en">— brick</span></td>
+        </tr>
+
+        <tr class="group-row"><td colspan="6">Group 2 — Gutturals & Sibilant (ਸੱਸਾ to ਙੰਙਾ)</td></tr>
+        <tr>
+          <td><div class="lt-num">4</div></td>
+          <td><span class="lt-letter">ਸ</span></td>
+          <td><div class="lt-name">Sassa</div><div class="lt-roman">sas-saa</div></td>
+          <td>S</td>
+          <td><span class="lt-sound">s</span></td>
+          <td><span class="lt-example">ਸੇਬ</span> <span class="lt-example-en">— apple</span></td>
+        </tr>
+        <tr>
+          <td><div class="lt-num">5</div></td>
+          <td><span class="lt-letter">ਹ</span></td>
+          <td><div class="lt-name">Hahaa</div><div class="lt-roman">haa-haa</div></td>
+          <td>H</td>
+          <td><span class="lt-sound">h</span></td>
+          <td><span class="lt-example">ਹੱਥ</span> <span class="lt-example-en">— hand</span></td>
+        </tr>
+        <tr>
+          <td><div class="lt-num">6</div></td>
+          <td><span class="lt-letter">ਕ</span></td>
+          <td><div class="lt-name">Kakka</div><div class="lt-roman">kak-kaa</div></td>
+          <td>K</td>
+          <td><span class="lt-sound">k</span></td>
+          <td><span class="lt-example">ਕਮਲ</span> <span class="lt-example-en">— lotus</span></td>
+        </tr>
+        <tr>
+          <td><div class="lt-num">7</div></td>
+          <td><span class="lt-letter">ਖ</span></td>
+          <td><div class="lt-name">Khakhkha</div><div class="lt-roman">khakh-khaa</div></td>
+          <td>Kh</td>
+          <td><span class="lt-sound">kh</span></td>
+          <td><span class="lt-example">ਖਰਗੋਸ਼</span> <span class="lt-example-en">— rabbit</span></td>
+        </tr>
+        <tr>
+          <td><div class="lt-num">8</div></td>
+          <td><span class="lt-letter">ਗ</span></td>
+          <td><div class="lt-name">Gagga</div><div class="lt-roman">gag-gaa</div></td>
+          <td>G</td>
+          <td><span class="lt-sound">g</span></td>
+          <td><span class="lt-example">ਗਾਂ</span> <span class="lt-example-en">— cow</span></td>
+        </tr>
+        <tr>
+          <td><div class="lt-num">9</div></td>
+          <td><span class="lt-letter">ਘ</span></td>
+          <td><div class="lt-name">Ghagha</div><div class="lt-roman">ghag-haa</div></td>
+          <td>Gh</td>
+          <td><span class="lt-sound">gh</span></td>
+          <td><span class="lt-example">ਘਰ</span> <span class="lt-example-en">— house</span></td>
+        </tr>
+        <tr>
+          <td><div class="lt-num">10</div></td>
+          <td><span class="lt-letter">ਙ</span></td>
+          <td><div class="lt-name">Nganga</div><div class="lt-roman">nga-ngaa</div></td>
+          <td>Ng</td>
+          <td><span class="lt-sound">ng</span></td>
+          <td><span class="lt-example">ਰੰਗ</span> <span class="lt-example-en">— colour</span></td>
+        </tr>
+
+        <tr class="group-row"><td colspan="6">Group 3 — Palatals (ਚੱਚਾ to ਞੰਞਾ)</td></tr>
+        <tr>
+          <td><div class="lt-num">11</div></td>
+          <td><span class="lt-letter">ਚ</span></td>
+          <td><div class="lt-name">Chacha</div><div class="lt-roman">chach-aa</div></td>
+          <td>Ch</td>
+          <td><span class="lt-sound">ch</span></td>
+          <td><span class="lt-example">ਚੰਦ</span> <span class="lt-example-en">— moon</span></td>
+        </tr>
+        <tr>
+          <td><div class="lt-num">12</div></td>
+          <td><span class="lt-letter">ਛ</span></td>
+          <td><div class="lt-name">Chhachha</div><div class="lt-roman">chhach-haa</div></td>
+          <td>Chh</td>
+          <td><span class="lt-sound">chh</span></td>
+          <td><span class="lt-example">ਛੱਤਰੀ</span> <span class="lt-example-en">— umbrella</span></td>
+        </tr>
+        <tr>
+          <td><div class="lt-num">13</div></td>
+          <td><span class="lt-letter">ਜ</span></td>
+          <td><div class="lt-name">Jajja</div><div class="lt-roman">jaj-jaa</div></td>
+          <td>J</td>
+          <td><span class="lt-sound">j</span></td>
+          <td><span class="lt-example">ਜੰਗਲ</span> <span class="lt-example-en">— jungle</span></td>
+        </tr>
+        <tr>
+          <td><div class="lt-num">14</div></td>
+          <td><span class="lt-letter">ਝ</span></td>
+          <td><div class="lt-name">Jhajha</div><div class="lt-roman">jhaj-haa</div></td>
+          <td>Jh</td>
+          <td><span class="lt-sound">jh</span></td>
+          <td><span class="lt-example">ਝੰਡਾ</span> <span class="lt-example-en">— flag</span></td>
+        </tr>
+        <tr>
+          <td><div class="lt-num">15</div></td>
+          <td><span class="lt-letter">ਞ</span></td>
+          <td><div class="lt-name">Nyanya</div><div class="lt-roman">nya-nyaa</div></td>
+          <td>Ny</td>
+          <td><span class="lt-sound">ny</span></td>
+          <td><span class="lt-example">ਗਿਆਨ</span> <span class="lt-example-en">— knowledge</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ═══════════════════════
+     WORDS TAB
+═══════════════════════ -->
+<div id="tab-words" class="panel">
+
+  <div class="word-intro">
+    <strong>18 Words using only Letters 1–15 · Mukta form only (no matra)</strong><br>
+    Every word below is built using <em>only</em> the 15 letters you have learned, with no vowel signs added. Read each letter with its short mukta sound and blend them together!
+  </div>
+
+  <div class="words-grid">
+
+    <div class="word-card">
+      <div class="wc-num">Word 1</div>
+      <div class="wc-gurmukhi">ਸਚ</div>
+      <div class="wc-roman">Sach</div>
+      <div class="wc-english">Truth</div>
+      <div class="wc-letters"><span class="wc-letter-chip">ਸ</span><span class="wc-letter-chip">ਚ</span></div>
+    </div>
+
+    <div class="word-card">
+      <div class="wc-num">Word 2</div>
+      <div class="wc-gurmukhi">ਜਗ</div>
+      <div class="wc-roman">Jag</div>
+      <div class="wc-english">World / Jug</div>
+      <div class="wc-letters"><span class="wc-letter-chip">ਜ</span><span class="wc-letter-chip">ਗ</span></div>
+    </div>
+
+    <div class="word-card">
+      <div class="wc-num">Word 3</div>
+      <div class="wc-gurmukhi">ਗਜ</div>
+      <div class="wc-roman">Gaj</div>
+      <div class="wc-english">Yard / Elephant</div>
+      <div class="wc-letters"><span class="wc-letter-chip">ਗ</span><span class="wc-letter-chip">ਜ</span></div>
+    </div>
+
+    <div class="word-card">
+      <div class="wc-num">Word 4</div>
+      <div class="wc-gurmukhi">ਹਸ</div>
+      <div class="wc-roman">Has</div>
+      <div class="wc-english">To laugh</div>
+      <div class="wc-letters"><span class="wc-letter-chip">ਹ</span><span class="wc-letter-chip">ਸ</span></div>
+    </div>
+
+    <div class="word-card">
+      <div class="wc-num">Word 5</div>
+      <div class="wc-gurmukhi">ਜਸ</div>
+      <div class="wc-roman">Jas</div>
+      <div class="wc-english">Glory / Praise</div>
+      <div class="wc-letters"><span class="wc-letter-chip">ਜ</span><span class="wc-letter-chip">ਸ</span></div>
+    </div>
+
+    <div class="word-card">
+      <div class="wc-num">Word 6</div>
+      <div class="wc-gurmukhi">ਕਸ</div>
+      <div class="wc-roman">Kas</div>
+      <div class="wc-english">To tighten</div>
+      <div class="wc-letters"><span class="wc-letter-chip">ਕ</span><span class="wc-letter-chip">ਸ</span></div>
+    </div>
+
+    <div class="word-card">
+      <div class="wc-num">Word 7</div>
+      <div class="wc-gurmukhi">ਕਹ</div>
+      <div class="wc-roman">Kah</div>
+      <div class="wc-english">To say / Speak</div>
+      <div class="wc-letters"><span class="wc-letter-chip">ਕ</span><span class="wc-letter-chip">ਹ</span></div>
+    </div>
+
+    <div class="word-card">
+      <div class="wc-num">Word 8</div>
+      <div class="wc-gurmukhi">ਸਹ</div>
+      <div class="wc-roman">Sah</div>
+      <div class="wc-english">To endure / Bear</div>
+      <div class="wc-letters"><span class="wc-letter-chip">ਸ</span><span class="wc-letter-chip">ਹ</span></div>
+    </div>
+
+    <div class="word-card">
+      <div class="wc-num">Word 9</div>
+      <div class="wc-gurmukhi">ਚਖ</div>
+      <div class="wc-roman">Chakh</div>
+      <div class="wc-english">To taste</div>
+      <div class="wc-letters"><span class="wc-letter-chip">ਚ</span><span class="wc-letter-chip">ਖ</span></div>
+    </div>
+
+    <div class="word-card">
+      <div class="wc-num">Word 10</div>
+      <div class="wc-gurmukhi">ਹਕ</div>
+      <div class="wc-roman">Hak</div>
+      <div class="wc-english">Right / Entitlement</div>
+      <div class="wc-letters"><span class="wc-letter-chip">ਹ</span><span class="wc-letter-chip">ਕ</span></div>
+    </div>
+
+    <div class="word-card">
+      <div class="wc-num">Word 11</div>
+      <div class="wc-gurmukhi">ਸਕ</div>
+      <div class="wc-roman">Sak</div>
+      <div class="wc-english">Doubt</div>
+      <div class="wc-letters"><span class="wc-letter-chip">ਸ</span><span class="wc-letter-chip">ਕ</span></div>
+    </div>
+
+    <div class="word-card">
+      <div class="wc-num">Word 12</div>
+      <div class="wc-gurmukhi">ਜਚ</div>
+      <div class="wc-roman">Jach</div>
+      <div class="wc-english">To suit / To fit</div>
+      <div class="wc-letters"><span class="wc-letter-chip">ਜ</span><span class="wc-letter-chip">ਚ</span></div>
+    </div>
+
+    <div class="word-card">
+      <div class="wc-num">Word 13</div>
+      <div class="wc-gurmukhi">ਕਜ</div>
+      <div class="wc-roman">Kaj</div>
+      <div class="wc-english">Task / Scissors</div>
+      <div class="wc-letters"><span class="wc-letter-chip">ਕ</span><span class="wc-letter-chip">ਜ</span></div>
+    </div>
+
+    <div class="word-card">
+      <div class="wc-num">Word 14</div>
+      <div class="wc-gurmukhi">ਸਜ</div>
+      <div class="wc-roman">Saj</div>
+      <div class="wc-english">To dress up / Ready</div>
+      <div class="wc-letters"><span class="wc-letter-chip">ਸ</span><span class="wc-letter-chip">ਜ</span></div>
+    </div>
+
+    <div class="word-card">
+      <div class="wc-num">Word 15</div>
+      <div class="wc-gurmukhi">ਗਹ</div>
+      <div class="wc-roman">Gah</div>
+      <div class="wc-english">To grasp / Hold</div>
+      <div class="wc-letters"><span class="wc-letter-chip">ਗ</span><span class="wc-letter-chip">ਹ</span></div>
+    </div>
+
+    <div class="word-card">
+      <div class="wc-num">Word 16</div>
+      <div class="wc-gurmukhi">ਖਚ</div>
+      <div class="wc-roman">Khach</div>
+      <div class="wc-english">To pull</div>
+      <div class="wc-letters"><span class="wc-letter-chip">ਖ</span><span class="wc-letter-chip">ਚ</span></div>
+    </div>
+
+    <div class="word-card">
+      <div class="wc-num">Word 17</div>
+      <div class="wc-gurmukhi">ਕਚ</div>
+      <div class="wc-roman">Kach</div>
+      <div class="wc-english">Raw / Unripe</div>
+      <div class="wc-letters"><span class="wc-letter-chip">ਕ</span><span class="wc-letter-chip">ਚ</span></div>
+    </div>
+
+    <div class="word-card">
+      <div class="wc-num">Word 18</div>
+      <div class="wc-gurmukhi">ਖਗ</div>
+      <div class="wc-roman">Khag</div>
+      <div class="wc-english">Bird (poetic)</div>
+      <div class="wc-letters"><span class="wc-letter-chip">ਖ</span><span class="wc-letter-chip">ਗ</span></div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══════════════════════
+     QUIZ TAB
+═══════════════════════ -->
+<div id="tab-quiz" class="panel">
+  <div class="quiz-wrap">
+    <div class="quiz-head">
+      <div>
+        <h3>🧠 Unit 1 Quiz</h3>
+        <p>Test what you know about the first 15 letters and words!</p>
+      </div>
+      <div class="quiz-score" id="scoreDisplay">0 / 5</div>
+    </div>
+
+    <div class="quiz-body">
+
+      <!-- Q1 -->
+      <div class="q-card" id="q1">
+        <div class="q-label">Question 1 of 5</div>
+        <div class="q-text">What is the name of this letter?<br><span class="q-gurmukhi">ਕ</span></div>
+        <div class="options">
+          <button class="opt" onclick="answer(this,'q1',false)">Sassa</button>
+          <button class="opt" onclick="answer(this,'q1',true)">Kakka</button>
+          <button class="opt" onclick="answer(this,'q1',false)">Chacha</button>
+          <button class="opt" onclick="answer(this,'q1',false)">Gagga</button>
+        </div>
+        <div class="q-feedback" id="fb-q1"></div>
+      </div>
+
+      <!-- Q2 -->
+      <div class="q-card" id="q2">
+        <div class="q-label">Question 2 of 5</div>
+        <div class="q-text">What does <strong>ਸਚ (Sach)</strong> mean in English?</div>
+        <div class="options">
+          <button class="opt" onclick="answer(this,'q2',false)">Praise</button>
+          <button class="opt" onclick="answer(this,'q2',false)">World</button>
+          <button class="opt" onclick="answer(this,'q2',true)">Truth</button>
+          <button class="opt" onclick="answer(this,'q2',false)">To laugh</button>
+        </div>
+        <div class="q-feedback" id="fb-q2"></div>
+      </div>
+
+      <!-- Q3 -->
+      <div class="q-card" id="q3">
+        <div class="q-label">Question 3 of 5</div>
+        <div class="q-text">Which letter makes the <strong>"ch"</strong> sound?</div>
+        <div class="options">
+          <button class="opt" onclick="answer(this,'q3',false)"><span style="font-family:'Noto Sans Gurmukhi',sans-serif;font-size:1.2rem">ਜ</span></button>
+          <button class="opt" onclick="answer(this,'q3',false)"><span style="font-family:'Noto Sans Gurmukhi',sans-serif;font-size:1.2rem">ਘ</span></button>
+          <button class="opt" onclick="answer(this,'q3',true)"><span style="font-family:'Noto Sans Gurmukhi',sans-serif;font-size:1.2rem">ਚ</span></button>
+          <button class="opt" onclick="answer(this,'q3',false)"><span style="font-family:'Noto Sans Gurmukhi',sans-serif;font-size:1.2rem">ਖ</span></button>
+        </div>
+        <div class="q-feedback" id="fb-q3"></div>
+      </div>
+
+      <!-- Q4 -->
+      <div class="q-card" id="q4">
+        <div class="q-label">Question 4 of 5</div>
+        <div class="q-text">What does <strong>ਜਗ (Jag)</strong> mean?</div>
+        <div class="options">
+          <button class="opt" onclick="answer(this,'q4',false)">To taste</button>
+          <button class="opt" onclick="answer(this,'q4',true)">World / Jug</button>
+          <button class="opt" onclick="answer(this,'q4',false)">To hold</button>
+          <button class="opt" onclick="answer(this,'q4',false)">Bird</button>
+        </div>
+        <div class="q-feedback" id="fb-q4"></div>
+      </div>
+
+      <!-- Q5 -->
+      <div class="q-card" id="q5">
+        <div class="q-label">Question 5 of 5</div>
+        <div class="q-text">Which letter is number <strong>5</strong> in the Gurmukhi alphabet?</div>
+        <div class="options">
+          <button class="opt" onclick="answer(this,'q5',false)"><span style="font-family:'Noto Sans Gurmukhi',sans-serif;font-size:1.2rem">ਕ</span> — Kakka</button>
+          <button class="opt" onclick="answer(this,'q5',false)"><span style="font-family:'Noto Sans Gurmukhi',sans-serif;font-size:1.2rem">ਅ</span> — Airaa</button>
+          <button class="opt" onclick="answer(this,'q5',true)"><span style="font-family:'Noto Sans Gurmukhi',sans-serif;font-size:1.2rem">ਹ</span> — Hahaa</button>
+          <button class="opt" onclick="answer(this,'q5',false)"><span style="font-family:'Noto Sans Gurmukhi',sans-serif;font-size:1.2rem">ਸ</span> — Sassa</button>
+        </div>
+        <div class="q-feedback" id="fb-q5"></div>
+      </div>
+
+    </div>
+
+    <div class="quiz-footer">
+      <div class="quiz-result" id="quizResult">Answer all 5 questions to see your result! ✨</div>
+      <button class="reset-btn" onclick="resetQuiz()">🔄 Try Again</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  /* ── TABS ── */
+  function showTab(id, btn) {
+    document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById('tab-' + id).classList.add('active');
+    btn.classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  /* ── QUIZ ── */
+  const scores = { q1:null, q2:null, q3:null, q4:null, q5:null };
+
+  function answer(btn, qid, isCorrect) {
+    if (scores[qid] !== null) return;
+    scores[qid] = isCorrect;
+
+    const card = document.getElementById(qid);
+    const fb   = document.getElementById('fb-' + qid);
+
+    card.querySelectorAll('.opt').forEach(b => {
+      b.disabled = true;
+      if (b === btn) b.classList.add(isCorrect ? 'correct' : 'wrong');
+      else if (b.getAttribute('onclick').includes('true')) b.classList.add('reveal');
+    });
+    card.classList.add(isCorrect ? 'correct-card' : 'wrong-card');
+
+    fb.className = 'q-feedback show ' + (isCorrect ? 'fb-correct' : 'fb-wrong');
+    fb.innerHTML = isCorrect
+      ? '🎉 Correct — ਸ਼ਾਬਾਸ਼! Well done!'
+      : '❌ Not quite — the correct answer is highlighted. Keep going!';
+
+    updateScore();
+  }
+
+  function updateScore() {
+    const answered = Object.values(scores).filter(v => v !== null).length;
+    const got      = Object.values(scores).filter(v => v === true).length;
+    document.getElementById('scoreDisplay').textContent = got + ' / 5';
+
+    if (answered === 5) {
+      const el = document.getElementById('quizResult');
+      if (got === 5)      { el.innerHTML='🏆 Perfect 5/5! You are a Punjabi star — ਸ਼ਾਬਾਸ਼!'; el.style.cssText='background:#E0F7F5;color:#005f5a'; }
+      else if (got >= 3)  { el.innerHTML='🌟 Great job! ' + got + '/5 — almost perfect!';       el.style.cssText='background:#FFF9C4;color:#7B6000'; }
+      else                { el.innerHTML='💪 Good try! ' + got + '/5 — review and try again!';   el.style.cssText='background:#FFEBEE;color:#B71C1C'; }
+    }
+  }
+
+  function resetQuiz() {
+    Object.keys(scores).forEach(k => scores[k] = null);
+    document.getElementById('scoreDisplay').textContent = '0 / 5';
+    ['q1','q2','q3','q4','q5'].forEach(qid => {
+      const card = document.getElementById(qid);
+      card.classList.remove('correct-card','wrong-card');
+      card.querySelectorAll('.opt').forEach(b => {
+        b.disabled = false;
+        b.classList.remove('correct','wrong','reveal');
+      });
+      const fb = document.getElementById('fb-' + qid);
+      fb.className = 'q-feedback';
+      fb.innerHTML = '';
+    });
+    const el = document.getElementById('quizResult');
+    el.textContent = 'Answer all 5 questions to see your result! ✨';
+    el.style.cssText = '';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+</script>
+</body>
+</html>
