@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Punjabi Curriculum – ਸਹਿਜ ਸਿੰਘ</title>
+<title>Punjabi Curriculum</title>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+Gurmukhi:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -26,7 +26,7 @@
     --border:  #E4E1DA;
   }
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  html, body { width: 100%; font-family: 'Plus Jakarta Sans', sans-serif; background: var(--cream); color: var(--ink); }
+  html, body { width: 100%; min-height: 1200px; font-family: 'Plus Jakarta Sans', sans-serif; background: var(--cream); color: var(--ink); }
 
   /* ══ HERO ══ */
   .hero { background: var(--navy); padding: 28px 32px 24px; position: relative; overflow: hidden; }
@@ -167,8 +167,8 @@
     <div class="hero-avatar">🦁</div>
     <div class="hero-text">
       <div class="hero-label">Punjabi Curriculum · Student Dashboard</div>
-      <div class="hero-name">Hello, <span>ਸਹਿਜ ਸਿੰਘ!</span> 👋</div>
-      <div class="hero-gurmukhi">ਸਤਿ ਸ੍ਰੀ ਅਕਾਲ — ਸਹਿਜ ਸਿੰਘ</div>
+      <div class="hero-name">Hello, <span id="hero-name">Sehaj Singh!</span> 👋</div>
+      <div class="hero-gurmukhi"><span id="hero-gurmukhi">ਸਤਿ ਸ੍ਰੀ ਅਕਾਲ — Sehaj Singh</span></div>
     </div>
     <div class="hero-pills">
       <span class="hero-pill">🎯 Level 1</span>
@@ -187,7 +187,7 @@
 <!-- ══ HOME ══ -->
 <div id="tab-home" class="panel active">
   <div class="welcome-banner">
-    <h2>Welcome back, ਸਹਿਜ ਸਿੰਘ! ਸੁਆਗਤ ਹੈ 🌟</h2>
+    <h2>Welcome back, <span id="banner-name">Sehaj Singh</span>! ਸੁਆਗਤ ਹੈ 🌟</h2>
     <p>This is your Punjabi learning space. Work through each unit at your own pace — alphabets, muharni, mukta words and much more. You are doing brilliantly!</p>
   </div>
 
@@ -425,6 +425,50 @@ const MD=[
     tb.appendChild(tr);
   });
 })();
+
+/* ── STUDENT DETECTION FROM URL ── */
+// Teacher assigns: https://yoursite.netlify.app?student=Sehaj+Singh
+const params  = new URLSearchParams(window.location.search);
+const STUDENT = params.get('student') || 'Sehaj Singh';
+
+// Update name placeholders once DOM is ready
+document.addEventListener('DOMContentLoaded', () => {
+  const el1 = document.getElementById('hero-name');
+  const el2 = document.getElementById('hero-gurmukhi');
+  const el3 = document.getElementById('banner-name');
+  if (el1) el1.textContent = STUDENT + '!';
+  if (el2) el2.textContent = 'ਸਤਿ ਸ੍ਰੀ ਅਕਾਲ — ' + STUDENT;
+  if (el3) el3.textContent = STUDENT;
+});
+
+/* ── GOOGLE SHEETS PROGRESS TRACKER ── */
+const SHEET_URL = 'https://script.google.com/macros/s/AKfycbxGvSdLbiuHQNMbEeFOiiSd3wtpH8F6O_uQASvNoVskbH1xNl8DCaWRky4-Ygg4ik9R/exec';
+
+function saveProgress(unit, activity, score, total, details) {
+  fetch(SHEET_URL, {
+    method: 'POST',
+    mode: 'no-cors',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ unit, activity, score, total, details, student: STUDENT })
+  }).catch(() => {});
+}
+
+// Log homepage visit
+window.addEventListener('load', () => {
+  saveProgress('Homepage', 'Page Visit', 0, 0, 'Visited homepage');
+});
+
+  /* ── AUTO RESIZE FOR GOOGLE SITES IFRAME ── */
+  function notifyHeight() {
+    const height = document.body.scrollHeight;
+    window.parent.postMessage({ type: 'setHeight', height: height }, '*');
+  }
+  // Fire on load and whenever content changes
+  window.addEventListener('load', notifyHeight);
+  window.addEventListener('resize', notifyHeight);
+  const observer = new MutationObserver(notifyHeight);
+  observer.observe(document.body, { childList: true, subtree: true, attributes: true });
+  setInterval(notifyHeight, 500);
 </script>
 </body>
 </html>

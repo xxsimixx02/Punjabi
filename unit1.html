@@ -497,7 +497,7 @@
   <div class="hero-inner">
     <a class="hero-back" href="index.html">← Home</a>
     <div class="hero-text">
-      <div class="hero-eyebrow">ਸਹਿਜ ਸਿੰਘ · Punjabi Level 1</div>
+      <div class="hero-eyebrow"><span id="hero-name">Sehaj Singh</span> · Punjabi Level 1</div>
       <div class="hero-title">Unit 1 — <span>Hello, Punjabi World!</span></div>
       <div class="hero-gurmukhi">ਸਤਿ ਸ੍ਰੀ ਅਕਾਲ, ਦੁਨੀਆ!</div>
     </div>
@@ -922,6 +922,29 @@
 </div>
 
 <script>
+  /* ── STUDENT DETECTION FROM URL ── */
+  const params  = new URLSearchParams(window.location.search);
+  const STUDENT = params.get('student') || 'Sehaj Singh';
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const el = document.getElementById('hero-name');
+    if (el) el.textContent = STUDENT;
+  });
+
+  /* ── GOOGLE SHEETS TRACKER ── */
+  const SHEET_URL = 'https://script.google.com/macros/s/AKfycbxGvSdLbiuHQNMbEeFOiiSd3wtpH8F6O_uQASvNoVskbH1xNl8DCaWRky4-Ygg4ik9R/exec';
+  function saveProgress(unit, activity, score, total, details) {
+    fetch(SHEET_URL, {
+      method: 'POST', mode: 'no-cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ unit, activity, score, total, details, student: STUDENT })
+    }).catch(() => {});
+  }
+  // Log page visit on load
+  window.addEventListener('load', () => {
+    saveProgress('Unit 1', 'Page Visit', 0, 0, 'Visited Unit 1 — First 20 Alphabets');
+  });
+
   /* ── TABS ── */
   function showTab(id, btn) {
     document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
@@ -929,6 +952,8 @@
     document.getElementById('tab-' + id).classList.add('active');
     btn.classList.add('active');
     window.scrollTo({ top: 0, behavior: 'smooth' });
+    const names = { letters:'Letters 1-20', words:'Word List', quiz:'Quiz' };
+    saveProgress('Unit 1', 'Tab Visit', 0, 0, 'Opened: ' + (names[id] || id));
   }
 
   /* ── QUIZ ── */
@@ -966,6 +991,8 @@
       if (got === 5)      { el.innerHTML='🏆 Perfect 5/5! You are a Punjabi star — ਸ਼ਾਬਾਸ਼!'; el.style.cssText='background:#E0F7F5;color:#005f5a'; }
       else if (got >= 3)  { el.innerHTML='🌟 Great job! ' + got + '/5 — almost perfect!';       el.style.cssText='background:#FFF9C4;color:#7B6000'; }
       else                { el.innerHTML='💪 Good try! ' + got + '/5 — review and try again!';   el.style.cssText='background:#FFEBEE;color:#B71C1C'; }
+      // Save quiz result to Google Sheets
+      saveProgress('Unit 1', 'Quiz Completed', got, 5, 'Unit 1 Quiz — ' + got + '/5 correct');
     }
   }
 
@@ -988,6 +1015,17 @@
     el.style.cssText = '';
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
+
+  /* ── AUTO RESIZE FOR GOOGLE SITES IFRAME ── */
+  function notifyHeight() {
+    const height = document.body.scrollHeight;
+    window.parent.postMessage({ type: 'setHeight', height: height }, '*');
+  }
+  window.addEventListener('load', notifyHeight);
+  window.addEventListener('resize', notifyHeight);
+  const observer2 = new MutationObserver(notifyHeight);
+  observer2.observe(document.body, { childList: true, subtree: true, attributes: true });
+  setInterval(notifyHeight, 500);
 </script>
 </body>
 </html>
