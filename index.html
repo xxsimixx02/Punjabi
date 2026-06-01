@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Punjabi Level 1 – Sehaj Singh</title>
+<title>Punjabi Curriculum – ਸਹਿਜ ਸਿੰਘ</title>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+Gurmukhi:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -13,567 +13,418 @@
     --teal-bg: #EBF6F5;
     --gold:    #E8A020;
     --gold-bg: #FEF3E0;
+    --coral:   #C2185B;
+    --coral-bg:#FDE8EF;
+    --blue:    #1565C0;
+    --blue-bg: #E3F0FF;
+    --amber:   #E8A020;
+    --amber-bg:#FEF3E0;
     --cream:   #F7F4EF;
     --white:   #FFFFFF;
     --ink:     #1A2744;
     --muted:   #6B7590;
     --border:  #E4E1DA;
   }
-
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-  /* KEY CHANGE: no overflow:hidden, no height:100vh — let everything flow naturally */
-  html, body {
-    width: 100%;
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    background: var(--cream);
-    color: var(--ink);
-  }
+  html, body { width: 100%; font-family: 'Plus Jakarta Sans', sans-serif; background: var(--cream); color: var(--ink); }
 
   /* ══ HERO ══ */
-  .hero {
-    background: var(--navy);
-    padding: 32px 36px 28px;
-    position: relative;
-    overflow: hidden;
-  }
-  .hero::before {
-    content: '';
-    position: absolute; inset: 0;
-    background-image: radial-gradient(circle, rgba(255,255,255,.05) 1px, transparent 1px);
-    background-size: 26px 26px;
-    pointer-events: none;
-  }
-  .hero::after {
-    content: '';
-    position: absolute;
-    bottom: 0; left: 0; right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, var(--teal), var(--gold));
-  }
-  .hero-inner {
-    position: relative;
-    display: flex;
-    align-items: center;
-    gap: 22px;
-    flex-wrap: wrap;
-  }
-  .hero-avatar {
-    width: 64px; height: 64px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, var(--teal), var(--teal-lt));
-    display: flex; align-items: center; justify-content: center;
-    font-size: 2rem;
-    flex-shrink: 0;
-    box-shadow: 0 0 0 4px rgba(255,255,255,.1);
-  }
-  .hero-text { flex: 1; min-width: 200px; }
-  .hero-label {
-    font-size: .68rem;
-    font-weight: 700;
-    letter-spacing: 1.4px;
-    text-transform: uppercase;
-    color: var(--teal-lt);
-    margin-bottom: 5px;
-  }
-  .hero-name {
-    font-size: clamp(1.4rem, 3.5vw, 2rem);
-    font-weight: 800;
-    color: var(--white);
-    line-height: 1.15;
-  }
-  .hero-name span { color: var(--gold); }
-  .hero-gurmukhi {
-    font-family: 'Noto Sans Gurmukhi', sans-serif;
-    font-size: .95rem;
-    color: rgba(255,255,255,.4);
-    margin-top: 4px;
-  }
-  .hero-pills {
-    display: flex;
-    gap: 8px;
-    flex-wrap: wrap;
-  }
-  .hero-pill {
-    background: rgba(255,255,255,.1);
-    border: 1px solid rgba(255,255,255,.15);
-    border-radius: 20px;
-    padding: 6px 14px;
-    font-size: .73rem;
-    font-weight: 600;
-    color: rgba(255,255,255,.75);
-  }
+  .hero { background: var(--navy); padding: 28px 32px 24px; position: relative; overflow: hidden; }
+  .hero::before { content:''; position:absolute; inset:0; background-image:radial-gradient(circle,rgba(255,255,255,.05) 1px,transparent 1px); background-size:26px 26px; pointer-events:none; }
+  .hero::after  { content:''; position:absolute; bottom:0; left:0; right:0; height:3px; background:linear-gradient(90deg,var(--teal),var(--gold)); }
+  .hero-inner   { position:relative; display:flex; align-items:center; gap:18px; flex-wrap:wrap; }
+  .hero-avatar  { width:60px; height:60px; border-radius:50%; background:linear-gradient(135deg,var(--teal),var(--teal-lt)); display:flex; align-items:center; justify-content:center; font-size:1.8rem; flex-shrink:0; box-shadow:0 0 0 4px rgba(255,255,255,.1); }
+  .hero-text    { flex:1; min-width:180px; }
+  .hero-label   { font-size:.65rem; font-weight:700; letter-spacing:1.4px; text-transform:uppercase; color:var(--teal-lt); margin-bottom:4px; }
+  .hero-name    { font-size:clamp(1.3rem,3vw,1.9rem); font-weight:800; color:var(--white); line-height:1.15; }
+  .hero-name span { color:var(--gold); }
+  .hero-gurmukhi{ font-family:'Noto Sans Gurmukhi',sans-serif; font-size:.9rem; color:rgba(255,255,255,.4); margin-top:3px; }
+  .hero-pills   { display:flex; gap:8px; flex-wrap:wrap; }
+  .hero-pill    { background:rgba(255,255,255,.1); border:1px solid rgba(255,255,255,.15); border-radius:20px; padding:5px 13px; font-size:.72rem; font-weight:600; color:rgba(255,255,255,.75); }
 
-  /* ══ TABS NAV — sticky so it stays visible while scrolling ══ */
-  .tabs-bar {
-    background: var(--white);
-    border-bottom: 2px solid var(--border);
-    display: flex;
-    overflow-x: auto;
-    scrollbar-width: none;
-    padding: 0 28px;
-    gap: 2px;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    box-shadow: 0 2px 8px rgba(0,0,0,.06);
-  }
-  .tabs-bar::-webkit-scrollbar { display: none; }
-  .tab-btn {
-    flex-shrink: 0;
-    padding: 15px 20px 13px;
-    border: none;
-    background: transparent;
-    cursor: pointer;
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: .85rem;
-    font-weight: 700;
-    color: var(--muted);
-    border-bottom: 3px solid transparent;
-    margin-bottom: -2px;
-    transition: color .2s, border-color .2s;
-    display: flex;
-    align-items: center;
-    gap: 7px;
-    white-space: nowrap;
-  }
-  .tab-btn:hover { color: var(--teal); }
-  .tab-btn.active { color: var(--teal); border-bottom-color: var(--teal); }
+  /* ══ TABS ══ */
+  .tabs-bar { background:var(--white); border-bottom:2px solid var(--border); display:flex; overflow-x:auto; scrollbar-width:none; padding:0 24px; position:sticky; top:0; z-index:100; box-shadow:0 2px 8px rgba(0,0,0,.06); }
+  .tabs-bar::-webkit-scrollbar { display:none; }
+  .tab-btn { flex-shrink:0; padding:14px 18px 12px; border:none; background:transparent; cursor:pointer; font-family:'Plus Jakarta Sans',sans-serif; font-size:.83rem; font-weight:700; color:var(--muted); border-bottom:3px solid transparent; margin-bottom:-2px; transition:color .2s,border-color .2s; display:flex; align-items:center; gap:6px; white-space:nowrap; }
+  .tab-btn:hover { color:var(--teal); }
+  .tab-btn.active { color:var(--teal); border-bottom-color:var(--teal); }
 
-  /* ══ PANELS — hidden/shown, NOT position:absolute ══ */
-  .panel { display: none; padding: 32px 36px 56px; }
-  .panel.active { display: block; }
+  /* ══ PANELS ══ */
+  .panel { display:none; padding:28px 32px 56px; }
+  .panel.active { display:block; }
+  .section-label { font-size:.65rem; font-weight:700; letter-spacing:1.4px; text-transform:uppercase; color:var(--muted); margin-bottom:14px; }
 
-  .section-label {
-    font-size: .68rem;
-    font-weight: 700;
-    letter-spacing: 1.4px;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-bottom: 16px;
-  }
+  /* ══ HOME ══ */
+  .welcome-banner { background:linear-gradient(135deg,var(--teal),#0a5855); border-radius:16px; padding:24px 28px; color:var(--white); margin-bottom:24px; position:relative; overflow:hidden; }
+  .welcome-banner::before { content:'ਪੰਜਾਬੀ'; font-family:'Noto Sans Gurmukhi',sans-serif; font-size:4.5rem; font-weight:700; color:rgba(255,255,255,.06); position:absolute; right:12px; bottom:-8px; line-height:1; pointer-events:none; }
+  .welcome-banner h2 { font-size:1.2rem; font-weight:800; margin-bottom:7px; }
+  .welcome-banner p  { font-size:.88rem; color:rgba(255,255,255,.8); line-height:1.7; max-width:480px; }
 
-  /* ══ HOME TAB ══ */
-  .welcome-banner {
-    background: linear-gradient(135deg, var(--teal) 0%, #0a5855 100%);
-    border-radius: 18px;
-    padding: 28px 30px;
-    color: var(--white);
-    margin-bottom: 28px;
-    position: relative;
-    overflow: hidden;
-  }
-  .welcome-banner::before {
-    content: 'ਪੰਜਾਬੀ';
-    font-family: 'Noto Sans Gurmukhi', sans-serif;
-    font-size: 5rem;
-    font-weight: 700;
-    color: rgba(255,255,255,.06);
-    position: absolute;
-    right: 16px; bottom: -8px;
-    line-height: 1;
-    pointer-events: none;
-  }
-  .welcome-banner h2 { font-size: 1.3rem; font-weight: 800; margin-bottom: 8px; }
-  .welcome-banner p  { font-size: .9rem; color: rgba(255,255,255,.8); line-height: 1.7; max-width: 500px; }
-
-  .quick-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-    gap: 14px;
-    margin-bottom: 36px;
-  }
-  .quick-card {
-    background: var(--white);
-    border: 1.5px solid var(--border);
-    border-radius: 16px;
-    padding: 20px 14px;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 8px;
-    transition: border-color .2s, transform .2s, box-shadow .2s;
-  }
-  .quick-card:hover { border-color: var(--teal); transform: translateY(-3px); box-shadow: 0 8px 20px rgba(13,126,116,.1); }
-  .qc-icon { font-size: 1.8rem; }
-  .qc-val  { font-size: 1.3rem; font-weight: 800; color: var(--teal); }
-  .qc-lbl  { font-size: .7rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: .5px; }
+  .quick-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(120px,1fr)); gap:12px; margin-bottom:32px; }
+  .quick-card { background:var(--white); border:1.5px solid var(--border); border-radius:14px; padding:18px 12px; text-align:center; display:flex; flex-direction:column; align-items:center; gap:7px; transition:border-color .2s,transform .2s,box-shadow .2s; }
+  .quick-card:hover { border-color:var(--teal); transform:translateY(-3px); box-shadow:0 8px 20px rgba(13,126,116,.1); }
+  .qc-icon { font-size:1.6rem; }
+  .qc-val  { font-size:1.2rem; font-weight:800; color:var(--teal); }
+  .qc-lbl  { font-size:.68rem; font-weight:700; color:var(--muted); text-transform:uppercase; letter-spacing:.5px; }
 
   /* ══ UNITS GRID ══ */
-  .units-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
-    gap: 14px;
-  }
-  .unit-card {
-    background: var(--white);
-    border: 1.5px solid var(--border);
-    border-radius: 16px;
-    padding: 20px 18px;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    transition: border-color .2s, transform .2s, box-shadow .2s;
-    position: relative;
-    overflow: hidden;
-  }
-  .unit-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 4px;
-    background: linear-gradient(90deg, var(--teal), var(--teal-lt));
-    border-radius: 16px 16px 0 0;
-  }
-  .unit-card.locked::before { background: #DDD; }
-  .unit-card:hover:not(.locked) { border-color: var(--teal); transform: translateY(-3px); box-shadow: 0 8px 22px rgba(13,126,116,.11); }
-  .uc-top { display: flex; align-items: flex-start; gap: 12px; }
-  .uc-num {
-    width: 36px; height: 36px;
-    border-radius: 10px;
-    background: var(--teal-bg);
-    color: var(--teal);
-    display: flex; align-items: center; justify-content: center;
-    font-weight: 800; font-size: .9rem;
-    flex-shrink: 0;
-  }
-  .unit-card.locked .uc-num { background: #F0F0F0; color: #BBB; }
-  .uc-title { font-weight: 800; font-size: .95rem; color: var(--ink); line-height: 1.3; }
-  .unit-card.locked .uc-title { color: #BBB; }
-  .uc-gurmukhi { font-family: 'Noto Sans Gurmukhi', sans-serif; font-size: .85rem; color: var(--muted); margin-top: 2px; }
-  .unit-card.locked .uc-gurmukhi { color: #CCC; }
-  .uc-topics { display: flex; flex-wrap: wrap; gap: 6px; }
-  .uc-topic {
-    font-size: .68rem; font-weight: 700;
-    background: var(--teal-bg); color: var(--teal);
-    border-radius: 20px; padding: 3px 10px;
-  }
-  .unit-card.locked .uc-topic { background: #F0F0F0; color: #BBB; }
-  .uc-badge { display: flex; align-items: center; justify-content: space-between; margin-top: auto; }
-  .uc-status { font-size: .7rem; font-weight: 700; padding: 4px 12px; border-radius: 20px; }
-  .status-active { background: #E6F4F2; color: var(--teal); }
-  .status-soon   { background: #F0F0F0; color: #AAA; }
-  .uc-time { font-size: .72rem; color: var(--muted); }
+  .category-label { font-size:.7rem; font-weight:800; letter-spacing:1.2px; text-transform:uppercase; padding:6px 12px; border-radius:20px; display:inline-flex; align-items:center; gap:6px; margin-bottom:12px; margin-top:8px; }
+  .cat-teal  { background:var(--teal-bg);  color:var(--teal); }
+  .cat-coral { background:var(--coral-bg); color:var(--coral); }
+  .cat-blue  { background:var(--blue-bg);  color:var(--blue); }
+  .cat-amber { background:var(--amber-bg); color:var(--amber); }
+
+  .units-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:12px; margin-bottom:20px; }
+
+  .unit-card { background:var(--white); border:1.5px solid var(--border); border-radius:14px; padding:18px 16px; display:flex; flex-direction:column; gap:10px; transition:border-color .2s,transform .2s,box-shadow .2s; position:relative; overflow:hidden; text-decoration:none; color:var(--ink); }
+  .unit-card::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; background:linear-gradient(90deg,var(--teal),var(--teal-lt)); border-radius:14px 14px 0 0; }
+  .unit-card.coral::before { background:linear-gradient(90deg,var(--coral),#F06292); }
+  .unit-card.blue::before  { background:linear-gradient(90deg,var(--blue),#42A5F5); }
+  .unit-card.amber::before { background:linear-gradient(90deg,var(--amber),#FFD54F); }
+  .unit-card.locked::before { background:#DDD; }
+  .unit-card.locked { cursor:default; }
+  .unit-card:not(.locked):hover { border-color:var(--teal); transform:translateY(-3px); box-shadow:0 8px 22px rgba(13,126,116,.11); }
+  .unit-card.coral:not(.locked):hover { border-color:var(--coral); box-shadow:0 8px 22px rgba(194,24,91,.1); }
+  .unit-card.blue:not(.locked):hover  { border-color:var(--blue);  box-shadow:0 8px 22px rgba(21,101,192,.1); }
+
+  .uc-top  { display:flex; align-items:flex-start; gap:10px; }
+  .uc-num  { width:32px; height:32px; border-radius:9px; background:var(--teal-bg); color:var(--teal); display:flex; align-items:center; justify-content:center; font-weight:800; font-size:.85rem; flex-shrink:0; }
+  .uc-num.coral { background:var(--coral-bg); color:var(--coral); }
+  .uc-num.blue  { background:var(--blue-bg);  color:var(--blue); }
+  .uc-num.amber { background:var(--amber-bg); color:var(--amber); }
+  .uc-num.gray  { background:#F0F0F0; color:#BBB; }
+  .uc-title    { font-weight:700; font-size:.9rem; color:var(--ink); line-height:1.3; }
+  .unit-card.locked .uc-title { color:#BBB; }
+  .uc-gurmukhi { font-family:'Noto Sans Gurmukhi',sans-serif; font-size:.82rem; color:var(--muted); margin-top:2px; }
+  .unit-card.locked .uc-gurmukhi { color:#CCC; }
+  .uc-topics   { display:flex; flex-wrap:wrap; gap:5px; }
+  .uc-topic    { font-size:.65rem; font-weight:700; background:var(--teal-bg); color:var(--teal); border-radius:20px; padding:2px 9px; }
+  .uc-topic.coral { background:var(--coral-bg); color:var(--coral); }
+  .uc-topic.blue  { background:var(--blue-bg);  color:var(--blue); }
+  .unit-card.locked .uc-topic { background:#F0F0F0; color:#BBB; }
+  .uc-badge  { display:flex; align-items:center; justify-content:space-between; margin-top:auto; }
+  .uc-status { font-size:.68rem; font-weight:700; padding:3px 10px; border-radius:20px; }
+  .status-active { background:#E6F4F2; color:var(--teal); }
+  .status-soon   { background:#F0F0F0; color:#AAA; }
+  .uc-go { font-size:.72rem; font-weight:700; color:var(--teal); background:var(--teal-bg); border-radius:20px; padding:3px 10px; }
+  .uc-go.coral { color:var(--coral); background:var(--coral-bg); }
+  .uc-go.blue  { color:var(--blue);  background:var(--blue-bg); }
 
   /* ══ ALPHABET TAB ══ */
-  .alpha-intro {
-    background: var(--white);
-    border: 1.5px solid var(--border);
-    border-left: 5px solid var(--teal);
-    border-radius: 14px;
-    padding: 16px 20px;
-    margin-bottom: 24px;
-    font-size: .9rem;
-    color: var(--muted);
-    line-height: 1.65;
-  }
-  .alpha-intro strong { color: var(--ink); }
-
-  .alpha-table-wrap { overflow-x: auto; border-radius: 16px; box-shadow: 0 2px 12px rgba(0,0,0,.07); }
-  table.alpha-table {
-    width: 100%;
-    border-collapse: collapse;
-    background: var(--white);
-    font-size: .88rem;
-  }
-  table.alpha-table thead tr { background: var(--navy); color: var(--white); }
-  table.alpha-table thead th {
-    padding: 13px 16px;
-    text-align: left;
-    font-size: .7rem; font-weight: 700;
-    letter-spacing: 1.1px; text-transform: uppercase;
-  }
-  table.alpha-table tbody tr { border-bottom: 1px solid var(--border); transition: background .15s; }
-  table.alpha-table tbody tr:hover { background: var(--teal-bg); }
-  table.alpha-table tbody tr:last-child { border-bottom: none; }
-  table.alpha-table td { padding: 11px 16px; vertical-align: middle; }
-  .alpha-letter { font-family: 'Noto Sans Gurmukhi', sans-serif; font-size: 1.6rem; font-weight: 700; color: var(--teal); line-height: 1; }
-  .alpha-name   { font-weight: 700; color: var(--ink); }
-  .alpha-roman  { color: var(--muted); font-size: .82rem; }
-  .alpha-sound  { display: inline-flex; align-items: center; background: var(--teal-bg); color: var(--teal); border-radius: 20px; padding: 3px 11px; font-size: .75rem; font-weight: 700; }
-  .alpha-ex-gurmukhi { font-family: 'Noto Sans Gurmukhi', sans-serif; font-size: .95rem; color: var(--navy); font-weight: 600; }
-  .alpha-example { color: var(--muted); font-size: .82rem; }
-  .group-header td { background: var(--gold-bg) !important; color: var(--gold); font-size: .68rem; font-weight: 800; letter-spacing: 1.2px; text-transform: uppercase; padding: 8px 16px !important; }
+  .alpha-intro { background:var(--white); border:1.5px solid var(--border); border-left:5px solid var(--teal); border-radius:12px; padding:14px 18px; margin-bottom:20px; font-size:.88rem; color:var(--muted); line-height:1.65; }
+  .alpha-intro strong { color:var(--ink); }
+  .alpha-table-wrap { overflow-x:auto; border-radius:14px; box-shadow:0 2px 12px rgba(0,0,0,.07); }
+  table.alpha-table { width:100%; border-collapse:collapse; background:var(--white); font-size:.86rem; }
+  table.alpha-table thead tr { background:var(--navy); color:var(--white); }
+  table.alpha-table thead th { padding:12px 14px; text-align:left; font-size:.67rem; font-weight:700; letter-spacing:1px; text-transform:uppercase; }
+  table.alpha-table tbody tr { border-bottom:1px solid var(--border); transition:background .15s; }
+  table.alpha-table tbody tr:hover { background:var(--teal-bg); }
+  table.alpha-table tbody tr:last-child { border-bottom:none; }
+  table.alpha-table td { padding:10px 14px; vertical-align:middle; }
+  .alpha-letter { font-family:'Noto Sans Gurmukhi',sans-serif; font-size:1.5rem; font-weight:700; color:var(--teal); line-height:1; }
+  .alpha-name   { font-weight:700; color:var(--ink); }
+  .alpha-roman  { color:var(--muted); font-size:.79rem; }
+  .alpha-sound  { display:inline-flex; background:var(--teal-bg); color:var(--teal); border-radius:20px; padding:3px 10px; font-size:.73rem; font-weight:700; }
+  .alpha-ex-g   { font-family:'Noto Sans Gurmukhi',sans-serif; font-size:.92rem; color:var(--navy); font-weight:600; }
+  .alpha-ex-e   { color:var(--muted); font-size:.79rem; }
+  .group-header td { background:var(--gold-bg)!important; color:var(--gold); font-size:.65rem; font-weight:800; letter-spacing:1.2px; text-transform:uppercase; padding:7px 14px!important; }
 
   /* ══ MUHARNI TAB ══ */
-  .muharni-intro {
-    background: var(--white);
-    border: 1.5px solid var(--border);
-    border-left: 5px solid var(--gold);
-    border-radius: 14px;
-    padding: 16px 20px;
-    margin-bottom: 24px;
-    font-size: .9rem;
-    color: var(--muted);
-    line-height: 1.65;
-  }
-  .muharni-intro strong { color: var(--ink); }
-
-  .muharni-table-wrap { overflow-x: auto; border-radius: 16px; box-shadow: 0 2px 12px rgba(0,0,0,.07); }
-  table.muharni-table { width: 100%; border-collapse: collapse; background: var(--white); }
-  table.muharni-table thead tr { background: var(--navy); color: var(--white); }
-  table.muharni-table thead th {
-    padding: 12px 10px;
-    font-size: .65rem; font-weight: 700;
-    letter-spacing: .8px; text-transform: uppercase;
-    text-align: center; min-width: 66px;
-  }
-  table.muharni-table thead th:first-child { text-align: left; min-width: 110px; }
-  table.muharni-table tbody tr { border-bottom: 1px solid var(--border); }
-  table.muharni-table tbody tr:nth-child(odd) { background: rgba(247,244,239,.6); }
-  table.muharni-table tbody tr:hover { background: var(--gold-bg); }
-  table.muharni-table tbody tr:last-child { border-bottom: none; }
-  table.muharni-table td { padding: 9px 10px; text-align: center; vertical-align: middle; }
-  table.muharni-table td:first-child { text-align: left; padding-left: 16px; }
-  .muh-letter { font-family: 'Noto Sans Gurmukhi', sans-serif; font-size: 1.3rem; font-weight: 700; color: var(--teal); }
-  .muh-base   { font-size: .68rem; color: var(--muted); font-weight: 600; display: block; }
-  .muh-cell   { font-family: 'Noto Sans Gurmukhi', sans-serif; font-size: 1.05rem; font-weight: 600; color: var(--navy); display: block; }
-  .muh-roman  { font-size: .62rem; color: var(--muted); display: block; margin-top: 1px; }
-  .muh-header-lbl { font-size: .62rem; font-weight: 700; color: var(--gold); letter-spacing: .4px; display: block; margin-top: 2px; }
+  .muharni-intro { background:var(--white); border:1.5px solid var(--border); border-left:5px solid var(--gold); border-radius:12px; padding:14px 18px; margin-bottom:20px; font-size:.88rem; color:var(--muted); line-height:1.65; }
+  .muharni-intro strong { color:var(--ink); }
+  .muh-table-wrap { overflow-x:auto; border-radius:14px; box-shadow:0 2px 12px rgba(0,0,0,.07); }
+  table.muh-table { width:100%; border-collapse:collapse; background:var(--white); }
+  table.muh-table thead tr { background:var(--navy); color:var(--white); }
+  table.muh-table thead th { padding:11px 9px; font-size:.62rem; font-weight:700; letter-spacing:.8px; text-transform:uppercase; text-align:center; min-width:62px; }
+  table.muh-table thead th:first-child { text-align:left; min-width:105px; }
+  table.muh-table tbody tr { border-bottom:1px solid var(--border); }
+  table.muh-table tbody tr:nth-child(odd)  { background:rgba(247,244,239,.6); }
+  table.muh-table tbody tr:hover { background:var(--gold-bg); }
+  table.muh-table tbody tr:last-child { border-bottom:none; }
+  table.muh-table td { padding:8px 9px; text-align:center; vertical-align:middle; }
+  table.muh-table td:first-child { text-align:left; padding-left:14px; }
+  .muh-letter { font-family:'Noto Sans Gurmukhi',sans-serif; font-size:1.2rem; font-weight:700; color:var(--teal); }
+  .muh-base   { font-size:.65rem; color:var(--muted); font-weight:600; display:block; }
+  .muh-cell   { font-family:'Noto Sans Gurmukhi',sans-serif; font-size:1rem; font-weight:600; color:var(--navy); display:block; }
+  .muh-roman  { font-size:.6rem; color:var(--muted); display:block; margin-top:1px; }
+  .muh-hdr    { font-size:.6rem; font-weight:700; color:var(--gold); letter-spacing:.4px; display:block; margin-top:2px; }
 
   /* ══ RESPONSIVE ══ */
-  @media (max-width: 560px) {
-    .panel     { padding: 20px 14px 48px; }
-    .hero      { padding: 22px 16px 20px; }
-    .tabs-bar  { padding: 0 8px; }
-    .tab-btn   { padding: 12px 12px 10px; font-size: .78rem; }
-    .hero-pills { display: none; }
-    .units-grid { grid-template-columns: 1fr; }
+  @media(max-width:560px){
+    .panel{padding:18px 14px 48px;}
+    .hero{padding:20px 14px 18px;}
+    .tabs-bar{padding:0 6px;}
+    .tab-btn{padding:11px 10px 9px;font-size:.76rem;}
+    .hero-pills{display:none;}
+    .units-grid{grid-template-columns:1fr 1fr;}
   }
 </style>
 </head>
 <body>
 
-<!-- ═══ HERO ═══ -->
 <header class="hero">
   <div class="hero-inner">
     <div class="hero-avatar">🦁</div>
     <div class="hero-text">
-      <div class="hero-label">Punjabi Level 1 · Student Dashboard</div>
-      <div class="hero-name">Hello, <span>Sehaj Singh!</span> 👋</div>
-      <div class="hero-gurmukhi">ਸਤਿ ਸ੍ਰੀ ਅਕਾਲ — ਸੇਹਜ ਸਿੰਘ</div>
+      <div class="hero-label">Punjabi Curriculum · Student Dashboard</div>
+      <div class="hero-name">Hello, <span>ਸਹਿਜ ਸਿੰਘ!</span> 👋</div>
+      <div class="hero-gurmukhi">ਸਤਿ ਸ੍ਰੀ ਅਕਾਲ — ਸਹਿਜ ਸਿੰਘ</div>
     </div>
     <div class="hero-pills">
       <span class="hero-pill">🎯 Level 1</span>
       <span class="hero-pill">🧒 Age 9</span>
-      <span class="hero-pill">📚 4 Units</span>
+      <span class="hero-pill">📚 14 Units</span>
     </div>
   </div>
 </header>
 
-<!-- ═══ TABS ═══ -->
 <nav class="tabs-bar">
   <button class="tab-btn active" onclick="showTab('home',this)">🏠 Home</button>
   <button class="tab-btn" onclick="showTab('alphabet',this)">🔤 Alphabet</button>
   <button class="tab-btn" onclick="showTab('muharni',this)">📖 Muharni</button>
 </nav>
 
-<!-- ═══ HOME ═══ -->
+<!-- ══ HOME ══ -->
 <div id="tab-home" class="panel active">
   <div class="welcome-banner">
-    <h2>Welcome back, Sehaj Singh! ਸੁਆਗਤ ਹੈ 🌟</h2>
-    <p>This is your Punjabi learning space. Explore the alphabet, practise Muharni, and work through your units below. You are doing brilliantly — keep going!</p>
+    <h2>Welcome back, ਸਹਿਜ ਸਿੰਘ! ਸੁਆਗਤ ਹੈ 🌟</h2>
+    <p>This is your Punjabi learning space. Work through each unit at your own pace — alphabets, muharni, mukta words and much more. You are doing brilliantly!</p>
   </div>
 
-  <div class="section-label" style="margin-bottom:14px;">Your Progress at a Glance</div>
-  <div class="quick-grid" style="margin-bottom:36px;">
-    <div class="quick-card"><div class="qc-icon">📚</div><div class="qc-val">4</div><div class="qc-lbl">Total Units</div></div>
+  <div class="section-label" style="margin-bottom:12px;">At a glance</div>
+  <div class="quick-grid" style="margin-bottom:32px;">
+    <div class="quick-card"><div class="qc-icon">📚</div><div class="qc-val">14</div><div class="qc-lbl">Total Units</div></div>
     <div class="quick-card"><div class="qc-icon">✅</div><div class="qc-val">1</div><div class="qc-lbl">Active Now</div></div>
     <div class="quick-card"><div class="qc-icon">🔤</div><div class="qc-val">35</div><div class="qc-lbl">Letters</div></div>
-    <div class="quick-card"><div class="qc-icon">⏱️</div><div class="qc-val">45m</div><div class="qc-lbl">Per Unit</div></div>
+    <div class="quick-card"><div class="qc-icon">🎮</div><div class="qc-val">3+</div><div class="qc-lbl">Games/Unit</div></div>
   </div>
 
-  <div class="section-label">Your Units</div>
+  <!-- ALPHABET UNITS -->
+  <div class="category-label cat-teal">🔤 Alphabet Units</div>
   <div class="units-grid">
-    <div class="unit-card">
-      <div class="uc-top">
-        <div class="uc-num">1</div>
-        <div><div class="uc-title">Hello, Punjabi World!</div><div class="uc-gurmukhi">ਸਤਿ ਸ੍ਰੀ ਅਕਾਲ</div></div>
-      </div>
-      <div class="uc-topics">
-        <span class="uc-topic">👋 Greetings</span>
-        <span class="uc-topic">🔤 Letters 1–5</span>
-        <span class="uc-topic">🔢 Numbers 1–5</span>
-      </div>
-      <div class="uc-badge">
-        <span class="uc-status status-active">● Active</span>
-        <span class="uc-time">45 min</span>
-      </div>
-    </div>
-    <div class="unit-card locked">
-      <div class="uc-top">
-        <div class="uc-num">2</div>
-        <div><div class="uc-title">My Family</div><div class="uc-gurmukhi">ਮੇਰਾ ਪਰਿਵਾਰ</div></div>
-      </div>
-      <div class="uc-topics"><span class="uc-topic">👨‍👩‍👧 Family words</span><span class="uc-topic">🗣️ Describing</span></div>
-      <div class="uc-badge"><span class="uc-status status-soon">🔒 Coming Soon</span><span class="uc-time">45 min</span></div>
-    </div>
-    <div class="unit-card locked">
-      <div class="uc-top">
-        <div class="uc-num">3</div>
-        <div><div class="uc-title">Colours &amp; Shapes</div><div class="uc-gurmukhi">ਰੰਗ ਅਤੇ ਆਕਾਰ</div></div>
-      </div>
-      <div class="uc-topics"><span class="uc-topic">🎨 Colours</span><span class="uc-topic">🔷 Shapes</span></div>
-      <div class="uc-badge"><span class="uc-status status-soon">🔒 Coming Soon</span><span class="uc-time">45 min</span></div>
-    </div>
-    <div class="unit-card locked">
-      <div class="uc-top">
-        <div class="uc-num">4</div>
-        <div><div class="uc-title">My Day</div><div class="uc-gurmukhi">ਮੇਰਾ ਦਿਨ</div></div>
-      </div>
-      <div class="uc-topics"><span class="uc-topic">☀️ Daily routine</span><span class="uc-topic">🕐 Time</span></div>
-      <div class="uc-badge"><span class="uc-status status-soon">🔒 Coming Soon</span><span class="uc-time">45 min</span></div>
-    </div>
+    <a href="unit1.html" class="unit-card">
+      <div class="uc-top"><div class="uc-num">1</div><div><div class="uc-title">First 20 Alphabets</div><div class="uc-gurmukhi">ੳ ਤੋਂ ਣ ਤੱਕ</div></div></div>
+      <div class="uc-topics"><span class="uc-topic">📋 Letter table</span><span class="uc-topic">🎮 Games</span><span class="uc-topic">🧠 Quiz</span></div>
+      <div class="uc-badge"><span class="uc-status status-active">● Active</span><span class="uc-go">Start →</span></div>
+    </a>
+    <a href="unit2.html" class="unit-card locked">
+      <div class="uc-top"><div class="uc-num gray">2</div><div><div class="uc-title">Remaining 15 Alphabets</div><div class="uc-gurmukhi">ਤ ਤੋਂ ੜ ਤੱਕ</div></div></div>
+      <div class="uc-topics"><span class="uc-topic">📋 Letter table</span><span class="uc-topic">🎮 Games</span><span class="uc-topic">🧠 Quiz</span></div>
+      <div class="uc-badge"><span class="uc-status status-soon">🔒 Coming Soon</span></div>
+    </a>
+    <a href="unit3.html" class="unit-card locked">
+      <div class="uc-top"><div class="uc-num gray">3</div><div><div class="uc-title">All 35 Alphabets</div><div class="uc-gurmukhi">ਸਾਰੇ ਅੱਖਰ ਇਕੱਠੇ</div></div></div>
+      <div class="uc-topics"><span class="uc-topic">🔄 Full review</span><span class="uc-topic">🎮 Memory game</span><span class="uc-topic">🧠 Quiz</span></div>
+      <div class="uc-badge"><span class="uc-status status-soon">🔒 Coming Soon</span></div>
+    </a>
+  </div>
+
+  <!-- MUKTA WORDS -->
+  <div class="category-label cat-coral" style="margin-top:8px;">📝 Mukta Words</div>
+  <div class="units-grid">
+    <a href="unit4.html" class="unit-card coral locked">
+      <div class="uc-top"><div class="uc-num coral gray">4</div><div><div class="uc-title">Mukta Words</div><div class="uc-gurmukhi">ਬਿਨਾਂ ਮਾਤਰਾ ਦੇ ਸ਼ਬਦ</div></div></div>
+      <div class="uc-topics"><span class="uc-topic coral">2-letter words</span><span class="uc-topic coral">3-letter words</span><span class="uc-topic coral">Sentences</span></div>
+      <div class="uc-badge"><span class="uc-status status-soon">🔒 Coming Soon</span></div>
+    </a>
+  </div>
+
+  <!-- MUHARNI UNITS -->
+  <div class="category-label cat-blue" style="margin-top:8px;">📖 Muharni — Vowel Signs (ਲਗਾ ਮਾਤਰਾ)</div>
+  <div class="units-grid">
+    <a href="unit5.html" class="unit-card blue locked">
+      <div class="uc-top"><div class="uc-num blue gray">5</div><div><div class="uc-title">Kanna (ਾ)</div><div class="uc-gurmukhi">ਕੰਨਾ</div></div></div>
+      <div class="uc-topics"><span class="uc-topic blue">All 35 letters</span><span class="uc-topic blue">🎮 Game</span><span class="uc-topic blue">🧠 Quiz</span></div>
+      <div class="uc-badge"><span class="uc-status status-soon">🔒 Coming Soon</span></div>
+    </a>
+    <a href="unit6.html" class="unit-card blue locked">
+      <div class="uc-top"><div class="uc-num blue gray">6</div><div><div class="uc-title">Sihari (ਿ)</div><div class="uc-gurmukhi">ਸਿਹਾਰੀ</div></div></div>
+      <div class="uc-topics"><span class="uc-topic blue">All 35 letters</span><span class="uc-topic blue">🎮 Game</span><span class="uc-topic blue">🧠 Quiz</span></div>
+      <div class="uc-badge"><span class="uc-status status-soon">🔒 Coming Soon</span></div>
+    </a>
+    <a href="unit7.html" class="unit-card blue locked">
+      <div class="uc-top"><div class="uc-num blue gray">7</div><div><div class="uc-title">Bihari (ੀ)</div><div class="uc-gurmukhi">ਬਿਹਾਰੀ</div></div></div>
+      <div class="uc-topics"><span class="uc-topic blue">All 35 letters</span><span class="uc-topic blue">🎮 Game</span><span class="uc-topic blue">🧠 Quiz</span></div>
+      <div class="uc-badge"><span class="uc-status status-soon">🔒 Coming Soon</span></div>
+    </a>
+    <a href="unit8.html" class="unit-card blue locked">
+      <div class="uc-top"><div class="uc-num blue gray">8</div><div><div class="uc-title">Aunkar (ੁ)</div><div class="uc-gurmukhi">ਔਂਕੜ</div></div></div>
+      <div class="uc-topics"><span class="uc-topic blue">All 35 letters</span><span class="uc-topic blue">🎮 Game</span><span class="uc-topic blue">🧠 Quiz</span></div>
+      <div class="uc-badge"><span class="uc-status status-soon">🔒 Coming Soon</span></div>
+    </a>
+    <a href="unit9.html" class="unit-card blue locked">
+      <div class="uc-top"><div class="uc-num blue gray">9</div><div><div class="uc-title">Dulainkar (ੂ)</div><div class="uc-gurmukhi">ਦੁਲੈਂਕੜ</div></div></div>
+      <div class="uc-topics"><span class="uc-topic blue">All 35 letters</span><span class="uc-topic blue">🎮 Game</span><span class="uc-topic blue">🧠 Quiz</span></div>
+      <div class="uc-badge"><span class="uc-status status-soon">🔒 Coming Soon</span></div>
+    </a>
+    <a href="unit10.html" class="unit-card blue locked">
+      <div class="uc-top"><div class="uc-num blue gray">10</div><div><div class="uc-title">Lava (ੇ)</div><div class="uc-gurmukhi">ਲਾਂਵਾਂ</div></div></div>
+      <div class="uc-topics"><span class="uc-topic blue">All 35 letters</span><span class="uc-topic blue">🎮 Game</span><span class="uc-topic blue">🧠 Quiz</span></div>
+      <div class="uc-badge"><span class="uc-status status-soon">🔒 Coming Soon</span></div>
+    </a>
+    <a href="unit11.html" class="unit-card blue locked">
+      <div class="uc-top"><div class="uc-num blue gray">11</div><div><div class="uc-title">Dulava (ੈ)</div><div class="uc-gurmukhi">ਦੁਲਾਵਾਂ</div></div></div>
+      <div class="uc-topics"><span class="uc-topic blue">All 35 letters</span><span class="uc-topic blue">🎮 Game</span><span class="uc-topic blue">🧠 Quiz</span></div>
+      <div class="uc-badge"><span class="uc-status status-soon">🔒 Coming Soon</span></div>
+    </a>
+    <a href="unit12.html" class="unit-card blue locked">
+      <div class="uc-top"><div class="uc-num blue gray">12</div><div><div class="uc-title">Hora (ੋ)</div><div class="uc-gurmukhi">ਹੋੜਾ</div></div></div>
+      <div class="uc-topics"><span class="uc-topic blue">All 35 letters</span><span class="uc-topic blue">🎮 Game</span><span class="uc-topic blue">🧠 Quiz</span></div>
+      <div class="uc-badge"><span class="uc-status status-soon">🔒 Coming Soon</span></div>
+    </a>
+    <a href="unit13.html" class="unit-card blue locked">
+      <div class="uc-top"><div class="uc-num blue gray">13</div><div><div class="uc-title">Kanaura (ੌ)</div><div class="uc-gurmukhi">ਕਨੌੜਾ</div></div></div>
+      <div class="uc-topics"><span class="uc-topic blue">All 35 letters</span><span class="uc-topic blue">🎮 Game</span><span class="uc-topic blue">🧠 Quiz</span></div>
+      <div class="uc-badge"><span class="uc-status status-soon">🔒 Coming Soon</span></div>
+    </a>
+  </div>
+
+  <!-- FULL MUHARNI -->
+  <div class="category-label cat-amber" style="margin-top:8px;">⭐ Complete Muharni</div>
+  <div class="units-grid">
+    <a href="unit14.html" class="unit-card amber locked">
+      <div class="uc-top"><div class="uc-num amber gray">14</div><div><div class="uc-title">Full Muharni Review</div><div class="uc-gurmukhi">ਸਾਰੀ ਮੁਹਾਰਨੀ</div></div></div>
+      <div class="uc-topics"><span class="uc-topic">35 × 10 forms</span><span class="uc-topic">🎮 Game</span><span class="uc-topic">🧠 Quiz</span></div>
+      <div class="uc-badge"><span class="uc-status status-soon">🔒 Coming Soon</span></div>
+    </a>
   </div>
 </div>
 
-<!-- ═══ ALPHABET ═══ -->
+<!-- ══ ALPHABET TAB ══ -->
 <div id="tab-alphabet" class="panel">
-  <div class="alpha-intro">
-    <strong>ਗੁਰਮੁਖੀ ਵਰਣਮਾਲਾ — The Gurmukhi Alphabet</strong><br>
-    Punjabi is written in the Gurmukhi script. There are <strong>35 letters</strong> arranged in groups by where the sound is made in your mouth. Learn the name, sound and an example word for each letter!
-  </div>
+  <div class="alpha-intro"><strong>ਗੁਰਮੁਖੀ ਵਰਣਮਾਲਾ — The Gurmukhi Alphabet</strong><br>All 35 letters arranged in groups by where the sound is made in your mouth. Learn the name, sound and an example word for each!</div>
   <div class="alpha-table-wrap">
     <table class="alpha-table">
-      <thead>
-        <tr><th>#</th><th>Letter</th><th>Name</th><th>Roman</th><th>Sound</th><th>Example Word</th></tr>
-      </thead>
+      <thead><tr><th>#</th><th>Letter</th><th>Name</th><th>Roman</th><th>Sound</th><th>Example Word</th></tr></thead>
       <tbody>
         <tr class="group-header"><td colspan="6">Group 1 — Vowel Carriers</td></tr>
-        <tr><td>1</td><td><span class="alpha-letter">ੳ</span></td><td class="alpha-name">Ura</td><td class="alpha-roman">oo-raa</td><td><span class="alpha-sound">oo</span></td><td><span class="alpha-ex-gurmukhi">ਊਠ</span> <span class="alpha-example">— camel</span></td></tr>
-        <tr><td>2</td><td><span class="alpha-letter">ਅ</span></td><td class="alpha-name">Airaa</td><td class="alpha-roman">ay-raa</td><td><span class="alpha-sound">a</span></td><td><span class="alpha-ex-gurmukhi">ਅੰਬ</span> <span class="alpha-example">— mango</span></td></tr>
-        <tr><td>3</td><td><span class="alpha-letter">ੲ</span></td><td class="alpha-name">Iree</td><td class="alpha-roman">ee-ree</td><td><span class="alpha-sound">ee</span></td><td><span class="alpha-ex-gurmukhi">ਇੱਟ</span> <span class="alpha-example">— brick</span></td></tr>
+        <tr><td>1</td><td><span class="alpha-letter">ੳ</span></td><td><span class="alpha-name">Ura</span><br><span class="alpha-roman">oo-raa</span></td><td>U</td><td><span class="alpha-sound">oo</span></td><td><span class="alpha-ex-g">ਊਠ</span> <span class="alpha-ex-e">— camel</span></td></tr>
+        <tr><td>2</td><td><span class="alpha-letter">ਅ</span></td><td><span class="alpha-name">Airaa</span><br><span class="alpha-roman">ay-raa</span></td><td>A</td><td><span class="alpha-sound">a</span></td><td><span class="alpha-ex-g">ਅੰਬ</span> <span class="alpha-ex-e">— mango</span></td></tr>
+        <tr><td>3</td><td><span class="alpha-letter">ੲ</span></td><td><span class="alpha-name">Iree</span><br><span class="alpha-roman">ee-ree</span></td><td>I</td><td><span class="alpha-sound">ee</span></td><td><span class="alpha-ex-g">ਇੱਟ</span> <span class="alpha-ex-e">— brick</span></td></tr>
         <tr class="group-header"><td colspan="6">Group 2 — Gutturals & Sibilant</td></tr>
-        <tr><td>4</td><td><span class="alpha-letter">ਸ</span></td><td class="alpha-name">Sassa</td><td class="alpha-roman">sas-saa</td><td><span class="alpha-sound">s</span></td><td><span class="alpha-ex-gurmukhi">ਸੇਬ</span> <span class="alpha-example">— apple</span></td></tr>
-        <tr><td>5</td><td><span class="alpha-letter">ਹ</span></td><td class="alpha-name">Hahaa</td><td class="alpha-roman">haa-haa</td><td><span class="alpha-sound">h</span></td><td><span class="alpha-ex-gurmukhi">ਹੱਥ</span> <span class="alpha-example">— hand</span></td></tr>
-        <tr><td>6</td><td><span class="alpha-letter">ਕ</span></td><td class="alpha-name">Kakka</td><td class="alpha-roman">kak-kaa</td><td><span class="alpha-sound">k</span></td><td><span class="alpha-ex-gurmukhi">ਕਮਲ</span> <span class="alpha-example">— lotus</span></td></tr>
-        <tr><td>7</td><td><span class="alpha-letter">ਖ</span></td><td class="alpha-name">Khakhkha</td><td class="alpha-roman">khakh-khaa</td><td><span class="alpha-sound">kh</span></td><td><span class="alpha-ex-gurmukhi">ਖਰਗੋਸ਼</span> <span class="alpha-example">— rabbit</span></td></tr>
-        <tr><td>8</td><td><span class="alpha-letter">ਗ</span></td><td class="alpha-name">Gagga</td><td class="alpha-roman">gag-gaa</td><td><span class="alpha-sound">g</span></td><td><span class="alpha-ex-gurmukhi">ਗਾਂ</span> <span class="alpha-example">— cow</span></td></tr>
-        <tr><td>9</td><td><span class="alpha-letter">ਘ</span></td><td class="alpha-name">Ghagha</td><td class="alpha-roman">ghag-haa</td><td><span class="alpha-sound">gh</span></td><td><span class="alpha-ex-gurmukhi">ਘਰ</span> <span class="alpha-example">— house</span></td></tr>
-        <tr><td>10</td><td><span class="alpha-letter">ਙ</span></td><td class="alpha-name">Nganga</td><td class="alpha-roman">nga-ngaa</td><td><span class="alpha-sound">ng</span></td><td><span class="alpha-ex-gurmukhi">ਰੰਗ</span> <span class="alpha-example">— colour</span></td></tr>
+        <tr><td>4</td><td><span class="alpha-letter">ਸ</span></td><td><span class="alpha-name">Sassa</span><br><span class="alpha-roman">sas-saa</span></td><td>S</td><td><span class="alpha-sound">s</span></td><td><span class="alpha-ex-g">ਸੇਬ</span> <span class="alpha-ex-e">— apple</span></td></tr>
+        <tr><td>5</td><td><span class="alpha-letter">ਹ</span></td><td><span class="alpha-name">Hahaa</span><br><span class="alpha-roman">haa-haa</span></td><td>H</td><td><span class="alpha-sound">h</span></td><td><span class="alpha-ex-g">ਹੱਥ</span> <span class="alpha-ex-e">— hand</span></td></tr>
+        <tr><td>6</td><td><span class="alpha-letter">ਕ</span></td><td><span class="alpha-name">Kakka</span><br><span class="alpha-roman">kak-kaa</span></td><td>K</td><td><span class="alpha-sound">k</span></td><td><span class="alpha-ex-g">ਕਮਲ</span> <span class="alpha-ex-e">— lotus</span></td></tr>
+        <tr><td>7</td><td><span class="alpha-letter">ਖ</span></td><td><span class="alpha-name">Khakhkha</span><br><span class="alpha-roman">khakh-khaa</span></td><td>Kh</td><td><span class="alpha-sound">kh</span></td><td><span class="alpha-ex-g">ਖਰਗੋਸ਼</span> <span class="alpha-ex-e">— rabbit</span></td></tr>
+        <tr><td>8</td><td><span class="alpha-letter">ਗ</span></td><td><span class="alpha-name">Gagga</span><br><span class="alpha-roman">gag-gaa</span></td><td>G</td><td><span class="alpha-sound">g</span></td><td><span class="alpha-ex-g">ਗਾਂ</span> <span class="alpha-ex-e">— cow</span></td></tr>
+        <tr><td>9</td><td><span class="alpha-letter">ਘ</span></td><td><span class="alpha-name">Ghagha</span><br><span class="alpha-roman">ghag-haa</span></td><td>Gh</td><td><span class="alpha-sound">gh</span></td><td><span class="alpha-ex-g">ਘਰ</span> <span class="alpha-ex-e">— house</span></td></tr>
+        <tr><td>10</td><td><span class="alpha-letter">ਙ</span></td><td><span class="alpha-name">Nganga</span><br><span class="alpha-roman">nga-ngaa</span></td><td>Ng</td><td><span class="alpha-sound">ng</span></td><td><span class="alpha-ex-g">ਰੰਗ</span> <span class="alpha-ex-e">— colour</span></td></tr>
         <tr class="group-header"><td colspan="6">Group 3 — Palatals</td></tr>
-        <tr><td>11</td><td><span class="alpha-letter">ਚ</span></td><td class="alpha-name">Chacha</td><td class="alpha-roman">chach-aa</td><td><span class="alpha-sound">ch</span></td><td><span class="alpha-ex-gurmukhi">ਚੰਦ</span> <span class="alpha-example">— moon</span></td></tr>
-        <tr><td>12</td><td><span class="alpha-letter">ਛ</span></td><td class="alpha-name">Chhachha</td><td class="alpha-roman">chhach-haa</td><td><span class="alpha-sound">chh</span></td><td><span class="alpha-ex-gurmukhi">ਛੱਤਰੀ</span> <span class="alpha-example">— umbrella</span></td></tr>
-        <tr><td>13</td><td><span class="alpha-letter">ਜ</span></td><td class="alpha-name">Jajja</td><td class="alpha-roman">jaj-jaa</td><td><span class="alpha-sound">j</span></td><td><span class="alpha-ex-gurmukhi">ਜਹਾਜ਼</span> <span class="alpha-example">— aeroplane</span></td></tr>
-        <tr><td>14</td><td><span class="alpha-letter">ਝ</span></td><td class="alpha-name">Jhajha</td><td class="alpha-roman">jhaj-haa</td><td><span class="alpha-sound">jh</span></td><td><span class="alpha-ex-gurmukhi">ਝੰਡਾ</span> <span class="alpha-example">— flag</span></td></tr>
-        <tr><td>15</td><td><span class="alpha-letter">ਞ</span></td><td class="alpha-name">Nyanya</td><td class="alpha-roman">nya-nyaa</td><td><span class="alpha-sound">ny</span></td><td><span class="alpha-ex-gurmukhi">ਗਿਆਨ</span> <span class="alpha-example">— knowledge</span></td></tr>
+        <tr><td>11</td><td><span class="alpha-letter">ਚ</span></td><td><span class="alpha-name">Chacha</span><br><span class="alpha-roman">chach-aa</span></td><td>Ch</td><td><span class="alpha-sound">ch</span></td><td><span class="alpha-ex-g">ਚੰਦ</span> <span class="alpha-ex-e">— moon</span></td></tr>
+        <tr><td>12</td><td><span class="alpha-letter">ਛ</span></td><td><span class="alpha-name">Chhachha</span><br><span class="alpha-roman">chhach-haa</span></td><td>Chh</td><td><span class="alpha-sound">chh</span></td><td><span class="alpha-ex-g">ਛੱਤਰੀ</span> <span class="alpha-ex-e">— umbrella</span></td></tr>
+        <tr><td>13</td><td><span class="alpha-letter">ਜ</span></td><td><span class="alpha-name">Jajja</span><br><span class="alpha-roman">jaj-jaa</span></td><td>J</td><td><span class="alpha-sound">j</span></td><td><span class="alpha-ex-g">ਜੰਗਲ</span> <span class="alpha-ex-e">— jungle</span></td></tr>
+        <tr><td>14</td><td><span class="alpha-letter">ਝ</span></td><td><span class="alpha-name">Jhajha</span><br><span class="alpha-roman">jhaj-haa</span></td><td>Jh</td><td><span class="alpha-sound">jh</span></td><td><span class="alpha-ex-g">ਝੰਡਾ</span> <span class="alpha-ex-e">— flag</span></td></tr>
+        <tr><td>15</td><td><span class="alpha-letter">ਞ</span></td><td><span class="alpha-name">Nyanya</span><br><span class="alpha-roman">nya-nyaa</span></td><td>Ny</td><td><span class="alpha-sound">ny</span></td><td><span class="alpha-ex-g">ਗਿਆਨ</span> <span class="alpha-ex-e">— knowledge</span></td></tr>
         <tr class="group-header"><td colspan="6">Group 4 — Retroflex</td></tr>
-        <tr><td>16</td><td><span class="alpha-letter">ਟ</span></td><td class="alpha-name">Tanka</td><td class="alpha-roman">tan-kaa</td><td><span class="alpha-sound">ṭ</span></td><td><span class="alpha-ex-gurmukhi">ਟੋਕਰੀ</span> <span class="alpha-example">— basket</span></td></tr>
-        <tr><td>17</td><td><span class="alpha-letter">ਠ</span></td><td class="alpha-name">Thatha</td><td class="alpha-roman">thath-aa</td><td><span class="alpha-sound">ṭh</span></td><td><span class="alpha-ex-gurmukhi">ਠੰਡ</span> <span class="alpha-example">— cold</span></td></tr>
-        <tr><td>18</td><td><span class="alpha-letter">ਡ</span></td><td class="alpha-name">Dadda</td><td class="alpha-roman">dad-daa</td><td><span class="alpha-sound">ḍ</span></td><td><span class="alpha-ex-gurmukhi">ਡੱਡੂ</span> <span class="alpha-example">— frog</span></td></tr>
-        <tr><td>19</td><td><span class="alpha-letter">ਢ</span></td><td class="alpha-name">Dhadha</td><td class="alpha-roman">dhad-haa</td><td><span class="alpha-sound">ḍh</span></td><td><span class="alpha-ex-gurmukhi">ਢੋਲ</span> <span class="alpha-example">— drum</span></td></tr>
-        <tr><td>20</td><td><span class="alpha-letter">ਣ</span></td><td class="alpha-name">Nanna</td><td class="alpha-roman">nan-naa</td><td><span class="alpha-sound">ṇ</span></td><td><span class="alpha-ex-gurmukhi">ਬਾਣ</span> <span class="alpha-example">— arrow</span></td></tr>
+        <tr><td>16</td><td><span class="alpha-letter">ਟ</span></td><td><span class="alpha-name">Tanka</span><br><span class="alpha-roman">tan-kaa</span></td><td>Ṭ</td><td><span class="alpha-sound">ṭ</span></td><td><span class="alpha-ex-g">ਟੋਕਰੀ</span> <span class="alpha-ex-e">— basket</span></td></tr>
+        <tr><td>17</td><td><span class="alpha-letter">ਠ</span></td><td><span class="alpha-name">Thatha</span><br><span class="alpha-roman">thath-aa</span></td><td>Ṭh</td><td><span class="alpha-sound">ṭh</span></td><td><span class="alpha-ex-g">ਠੰਡ</span> <span class="alpha-ex-e">— cold</span></td></tr>
+        <tr><td>18</td><td><span class="alpha-letter">ਡ</span></td><td><span class="alpha-name">Dadda</span><br><span class="alpha-roman">dad-daa</span></td><td>Ḍ</td><td><span class="alpha-sound">ḍ</span></td><td><span class="alpha-ex-g">ਡੱਡੂ</span> <span class="alpha-ex-e">— frog</span></td></tr>
+        <tr><td>19</td><td><span class="alpha-letter">ਢ</span></td><td><span class="alpha-name">Dhadha</span><br><span class="alpha-roman">dhad-haa</span></td><td>Ḍh</td><td><span class="alpha-sound">ḍh</span></td><td><span class="alpha-ex-g">ਢੋਲ</span> <span class="alpha-ex-e">— drum</span></td></tr>
+        <tr><td>20</td><td><span class="alpha-letter">ਣ</span></td><td><span class="alpha-name">Nanna</span><br><span class="alpha-roman">nan-naa</span></td><td>Ṇ</td><td><span class="alpha-sound">ṇ</span></td><td><span class="alpha-ex-g">ਬਾਣ</span> <span class="alpha-ex-e">— arrow</span></td></tr>
         <tr class="group-header"><td colspan="6">Group 5 — Dentals</td></tr>
-        <tr><td>21</td><td><span class="alpha-letter">ਤ</span></td><td class="alpha-name">Tatta</td><td class="alpha-roman">tat-taa</td><td><span class="alpha-sound">t</span></td><td><span class="alpha-ex-gurmukhi">ਤਾਰਾ</span> <span class="alpha-example">— star</span></td></tr>
-        <tr><td>22</td><td><span class="alpha-letter">ਥ</span></td><td class="alpha-name">Thatha</td><td class="alpha-roman">thath-aa</td><td><span class="alpha-sound">th</span></td><td><span class="alpha-ex-gurmukhi">ਥਾਲੀ</span> <span class="alpha-example">— plate</span></td></tr>
-        <tr><td>23</td><td><span class="alpha-letter">ਦ</span></td><td class="alpha-name">Dadda</td><td class="alpha-roman">dad-daa</td><td><span class="alpha-sound">d</span></td><td><span class="alpha-ex-gurmukhi">ਦਰਖ਼ਤ</span> <span class="alpha-example">— tree</span></td></tr>
-        <tr><td>24</td><td><span class="alpha-letter">ਧ</span></td><td class="alpha-name">Dhadha</td><td class="alpha-roman">dhad-haa</td><td><span class="alpha-sound">dh</span></td><td><span class="alpha-ex-gurmukhi">ਧਰਤੀ</span> <span class="alpha-example">— earth</span></td></tr>
-        <tr><td>25</td><td><span class="alpha-letter">ਨ</span></td><td class="alpha-name">Nanna</td><td class="alpha-roman">nan-naa</td><td><span class="alpha-sound">n</span></td><td><span class="alpha-ex-gurmukhi">ਨੱਕ</span> <span class="alpha-example">— nose</span></td></tr>
+        <tr><td>21</td><td><span class="alpha-letter">ਤ</span></td><td><span class="alpha-name">Tatta</span><br><span class="alpha-roman">tat-taa</span></td><td>T</td><td><span class="alpha-sound">t</span></td><td><span class="alpha-ex-g">ਤਾਰਾ</span> <span class="alpha-ex-e">— star</span></td></tr>
+        <tr><td>22</td><td><span class="alpha-letter">ਥ</span></td><td><span class="alpha-name">Thatha</span><br><span class="alpha-roman">thath-aa</span></td><td>Th</td><td><span class="alpha-sound">th</span></td><td><span class="alpha-ex-g">ਥਾਲੀ</span> <span class="alpha-ex-e">— plate</span></td></tr>
+        <tr><td>23</td><td><span class="alpha-letter">ਦ</span></td><td><span class="alpha-name">Dadda</span><br><span class="alpha-roman">dad-daa</span></td><td>D</td><td><span class="alpha-sound">d</span></td><td><span class="alpha-ex-g">ਦਰਖ਼ਤ</span> <span class="alpha-ex-e">— tree</span></td></tr>
+        <tr><td>24</td><td><span class="alpha-letter">ਧ</span></td><td><span class="alpha-name">Dhadha</span><br><span class="alpha-roman">dhad-haa</span></td><td>Dh</td><td><span class="alpha-sound">dh</span></td><td><span class="alpha-ex-g">ਧਰਤੀ</span> <span class="alpha-ex-e">— earth</span></td></tr>
+        <tr><td>25</td><td><span class="alpha-letter">ਨ</span></td><td><span class="alpha-name">Nanna</span><br><span class="alpha-roman">nan-naa</span></td><td>N</td><td><span class="alpha-sound">n</span></td><td><span class="alpha-ex-g">ਨੱਕ</span> <span class="alpha-ex-e">— nose</span></td></tr>
         <tr class="group-header"><td colspan="6">Group 6 — Labials</td></tr>
-        <tr><td>26</td><td><span class="alpha-letter">ਪ</span></td><td class="alpha-name">Pappa</td><td class="alpha-roman">pap-paa</td><td><span class="alpha-sound">p</span></td><td><span class="alpha-ex-gurmukhi">ਪੰਜਾਬ</span> <span class="alpha-example">— Punjab</span></td></tr>
-        <tr><td>27</td><td><span class="alpha-letter">ਫ</span></td><td class="alpha-name">Phappha</td><td class="alpha-roman">phap-phaa</td><td><span class="alpha-sound">ph/f</span></td><td><span class="alpha-ex-gurmukhi">ਫੁੱਲ</span> <span class="alpha-example">— flower</span></td></tr>
-        <tr><td>28</td><td><span class="alpha-letter">ਬ</span></td><td class="alpha-name">Babba</td><td class="alpha-roman">bab-baa</td><td><span class="alpha-sound">b</span></td><td><span class="alpha-ex-gurmukhi">ਬੱਕਰੀ</span> <span class="alpha-example">— goat</span></td></tr>
-        <tr><td>29</td><td><span class="alpha-letter">ਭ</span></td><td class="alpha-name">Bhabha</td><td class="alpha-roman">bhab-haa</td><td><span class="alpha-sound">bh</span></td><td><span class="alpha-ex-gurmukhi">ਭਾਲੂ</span> <span class="alpha-example">— bear</span></td></tr>
-        <tr><td>30</td><td><span class="alpha-letter">ਮ</span></td><td class="alpha-name">Mamma</td><td class="alpha-roman">mam-maa</td><td><span class="alpha-sound">m</span></td><td><span class="alpha-ex-gurmukhi">ਮੱਛੀ</span> <span class="alpha-example">— fish</span></td></tr>
+        <tr><td>26</td><td><span class="alpha-letter">ਪ</span></td><td><span class="alpha-name">Pappa</span><br><span class="alpha-roman">pap-paa</span></td><td>P</td><td><span class="alpha-sound">p</span></td><td><span class="alpha-ex-g">ਪੰਜਾਬ</span> <span class="alpha-ex-e">— Punjab</span></td></tr>
+        <tr><td>27</td><td><span class="alpha-letter">ਫ</span></td><td><span class="alpha-name">Phappha</span><br><span class="alpha-roman">phap-phaa</span></td><td>Ph/F</td><td><span class="alpha-sound">ph</span></td><td><span class="alpha-ex-g">ਫੁੱਲ</span> <span class="alpha-ex-e">— flower</span></td></tr>
+        <tr><td>28</td><td><span class="alpha-letter">ਬ</span></td><td><span class="alpha-name">Babba</span><br><span class="alpha-roman">bab-baa</span></td><td>B</td><td><span class="alpha-sound">b</span></td><td><span class="alpha-ex-g">ਬੱਕਰੀ</span> <span class="alpha-ex-e">— goat</span></td></tr>
+        <tr><td>29</td><td><span class="alpha-letter">ਭ</span></td><td><span class="alpha-name">Bhabha</span><br><span class="alpha-roman">bhab-haa</span></td><td>Bh</td><td><span class="alpha-sound">bh</span></td><td><span class="alpha-ex-g">ਭਾਲੂ</span> <span class="alpha-ex-e">— bear</span></td></tr>
+        <tr><td>30</td><td><span class="alpha-letter">ਮ</span></td><td><span class="alpha-name">Mamma</span><br><span class="alpha-roman">mam-maa</span></td><td>M</td><td><span class="alpha-sound">m</span></td><td><span class="alpha-ex-g">ਮੱਛੀ</span> <span class="alpha-ex-e">— fish</span></td></tr>
         <tr class="group-header"><td colspan="6">Group 7 — Semi-vowels & Fricatives</td></tr>
-        <tr><td>31</td><td><span class="alpha-letter">ਯ</span></td><td class="alpha-name">Yayya</td><td class="alpha-roman">yay-yaa</td><td><span class="alpha-sound">y</span></td><td><span class="alpha-ex-gurmukhi">ਯਾਰ</span> <span class="alpha-example">— friend</span></td></tr>
-        <tr><td>32</td><td><span class="alpha-letter">ਰ</span></td><td class="alpha-name">Rarra</td><td class="alpha-roman">rar-raa</td><td><span class="alpha-sound">r</span></td><td><span class="alpha-ex-gurmukhi">ਰੋਟੀ</span> <span class="alpha-example">— bread</span></td></tr>
-        <tr><td>33</td><td><span class="alpha-letter">ਲ</span></td><td class="alpha-name">Lalla</td><td class="alpha-roman">lal-laa</td><td><span class="alpha-sound">l</span></td><td><span class="alpha-ex-gurmukhi">ਲੱਡੂ</span> <span class="alpha-example">— sweet</span></td></tr>
-        <tr><td>34</td><td><span class="alpha-letter">ਵ</span></td><td class="alpha-name">Vavva</td><td class="alpha-roman">vav-vaa</td><td><span class="alpha-sound">v/w</span></td><td><span class="alpha-ex-gurmukhi">ਵਾਲ</span> <span class="alpha-example">— hair</span></td></tr>
-        <tr><td>35</td><td><span class="alpha-letter">ੜ</span></td><td class="alpha-name">Rarra</td><td class="alpha-roman">rar-raa</td><td><span class="alpha-sound">ṛ</span></td><td><span class="alpha-ex-gurmukhi">ਪੜ੍ਹਨਾ</span> <span class="alpha-example">— to read</span></td></tr>
+        <tr><td>31</td><td><span class="alpha-letter">ਯ</span></td><td><span class="alpha-name">Yayya</span><br><span class="alpha-roman">yay-yaa</span></td><td>Y</td><td><span class="alpha-sound">y</span></td><td><span class="alpha-ex-g">ਯਾਰ</span> <span class="alpha-ex-e">— friend</span></td></tr>
+        <tr><td>32</td><td><span class="alpha-letter">ਰ</span></td><td><span class="alpha-name">Rarra</span><br><span class="alpha-roman">rar-raa</span></td><td>R</td><td><span class="alpha-sound">r</span></td><td><span class="alpha-ex-g">ਰੋਟੀ</span> <span class="alpha-ex-e">— bread</span></td></tr>
+        <tr><td>33</td><td><span class="alpha-letter">ਲ</span></td><td><span class="alpha-name">Lalla</span><br><span class="alpha-roman">lal-laa</span></td><td>L</td><td><span class="alpha-sound">l</span></td><td><span class="alpha-ex-g">ਲੱਡੂ</span> <span class="alpha-ex-e">— sweet</span></td></tr>
+        <tr><td>34</td><td><span class="alpha-letter">ਵ</span></td><td><span class="alpha-name">Vavva</span><br><span class="alpha-roman">vav-vaa</span></td><td>V/W</td><td><span class="alpha-sound">v</span></td><td><span class="alpha-ex-g">ਵਾਲ</span> <span class="alpha-ex-e">— hair</span></td></tr>
+        <tr><td>35</td><td><span class="alpha-letter">ੜ</span></td><td><span class="alpha-name">Rarra</span><br><span class="alpha-roman">rar-raa</span></td><td>Ṛ</td><td><span class="alpha-sound">ṛ</span></td><td><span class="alpha-ex-g">ਪੜ੍ਹਨਾ</span> <span class="alpha-ex-e">— to read</span></td></tr>
       </tbody>
     </table>
   </div>
 </div>
 
-<!-- ═══ MUHARNI ═══ -->
+<!-- ══ MUHARNI TAB ══ -->
 <div id="tab-muharni" class="panel">
-  <div class="muharni-intro">
-    <strong>ਮੁਹਾਰਨੀ — The Muharni</strong><br>
-    The Muharni combines each consonant with the 10 Gurmukhi vowel signs. Reading across each row gives you all the vowel sounds on one letter. This is how Punjabi children learn to read — row by row!
-  </div>
-  <div class="muharni-table-wrap">
-    <table class="muharni-table">
+  <div class="muharni-intro"><strong>ਮੁਹਾਰਨੀ — The Muharni</strong><br>Each consonant combined with all 10 vowel signs. Read across each row — this is how Punjabi children learn to read!</div>
+  <div class="muh-table-wrap">
+    <table class="muh-table">
       <thead>
         <tr>
           <th style="text-align:left">Letter</th>
-          <th>ਮੁਕਤਾ<span class="muh-header-lbl">a</span></th>
-          <th>ਆੜਾ<span class="muh-header-lbl">aa</span></th>
-          <th>ਸਿਹਾਰੀ<span class="muh-header-lbl">i</span></th>
-          <th>ਬਿਹਾਰੀ<span class="muh-header-lbl">ee</span></th>
-          <th>ਔਂਕੜ<span class="muh-header-lbl">u</span></th>
-          <th>ਦੁਲੈਂਕੜ<span class="muh-header-lbl">oo</span></th>
-          <th>ਲਾਂਵਾਂ<span class="muh-header-lbl">e</span></th>
-          <th>ਦੁਲਾਵਾਂ<span class="muh-header-lbl">ai</span></th>
-          <th>ਹੋੜਾ<span class="muh-header-lbl">o</span></th>
-          <th>ਕਨੌੜਾ<span class="muh-header-lbl">au</span></th>
+          <th>ਮੁਕਤਾ<span class="muh-hdr">a</span></th>
+          <th>ਆੜਾ<span class="muh-hdr">aa</span></th>
+          <th>ਸਿਹਾਰੀ<span class="muh-hdr">i</span></th>
+          <th>ਬਿਹਾਰੀ<span class="muh-hdr">ee</span></th>
+          <th>ਔਂਕੜ<span class="muh-hdr">u</span></th>
+          <th>ਦੁਲੈਂਕੜ<span class="muh-hdr">oo</span></th>
+          <th>ਲਾਂਵਾਂ<span class="muh-hdr">e</span></th>
+          <th>ਦੁਲਾਵਾਂ<span class="muh-hdr">ai</span></th>
+          <th>ਹੋੜਾ<span class="muh-hdr">o</span></th>
+          <th>ਕਨੌੜਾ<span class="muh-hdr">au</span></th>
         </tr>
       </thead>
-      <tbody id="muharni-body"></tbody>
+      <tbody id="muh-body"></tbody>
     </table>
   </div>
 </div>
 
 <script>
-  /* ── TAB SWITCHER ── */
-  function showTab(id, btn) {
-    document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
-    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-    document.getElementById('tab-' + id).classList.add('active');
-    btn.classList.add('active');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }
+function showTab(id,btn){
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('tab-'+id).classList.add('active');
+  btn.classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
 
-  /* ── MUHARNI DATA ── */
-  const muharniData = [
-    ['ਸ','Sassa',  ['ਸ','ਸਾ','ਸਿ','ਸੀ','ਸੁ','ਸੂ','ਸੇ','ਸੈ','ਸੋ','ਸੌ'],['sa','saa','si','see','su','soo','se','sai','so','sau']],
-    ['ਹ','Hahaa',  ['ਹ','ਹਾ','ਹਿ','ਹੀ','ਹੁ','ਹੂ','ਹੇ','ਹੈ','ਹੋ','ਹੌ'],['ha','haa','hi','hee','hu','hoo','he','hai','ho','hau']],
-    ['ਕ','Kakka',  ['ਕ','ਕਾ','ਕਿ','ਕੀ','ਕੁ','ਕੂ','ਕੇ','ਕੈ','ਕੋ','ਕੌ'],['ka','kaa','ki','kee','ku','koo','ke','kai','ko','kau']],
-    ['ਖ','Khakhkha',['ਖ','ਖਾ','ਖਿ','ਖੀ','ਖੁ','ਖੂ','ਖੇ','ਖੈ','ਖੋ','ਖੌ'],['kha','khaa','khi','khee','khu','khoo','khe','khai','kho','khau']],
-    ['ਗ','Gagga',  ['ਗ','ਗਾ','ਗਿ','ਗੀ','ਗੁ','ਗੂ','ਗੇ','ਗੈ','ਗੋ','ਗੌ'],['ga','gaa','gi','gee','gu','goo','ge','gai','go','gau']],
-    ['ਘ','Ghagha', ['ਘ','ਘਾ','ਘਿ','ਘੀ','ਘੁ','ਘੂ','ਘੇ','ਘੈ','ਘੋ','ਘੌ'],['gha','ghaa','ghi','ghee','ghu','ghoo','ghe','ghai','gho','ghau']],
-    ['ਚ','Chacha', ['ਚ','ਚਾ','ਚਿ','ਚੀ','ਚੁ','ਚੂ','ਚੇ','ਚੈ','ਚੋ','ਚੌ'],['cha','chaa','chi','chee','chu','choo','che','chai','cho','chau']],
-    ['ਛ','Chhachha',['ਛ','ਛਾ','ਛਿ','ਛੀ','ਛੁ','ਛੂ','ਛੇ','ਛੈ','ਛੋ','ਛੌ'],['chha','chhaa','chhi','chhee','chhu','chhoo','chhe','chhai','chho','chhau']],
-    ['ਜ','Jajja',  ['ਜ','ਜਾ','ਜਿ','ਜੀ','ਜੁ','ਜੂ','ਜੇ','ਜੈ','ਜੋ','ਜੌ'],['ja','jaa','ji','jee','ju','joo','je','jai','jo','jau']],
-    ['ਝ','Jhajha', ['ਝ','ਝਾ','ਝਿ','ਝੀ','ਝੁ','ਝੂ','ਝੇ','ਝੈ','ਝੋ','ਝੌ'],['jha','jhaa','jhi','jhee','jhu','jhoo','jhe','jhai','jho','jhau']],
-    ['ਟ','Tanka',  ['ਟ','ਟਾ','ਟਿ','ਟੀ','ਟੁ','ਟੂ','ਟੇ','ਟੈ','ਟੋ','ਟੌ'],['ta','taa','ti','tee','tu','too','te','tai','to','tau']],
-    ['ਠ','Thatha', ['ਠ','ਠਾ','ਠਿ','ਠੀ','ਠੁ','ਠੂ','ਠੇ','ਠੈ','ਠੋ','ਠੌ'],['tha','thaa','thi','thee','thu','thoo','the','thai','tho','thau']],
-    ['ਡ','Dadda',  ['ਡ','ਡਾ','ਡਿ','ਡੀ','ਡੁ','ਡੂ','ਡੇ','ਡੈ','ਡੋ','ਡੌ'],['da','daa','di','dee','du','doo','de','dai','do','dau']],
-    ['ਢ','Dhadha', ['ਢ','ਢਾ','ਢਿ','ਢੀ','ਢੁ','ਢੂ','ਢੇ','ਢੈ','ਢੋ','ਢੌ'],['dha','dhaa','dhi','dhee','dhu','dhoo','dhe','dhai','dho','dhau']],
-    ['ਣ','Nanna',  ['ਣ','ਣਾ','ਣਿ','ਣੀ','ਣੁ','ਣੂ','ਣੇ','ਣੈ','ਣੋ','ਣੌ'],['na','naa','ni','nee','nu','noo','ne','nai','no','nau']],
-    ['ਤ','Tatta',  ['ਤ','ਤਾ','ਤਿ','ਤੀ','ਤੁ','ਤੂ','ਤੇ','ਤੈ','ਤੋ','ਤੌ'],['ta','taa','ti','tee','tu','too','te','tai','to','tau']],
-    ['ਥ','Thatha', ['ਥ','ਥਾ','ਥਿ','ਥੀ','ਥੁ','ਥੂ','ਥੇ','ਥੈ','ਥੋ','ਥੌ'],['tha','thaa','thi','thee','thu','thoo','the','thai','tho','thau']],
-    ['ਦ','Dadda',  ['ਦ','ਦਾ','ਦਿ','ਦੀ','ਦੁ','ਦੂ','ਦੇ','ਦੈ','ਦੋ','ਦੌ'],['da','daa','di','dee','du','doo','de','dai','do','dau']],
-    ['ਧ','Dhadha', ['ਧ','ਧਾ','ਧਿ','ਧੀ','ਧੁ','ਧੂ','ਧੇ','ਧੈ','ਧੋ','ਧੌ'],['dha','dhaa','dhi','dhee','dhu','dhoo','dhe','dhai','dho','dhau']],
-    ['ਨ','Nanna',  ['ਨ','ਨਾ','ਨਿ','ਨੀ','ਨੁ','ਨੂ','ਨੇ','ਨੈ','ਨੋ','ਨੌ'],['na','naa','ni','nee','nu','noo','ne','nai','no','nau']],
-    ['ਪ','Pappa',  ['ਪ','ਪਾ','ਪਿ','ਪੀ','ਪੁ','ਪੂ','ਪੇ','ਪੈ','ਪੋ','ਪੌ'],['pa','paa','pi','pee','pu','poo','pe','pai','po','pau']],
-    ['ਫ','Phappha',['ਫ','ਫਾ','ਫਿ','ਫੀ','ਫੁ','ਫੂ','ਫੇ','ਫੈ','ਫੋ','ਫੌ'],['pha','phaa','phi','phee','phu','phoo','phe','phai','pho','phau']],
-    ['ਬ','Babba',  ['ਬ','ਬਾ','ਬਿ','ਬੀ','ਬੁ','ਬੂ','ਬੇ','ਬੈ','ਬੋ','ਬੌ'],['ba','baa','bi','bee','bu','boo','be','bai','bo','bau']],
-    ['ਭ','Bhabha', ['ਭ','ਭਾ','ਭਿ','ਭੀ','ਭੁ','ਭੂ','ਭੇ','ਭੈ','ਭੋ','ਭੌ'],['bha','bhaa','bhi','bhee','bhu','bhoo','bhe','bhai','bho','bhau']],
-    ['ਮ','Mamma',  ['ਮ','ਮਾ','ਮਿ','ਮੀ','ਮੁ','ਮੂ','ਮੇ','ਮੈ','ਮੋ','ਮੌ'],['ma','maa','mi','mee','mu','moo','me','mai','mo','mau']],
-    ['ਯ','Yayya',  ['ਯ','ਯਾ','ਯਿ','ਯੀ','ਯੁ','ਯੂ','ਯੇ','ਯੈ','ਯੋ','ਯੌ'],['ya','yaa','yi','yee','yu','yoo','ye','yai','yo','yau']],
-    ['ਰ','Rarra',  ['ਰ','ਰਾ','ਰਿ','ਰੀ','ਰੁ','ਰੂ','ਰੇ','ਰੈ','ਰੋ','ਰੌ'],['ra','raa','ri','ree','ru','roo','re','rai','ro','rau']],
-    ['ਲ','Lalla',  ['ਲ','ਲਾ','ਲਿ','ਲੀ','ਲੁ','ਲੂ','ਲੇ','ਲੈ','ਲੋ','ਲੌ'],['la','laa','li','lee','lu','loo','le','lai','lo','lau']],
-    ['ਵ','Vavva',  ['ਵ','ਵਾ','ਵਿ','ਵੀ','ਵੁ','ਵੂ','ਵੇ','ਵੈ','ਵੋ','ਵੌ'],['va','vaa','vi','vee','vu','voo','ve','vai','vo','vau']],
-    ['ੜ','Rarra',  ['ੜ','ੜਾ','ੜਿ','ੜੀ','ੜੁ','ੜੂ','ੜੇ','ੜੈ','ੜੋ','ੜੌ'],['ra','raa','ri','ree','ru','roo','re','rai','ro','rau']],
-  ];
-
-  (function buildMuharni() {
-    const tbody = document.getElementById('muharni-body');
-    muharniData.forEach(([letter, name, forms, roman]) => {
-      const tr = document.createElement('tr');
-      const tdL = document.createElement('td');
-      tdL.innerHTML = `<span class="muh-letter">${letter}</span><span class="muh-base">${name}</span>`;
-      tr.appendChild(tdL);
-      forms.forEach((f, i) => {
-        const td = document.createElement('td');
-        td.innerHTML = `<span class="muh-cell">${f}</span><span class="muh-roman">${roman[i]}</span>`;
-        tr.appendChild(td);
-      });
-      tbody.appendChild(tr);
+const MD=[
+  ['ਸ','Sassa',  ['ਸ','ਸਾ','ਸਿ','ਸੀ','ਸੁ','ਸੂ','ਸੇ','ਸੈ','ਸੋ','ਸੌ'],['sa','saa','si','see','su','soo','se','sai','so','sau']],
+  ['ਹ','Hahaa',  ['ਹ','ਹਾ','ਹਿ','ਹੀ','ਹੁ','ਹੂ','ਹੇ','ਹੈ','ਹੋ','ਹੌ'],['ha','haa','hi','hee','hu','hoo','he','hai','ho','hau']],
+  ['ਕ','Kakka',  ['ਕ','ਕਾ','ਕਿ','ਕੀ','ਕੁ','ਕੂ','ਕੇ','ਕੈ','ਕੋ','ਕੌ'],['ka','kaa','ki','kee','ku','koo','ke','kai','ko','kau']],
+  ['ਖ','Khakhkha',['ਖ','ਖਾ','ਖਿ','ਖੀ','ਖੁ','ਖੂ','ਖੇ','ਖੈ','ਖੋ','ਖੌ'],['kha','khaa','khi','khee','khu','khoo','khe','khai','kho','khau']],
+  ['ਗ','Gagga',  ['ਗ','ਗਾ','ਗਿ','ਗੀ','ਗੁ','ਗੂ','ਗੇ','ਗੈ','ਗੋ','ਗੌ'],['ga','gaa','gi','gee','gu','goo','ge','gai','go','gau']],
+  ['ਘ','Ghagha', ['ਘ','ਘਾ','ਘਿ','ਘੀ','ਘੁ','ਘੂ','ਘੇ','ਘੈ','ਘੋ','ਘੌ'],['gha','ghaa','ghi','ghee','ghu','ghoo','ghe','ghai','gho','ghau']],
+  ['ਚ','Chacha', ['ਚ','ਚਾ','ਚਿ','ਚੀ','ਚੁ','ਚੂ','ਚੇ','ਚੈ','ਚੋ','ਚੌ'],['cha','chaa','chi','chee','chu','choo','che','chai','cho','chau']],
+  ['ਛ','Chhachha',['ਛ','ਛਾ','ਛਿ','ਛੀ','ਛੁ','ਛੂ','ਛੇ','ਛੈ','ਛੋ','ਛੌ'],['chha','chhaa','chhi','chhee','chhu','chhoo','chhe','chhai','chho','chhau']],
+  ['ਜ','Jajja',  ['ਜ','ਜਾ','ਜਿ','ਜੀ','ਜੁ','ਜੂ','ਜੇ','ਜੈ','ਜੋ','ਜੌ'],['ja','jaa','ji','jee','ju','joo','je','jai','jo','jau']],
+  ['ਝ','Jhajha', ['ਝ','ਝਾ','ਝਿ','ਝੀ','ਝੁ','ਝੂ','ਝੇ','ਝੈ','ਝੋ','ਝੌ'],['jha','jhaa','jhi','jhee','jhu','jhoo','jhe','jhai','jho','jhau']],
+  ['ਟ','Tanka',  ['ਟ','ਟਾ','ਟਿ','ਟੀ','ਟੁ','ਟੂ','ਟੇ','ਟੈ','ਟੋ','ਟੌ'],['ta','taa','ti','tee','tu','too','te','tai','to','tau']],
+  ['ਠ','Thatha', ['ਠ','ਠਾ','ਠਿ','ਠੀ','ਠੁ','ਠੂ','ਠੇ','ਠੈ','ਠੋ','ਠੌ'],['tha','thaa','thi','thee','thu','thoo','the','thai','tho','thau']],
+  ['ਡ','Dadda',  ['ਡ','ਡਾ','ਡਿ','ਡੀ','ਡੁ','ਡੂ','ਡੇ','ਡੈ','ਡੋ','ਡੌ'],['da','daa','di','dee','du','doo','de','dai','do','dau']],
+  ['ਢ','Dhadha', ['ਢ','ਢਾ','ਢਿ','ਢੀ','ਢੁ','ਢੂ','ਢੇ','ਢੈ','ਢੋ','ਢੌ'],['dha','dhaa','dhi','dhee','dhu','dhoo','dhe','dhai','dho','dhau']],
+  ['ਣ','Nanna',  ['ਣ','ਣਾ','ਣਿ','ਣੀ','ਣੁ','ਣੂ','ਣੇ','ਣੈ','ਣੋ','ਣੌ'],['na','naa','ni','nee','nu','noo','ne','nai','no','nau']],
+  ['ਤ','Tatta',  ['ਤ','ਤਾ','ਤਿ','ਤੀ','ਤੁ','ਤੂ','ਤੇ','ਤੈ','ਤੋ','ਤੌ'],['ta','taa','ti','tee','tu','too','te','tai','to','tau']],
+  ['ਥ','Thatha', ['ਥ','ਥਾ','ਥਿ','ਥੀ','ਥੁ','ਥੂ','ਥੇ','ਥੈ','ਥੋ','ਥੌ'],['tha','thaa','thi','thee','thu','thoo','the','thai','tho','thau']],
+  ['ਦ','Dadda',  ['ਦ','ਦਾ','ਦਿ','ਦੀ','ਦੁ','ਦੂ','ਦੇ','ਦੈ','ਦੋ','ਦੌ'],['da','daa','di','dee','du','doo','de','dai','do','dau']],
+  ['ਧ','Dhadha', ['ਧ','ਧਾ','ਧਿ','ਧੀ','ਧੁ','ਧੂ','ਧੇ','ਧੈ','ਧੋ','ਧੌ'],['dha','dhaa','dhi','dhee','dhu','dhoo','dhe','dhai','dho','dhau']],
+  ['ਨ','Nanna',  ['ਨ','ਨਾ','ਨਿ','ਨੀ','ਨੁ','ਨੂ','ਨੇ','ਨੈ','ਨੋ','ਨੌ'],['na','naa','ni','nee','nu','noo','ne','nai','no','nau']],
+  ['ਪ','Pappa',  ['ਪ','ਪਾ','ਪਿ','ਪੀ','ਪੁ','ਪੂ','ਪੇ','ਪੈ','ਪੋ','ਪੌ'],['pa','paa','pi','pee','pu','poo','pe','pai','po','pau']],
+  ['ਫ','Phappha',['ਫ','ਫਾ','ਫਿ','ਫੀ','ਫੁ','ਫੂ','ਫੇ','ਫੈ','ਫੋ','ਫੌ'],['pha','phaa','phi','phee','phu','phoo','phe','phai','pho','phau']],
+  ['ਬ','Babba',  ['ਬ','ਬਾ','ਬਿ','ਬੀ','ਬੁ','ਬੂ','ਬੇ','ਬੈ','ਬੋ','ਬੌ'],['ba','baa','bi','bee','bu','boo','be','bai','bo','bau']],
+  ['ਭ','Bhabha', ['ਭ','ਭਾ','ਭਿ','ਭੀ','ਭੁ','ਭੂ','ਭੇ','ਭੈ','ਭੋ','ਭੌ'],['bha','bhaa','bhi','bhee','bhu','bhoo','bhe','bhai','bho','bhau']],
+  ['ਮ','Mamma',  ['ਮ','ਮਾ','ਮਿ','ਮੀ','ਮੁ','ਮੂ','ਮੇ','ਮੈ','ਮੋ','ਮੌ'],['ma','maa','mi','mee','mu','moo','me','mai','mo','mau']],
+  ['ਯ','Yayya',  ['ਯ','ਯਾ','ਯਿ','ਯੀ','ਯੁ','ਯੂ','ਯੇ','ਯੈ','ਯੋ','ਯੌ'],['ya','yaa','yi','yee','yu','yoo','ye','yai','yo','yau']],
+  ['ਰ','Rarra',  ['ਰ','ਰਾ','ਰਿ','ਰੀ','ਰੁ','ਰੂ','ਰੇ','ਰੈ','ਰੋ','ਰੌ'],['ra','raa','ri','ree','ru','roo','re','rai','ro','rau']],
+  ['ਲ','Lalla',  ['ਲ','ਲਾ','ਲਿ','ਲੀ','ਲੁ','ਲੂ','ਲੇ','ਲੈ','ਲੋ','ਲੌ'],['la','laa','li','lee','lu','loo','le','lai','lo','lau']],
+  ['ਵ','Vavva',  ['ਵ','ਵਾ','ਵਿ','ਵੀ','ਵੁ','ਵੂ','ਵੇ','ਵੈ','ਵੋ','ਵੌ'],['va','vaa','vi','vee','vu','voo','ve','vai','vo','vau']],
+  ['ੜ','Rarra',  ['ੜ','ੜਾ','ੜਿ','ੜੀ','ੜੁ','ੜੂ','ੜੇ','ੜੈ','ੜੋ','ੜੌ'],['ra','raa','ri','ree','ru','roo','re','rai','ro','rau']],
+];
+(function(){
+  const tb=document.getElementById('muh-body');
+  MD.forEach(([l,n,f,r])=>{
+    const tr=document.createElement('tr');
+    const td0=document.createElement('td');
+    td0.innerHTML=`<span class="muh-letter">${l}</span><span class="muh-base">${n}</span>`;
+    tr.appendChild(td0);
+    f.forEach((v,i)=>{
+      const td=document.createElement('td');
+      td.innerHTML=`<span class="muh-cell">${v}</span><span class="muh-roman">${r[i]}</span>`;
+      tr.appendChild(td);
     });
-  })();
+    tb.appendChild(tr);
+  });
+})();
 </script>
 </body>
 </html>
