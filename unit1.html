@@ -55,7 +55,7 @@
   .intro-banner p  { font-size:.88rem; color:rgba(255,255,255,.82); line-height:1.7; max-width:500px; }
 
   /* ══ LETTER TABLE ══ */
-  .table-wrap { overflow-x:auto; border-radius:14px; box-shadow:0 2px 12px rgba(0,0,0,.07); }
+  .table-wrap { overflow-x:auto; border-radius:14px; box-shadow:0 2px 12px rgba(0,0,0,.07); -webkit-overflow-scrolling:touch; }
   table.lt { width:100%; border-collapse:collapse; background:#FFFFFF; font-size:.88rem; }
   table.lt thead tr { background:var(--navy); color:#FFFFFF; }
   table.lt thead th { padding:13px 16px; text-align:left; font-size:.67rem; font-weight:700; letter-spacing:1px; text-transform:uppercase; }
@@ -72,7 +72,7 @@
   .lt-ex-e   { color:var(--muted); font-size:.8rem; }
 
   /* ══ LISTEN BUTTON ══ */
-  .listen-btn { background:var(--teal-bg); border:1.5px solid var(--teal); border-radius:20px; color:var(--teal); font-size:.8rem; font-weight:700; padding:6px 14px; cursor:pointer; transition:background .2s,transform .15s; display:inline-flex; align-items:center; gap:5px; white-space:nowrap; }
+  .listen-btn { background:var(--teal-bg); border:1.5px solid var(--teal); border-radius:20px; color:var(--teal); font-size:.8rem; font-weight:700; padding:10px 14px; cursor:pointer; transition:background .2s,transform .15s; display:inline-flex; align-items:center; gap:5px; white-space:nowrap; min-height:40px; }
   .listen-btn:hover   { background:var(--teal); color:#FFFFFF; transform:scale(1.04); }
   .listen-btn.playing { background:var(--teal); color:#FFFFFF; }
 
@@ -80,10 +80,10 @@
   .tippi-box { background:var(--gold-bg); border:1.5px solid var(--gold); border-radius:14px; padding:16px 20px; margin-bottom:24px; }
   .tippi-box h3 { font-size:.9rem; font-weight:800; color:var(--gold); margin-bottom:8px; display:flex; align-items:center; gap:8px; }
   .tippi-box p  { font-size:.85rem; color:#7A5000; line-height:1.7; }
-  .tippi-box .marks { display:flex; gap:16px; margin-top:10px; flex-wrap:wrap; }
-  .tippi-mark { background:#FFFFFF; border:1.5px solid var(--gold); border-radius:10px; padding:8px 14px; display:flex; align-items:center; gap:8px; }
-  .tippi-mark .gur { font-family:'Noto Sans Gurmukhi',sans-serif; font-size:1.4rem; color:var(--teal); font-weight:700; }
-  .tippi-mark .desc { font-size:.78rem; color:#7A5000; font-weight:600; line-height:1.4; }
+  .tippi-box .marks { display:flex; gap:12px; margin-top:12px; flex-wrap:wrap; }
+  .tippi-mark { background:#FFFFFF; border:1.5px solid var(--gold); border-radius:10px; padding:12px 16px; display:flex; align-items:flex-start; gap:12px; flex:1; min-width:200px; }
+  .tippi-mark .gur { font-family:'Noto Sans Gurmukhi',sans-serif; font-size:2rem; color:var(--teal); font-weight:700; flex-shrink:0; }
+  .tippi-mark .desc { font-size:.82rem; color:#7A5000; line-height:1.6; }
 
   /* ══ WORD CARDS ══ */
   .words-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(180px,1fr)); gap:14px; }
@@ -93,18 +93,57 @@
   .wc-gurmukhi { font-family:'Noto Sans Gurmukhi',sans-serif; font-size:2.2rem; font-weight:700; color:var(--teal); line-height:1.1; }
   .wc-roman    { font-size:.8rem; font-weight:700; color:var(--muted); }
   .wc-english  { font-size:.95rem; font-weight:700; color:var(--ink); }
-  .wc-hear     { margin-top:6px; background:var(--teal-bg); border:1.5px solid var(--teal); border-radius:20px; color:var(--teal); font-size:.78rem; font-weight:700; padding:7px 14px; cursor:pointer; display:inline-flex; align-items:center; gap:6px; transition:background .2s; width:fit-content; }
+  .wc-hear     { margin-top:6px; background:var(--teal-bg); border:1.5px solid var(--teal); border-radius:20px; color:var(--teal); font-size:.78rem; font-weight:700; padding:10px 14px; cursor:pointer; display:inline-flex; align-items:center; gap:6px; transition:background .2s; width:fit-content; min-height:40px; }
   .wc-hear:hover   { background:var(--teal); color:#FFFFFF; }
   .wc-hear.playing { background:var(--teal); color:#FFFFFF; }
 
-  /* ══ RESPONSIVE ══ */
-  @media(max-width:560px){
-    .panel { padding:18px 14px 48px; }
-    .hero  { padding:18px 14px 16px; }
-    .tabs-bar { padding:0 6px; }
-    .tab-btn  { padding:11px 12px 9px; font-size:.78rem; }
-    .hero-pills { display:none; }
+  /* ══ RESPONSIVE — iPad & Mobile ══ */
+
+  /* iPad (768px–1024px) */
+  @media(max-width:1024px){
+    .hero { padding:22px 24px 18px; }
+    .panel { padding:24px 24px 48px; }
+    .words-grid { grid-template-columns:repeat(auto-fill,minmax(160px,1fr)); }
+  }
+
+  /* Small tablet / large phone (560px–768px) */
+  @media(max-width:768px){
+    .hero { padding:18px 18px 16px; }
+    .hero-title { font-size:1.4rem; }
+    .panel { padding:20px 18px 48px; }
+    .tabs-bar { padding:0 10px; }
+    .tab-btn { padding:12px 14px 10px; font-size:.82rem; }
+    table.lt { font-size:.82rem; }
+    .lt-letter { font-size:1.6rem; }
     .words-grid { grid-template-columns:1fr 1fr; }
+    .tippi-box .marks { flex-direction:column; }
+  }
+
+  /* Phone (max 560px) */
+  @media(max-width:560px){
+    .hero { padding:16px 14px 14px; }
+    .hero-title { font-size:1.2rem; }
+    .hero-gurmukhi { display:none; }
+    .hero-pills { display:none; }
+    .panel { padding:16px 14px 48px; }
+    .tabs-bar { padding:0 6px; }
+    .tab-btn { padding:11px 10px 9px; font-size:.78rem; gap:4px; }
+    .intro-banner { padding:18px 16px; }
+    .intro-banner h2 { font-size:1rem; }
+    .intro-banner p { font-size:.84rem; }
+    table.lt { font-size:.8rem; }
+    table.lt thead th { padding:10px 10px; font-size:.62rem; }
+    table.lt td { padding:10px 10px; }
+    .lt-letter { font-size:1.5rem; }
+    .lt-num { width:24px; height:24px; font-size:.68rem; }
+    .lt-sound { font-size:.7rem; padding:2px 8px; }
+    .listen-btn { font-size:.74rem; padding:5px 10px; }
+    .words-grid { grid-template-columns:1fr 1fr; gap:10px; }
+    .wc-gurmukhi { font-size:1.8rem; }
+    .wc-english { font-size:.88rem; }
+    .tippi-box { padding:14px 14px; }
+    .tippi-box .marks { flex-direction:column; }
+    .tippi-mark { min-width:unset; }
   }
 </style>
 </head>
@@ -198,20 +237,29 @@
 <!-- ══ MUKTA WORDS TAB ══ -->
 <div id="tab-words" class="panel">
 
-  <!-- Tippi & Bindi box -->
+  <!-- Tippi & Adhak box -->
   <div class="tippi-box">
-    <h3>🪄 Magic Dot Marks!</h3>
-    <p>Some words below have special marks called <strong>Tippi (ੰ)</strong> and <strong>Bindi (ਂ)</strong>. They give letters a "nose voice" — a gentle buzzing sound through your nose, like the <strong>"ng"</strong> in "sing" or the <strong>"m"</strong> in "jump". Look out for the little dot on top!</p>
+    <h3>🪄 Two Magic Marks to Know!</h3>
+    <p>Some words below wear special marks. Spot them on top of letters and remember what they do!</p>
     <div class="marks">
       <div class="tippi-mark">
         <span class="gur">ੰ</span>
-        <div class="desc"><strong>Tippi</strong><br>little bridge dot</div>
+        <div class="desc">
+          <strong>Tippi — The Nose Buzz</strong><br>
+          Curves down like a little tunnel 🌀<br>
+          Makes you hum through your nose — like <strong>"si<u>ng</u>"</strong>
+        </div>
       </div>
       <div class="tippi-mark">
-        <span class="gur">ਂ</span>
-        <div class="desc"><strong>Bindi</strong><br>single dot</div>
+        <span class="gur">ੱ</span>
+        <div class="desc">
+          <strong>Adhak — The Bouncing Ball</strong><br>
+          Curves up like a smile 😊<br>
+          Makes your voice <strong>bounce hard</strong> on the next sound — like <strong>"bu<u>tt</u>er"</strong>
+        </div>
       </div>
     </div>
+    <p style="margin-top:12px;font-size:.82rem;color:#7A5000;">💡 <strong>Tip:</strong> See a mark curving <em>down</em>? Hum through your nose. See one curving <em>up</em>? Give the next sound an extra bounce!</p>
   </div>
 
   <!-- Word cards -->

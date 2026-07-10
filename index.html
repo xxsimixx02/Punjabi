@@ -162,14 +162,56 @@
   .muh-roman  { font-size:.6rem; color:var(--muted); display:block; margin-top:1px; }
   .muh-hdr    { font-size:.6rem; font-weight:700; color:var(--gold); letter-spacing:.4px; display:block; margin-top:2px; }
 
-  /* ══ RESPONSIVE ══ */
+  /* ══ RESPONSIVE — iPad & Mobile ══ */
+
+  /* iPad (768px–1024px) */
+  @media(max-width:1024px){
+    .hero  { padding:22px 24px 18px; }
+    .panel { padding:24px 24px 48px; }
+    .units-grid { grid-template-columns:repeat(auto-fill,minmax(180px,1fr)); }
+    .quick-grid { grid-template-columns:repeat(2,1fr); }
+  }
+
+  /* Small tablet / large phone (560px–768px) */
+  @media(max-width:768px){
+    .hero  { padding:18px 18px 16px; }
+    .panel { padding:20px 18px 48px; }
+    .tabs-bar { padding:0 10px; }
+    .tab-btn  { padding:12px 14px 10px; font-size:.82rem; }
+    .units-grid { grid-template-columns:1fr 1fr; }
+    .alpha-table-wrap { font-size:.82rem; }
+    .alpha-letter { font-size:1.4rem; }
+    .muh-letter { font-size:1.1rem; }
+    .muh-cell   { font-size:.9rem; }
+  }
+
+  /* Phone (max 560px) */
   @media(max-width:560px){
-    .panel{padding:18px 14px 48px;}
-    .hero{padding:20px 14px 18px;}
-    .tabs-bar{padding:0 6px;}
-    .tab-btn{padding:11px 10px 9px;font-size:.76rem;}
-    .hero-pills{display:none;}
-    .units-grid{grid-template-columns:1fr 1fr;}
+    .hero  { padding:16px 14px 14px; }
+    .hero-pills { display:none; }
+    .hero-gurmukhi { display:none; }
+    .panel { padding:16px 14px 48px; }
+    .tabs-bar { padding:0 6px; }
+    .tab-btn  { padding:11px 10px 9px; font-size:.76rem; gap:4px; }
+    .units-grid { grid-template-columns:1fr 1fr; gap:10px; }
+    .quick-grid { grid-template-columns:repeat(2,1fr); gap:10px; }
+    .welcome-banner h2 { font-size:1rem; }
+    .welcome-banner p  { font-size:.84rem; }
+    .uc-title { font-size:.85rem; }
+    .uc-gurmukhi { font-size:.76rem; }
+    .uc-topic { font-size:.62rem; }
+    .category-label { font-size:.65rem; }
+    table.alpha-table { font-size:.78rem; }
+    table.alpha-table thead th { padding:10px 10px; font-size:.6rem; }
+    table.alpha-table td { padding:9px 10px; }
+    .alpha-letter { font-size:1.3rem; }
+    .listen-btn { font-size:.72rem; padding:4px 8px; }
+    table.muh-table { font-size:.72rem; }
+    table.muh-table thead th { padding:8px 6px; font-size:.58rem; min-width:50px; }
+    table.muh-table td { padding:7px 6px; }
+    .muh-letter { font-size:1rem; }
+    .muh-cell   { font-size:.85rem; }
+    .muh-roman  { font-size:.55rem; }
   }
 </style>
 </head>
@@ -186,7 +228,7 @@
     <div class="hero-pills">
       <span class="hero-pill">🎯 Level 1</span>
       <span class="hero-pill">🧒 Age 9</span>
-      <span class="hero-pill">📚 14 Units</span>
+      <span class="hero-pill">📚 17 Units</span>
     </div>
   </div>
 </header>
@@ -206,7 +248,7 @@
 
   <div class="section-label" style="margin-bottom:12px;">At a glance</div>
   <div class="quick-grid" style="margin-bottom:32px;">
-    <div class="quick-card"><div class="qc-icon">📚</div><div class="qc-val">14</div><div class="qc-lbl">Total Units</div></div>
+    <div class="quick-card"><div class="qc-icon">📚</div><div class="qc-val">17</div><div class="qc-lbl">Total Units</div></div>
     <div class="quick-card"><div class="qc-icon">✅</div><div class="qc-val">1</div><div class="qc-lbl">Active Now</div></div>
     <div class="quick-card"><div class="qc-icon">🔤</div><div class="qc-val">35</div><div class="qc-lbl">Letters</div></div>
     <div class="quick-card"><div class="qc-icon">🎮</div><div class="qc-val">3+</div><div class="qc-lbl">Games/Unit</div></div>
@@ -216,28 +258,38 @@
   <div class="category-label cat-teal">🔤 Alphabet Units</div>
   <div class="units-grid">
     <a href="unit1.html" class="unit-card">
-      <div class="uc-top"><div class="uc-num">1</div><div><div class="uc-title">First 20 Alphabets</div><div class="uc-gurmukhi">ੳ ਤੋਂ ਣ ਤੱਕ</div></div></div>
-      <div class="uc-topics"><span class="uc-topic">📋 Letter table</span><span class="uc-topic">🎮 Games</span><span class="uc-topic">🧠 Quiz</span></div>
+      <div class="uc-top"><div class="uc-num">1</div><div><div class="uc-title">Letters 1–5</div><div class="uc-gurmukhi">ੳ ਅ ੲ ਸ ਹ</div></div></div>
+      <div class="uc-topics"><span class="uc-topic">🔤 5 Letters</span><span class="uc-topic">📝 Mukta Words</span></div>
       <div class="uc-badge"><span class="uc-status status-active">● Active</span><span class="uc-go">Start →</span></div>
     </a>
     <a href="unit2.html" class="unit-card locked">
-      <div class="uc-top"><div class="uc-num gray">2</div><div><div class="uc-title">Remaining 15 Alphabets</div><div class="uc-gurmukhi">ਤ ਤੋਂ ੜ ਤੱਕ</div></div></div>
-      <div class="uc-topics"><span class="uc-topic">📋 Letter table</span><span class="uc-topic">🎮 Games</span><span class="uc-topic">🧠 Quiz</span></div>
+      <div class="uc-top"><div class="uc-num gray">2</div><div><div class="uc-title">Letters 1–10</div><div class="uc-gurmukhi">+ ਕ ਖ ਗ ਘ ਙ</div></div></div>
+      <div class="uc-topics"><span class="uc-topic">🔤 10 Letters</span><span class="uc-topic">📝 Mukta Words</span></div>
       <div class="uc-badge"><span class="uc-status status-soon">🔒 Coming Soon</span></div>
     </a>
     <a href="unit3.html" class="unit-card locked">
-      <div class="uc-top"><div class="uc-num gray">3</div><div><div class="uc-title">All 35 Alphabets</div><div class="uc-gurmukhi">ਸਾਰੇ ਅੱਖਰ ਇਕੱਠੇ</div></div></div>
-      <div class="uc-topics"><span class="uc-topic">🔄 Full review</span><span class="uc-topic">🎮 Memory game</span><span class="uc-topic">🧠 Quiz</span></div>
+      <div class="uc-top"><div class="uc-num gray">3</div><div><div class="uc-title">Letters 1–15</div><div class="uc-gurmukhi">+ ਚ ਛ ਜ ਝ ਞ</div></div></div>
+      <div class="uc-topics"><span class="uc-topic">🔤 15 Letters</span><span class="uc-topic">📝 Mukta Words</span></div>
       <div class="uc-badge"><span class="uc-status status-soon">🔒 Coming Soon</span></div>
     </a>
-  </div>
-
-  <!-- MUKTA WORDS -->
-  <div class="category-label cat-coral" style="margin-top:8px;">📝 Mukta Words</div>
-  <div class="units-grid">
-    <a href="unit4.html" class="unit-card coral locked">
-      <div class="uc-top"><div class="uc-num coral gray">4</div><div><div class="uc-title">Mukta Words</div><div class="uc-gurmukhi">ਬਿਨਾਂ ਮਾਤਰਾ ਦੇ ਸ਼ਬਦ</div></div></div>
-      <div class="uc-topics"><span class="uc-topic coral">2-letter words</span><span class="uc-topic coral">3-letter words</span><span class="uc-topic coral">Sentences</span></div>
+    <a href="unit4.html" class="unit-card locked">
+      <div class="uc-top"><div class="uc-num gray">4</div><div><div class="uc-title">Letters 1–20</div><div class="uc-gurmukhi">+ ਟ ਠ ਡ ਢ ਣ</div></div></div>
+      <div class="uc-topics"><span class="uc-topic">🔤 20 Letters</span><span class="uc-topic">📝 Mukta Words</span></div>
+      <div class="uc-badge"><span class="uc-status status-soon">🔒 Coming Soon</span></div>
+    </a>
+    <a href="unit5.html" class="unit-card locked">
+      <div class="uc-top"><div class="uc-num gray">5</div><div><div class="uc-title">Letters 1–25</div><div class="uc-gurmukhi">+ ਤ ਥ ਦ ਧ ਨ</div></div></div>
+      <div class="uc-topics"><span class="uc-topic">🔤 25 Letters</span><span class="uc-topic">📝 Mukta Words</span></div>
+      <div class="uc-badge"><span class="uc-status status-soon">🔒 Coming Soon</span></div>
+    </a>
+    <a href="unit6.html" class="unit-card locked">
+      <div class="uc-top"><div class="uc-num gray">6</div><div><div class="uc-title">Letters 1–30</div><div class="uc-gurmukhi">+ ਪ ਫ ਬ ਭ ਮ</div></div></div>
+      <div class="uc-topics"><span class="uc-topic">🔤 30 Letters</span><span class="uc-topic">📝 Mukta Words</span></div>
+      <div class="uc-badge"><span class="uc-status status-soon">🔒 Coming Soon</span></div>
+    </a>
+    <a href="unit7.html" class="unit-card locked">
+      <div class="uc-top"><div class="uc-num gray">7</div><div><div class="uc-title">All 35 Letters</div><div class="uc-gurmukhi">+ ਯ ਰ ਲ ਵ ੜ</div></div></div>
+      <div class="uc-topics"><span class="uc-topic">🔤 35 Letters</span><span class="uc-topic">📝 Mukta Words</span></div>
       <div class="uc-badge"><span class="uc-status status-soon">🔒 Coming Soon</span></div>
     </a>
   </div>
@@ -245,49 +297,49 @@
   <!-- MUHARNI UNITS -->
   <div class="category-label cat-blue" style="margin-top:8px;">📖 Muharni — Vowel Signs (ਲਗਾ ਮਾਤਰਾ)</div>
   <div class="units-grid">
-    <a href="unit5.html" class="unit-card blue locked">
-      <div class="uc-top"><div class="uc-num blue gray">5</div><div><div class="uc-title">Kanna (ਾ)</div><div class="uc-gurmukhi">ਕੰਨਾ</div></div></div>
-      <div class="uc-topics"><span class="uc-topic blue">All 35 letters</span><span class="uc-topic blue">🎮 Game</span><span class="uc-topic blue">🧠 Quiz</span></div>
-      <div class="uc-badge"><span class="uc-status status-soon">🔒 Coming Soon</span></div>
-    </a>
-    <a href="unit6.html" class="unit-card blue locked">
-      <div class="uc-top"><div class="uc-num blue gray">6</div><div><div class="uc-title">Sihari (ਿ)</div><div class="uc-gurmukhi">ਸਿਹਾਰੀ</div></div></div>
-      <div class="uc-topics"><span class="uc-topic blue">All 35 letters</span><span class="uc-topic blue">🎮 Game</span><span class="uc-topic blue">🧠 Quiz</span></div>
-      <div class="uc-badge"><span class="uc-status status-soon">🔒 Coming Soon</span></div>
-    </a>
-    <a href="unit7.html" class="unit-card blue locked">
-      <div class="uc-top"><div class="uc-num blue gray">7</div><div><div class="uc-title">Bihari (ੀ)</div><div class="uc-gurmukhi">ਬਿਹਾਰੀ</div></div></div>
-      <div class="uc-topics"><span class="uc-topic blue">All 35 letters</span><span class="uc-topic blue">🎮 Game</span><span class="uc-topic blue">🧠 Quiz</span></div>
-      <div class="uc-badge"><span class="uc-status status-soon">🔒 Coming Soon</span></div>
-    </a>
     <a href="unit8.html" class="unit-card blue locked">
-      <div class="uc-top"><div class="uc-num blue gray">8</div><div><div class="uc-title">Aunkar (ੁ)</div><div class="uc-gurmukhi">ਔਂਕੜ</div></div></div>
-      <div class="uc-topics"><span class="uc-topic blue">All 35 letters</span><span class="uc-topic blue">🎮 Game</span><span class="uc-topic blue">🧠 Quiz</span></div>
+      <div class="uc-top"><div class="uc-num blue gray">8</div><div><div class="uc-title">Kanna (ਾ)</div><div class="uc-gurmukhi">ਕੰਨਾ</div></div></div>
+      <div class="uc-topics"><span class="uc-topic blue">All 35 letters</span><span class="uc-topic blue">📝 Words</span></div>
       <div class="uc-badge"><span class="uc-status status-soon">🔒 Coming Soon</span></div>
     </a>
     <a href="unit9.html" class="unit-card blue locked">
-      <div class="uc-top"><div class="uc-num blue gray">9</div><div><div class="uc-title">Dulainkar (ੂ)</div><div class="uc-gurmukhi">ਦੁਲੈਂਕੜ</div></div></div>
-      <div class="uc-topics"><span class="uc-topic blue">All 35 letters</span><span class="uc-topic blue">🎮 Game</span><span class="uc-topic blue">🧠 Quiz</span></div>
+      <div class="uc-top"><div class="uc-num blue gray">9</div><div><div class="uc-title">Sihari (ਿ)</div><div class="uc-gurmukhi">ਸਿਹਾਰੀ</div></div></div>
+      <div class="uc-topics"><span class="uc-topic blue">All 35 letters</span><span class="uc-topic blue">📝 Words</span></div>
       <div class="uc-badge"><span class="uc-status status-soon">🔒 Coming Soon</span></div>
     </a>
     <a href="unit10.html" class="unit-card blue locked">
-      <div class="uc-top"><div class="uc-num blue gray">10</div><div><div class="uc-title">Lava (ੇ)</div><div class="uc-gurmukhi">ਲਾਂਵਾਂ</div></div></div>
-      <div class="uc-topics"><span class="uc-topic blue">All 35 letters</span><span class="uc-topic blue">🎮 Game</span><span class="uc-topic blue">🧠 Quiz</span></div>
+      <div class="uc-top"><div class="uc-num blue gray">10</div><div><div class="uc-title">Bihari (ੀ)</div><div class="uc-gurmukhi">ਬਿਹਾਰੀ</div></div></div>
+      <div class="uc-topics"><span class="uc-topic blue">All 35 letters</span><span class="uc-topic blue">📝 Words</span></div>
       <div class="uc-badge"><span class="uc-status status-soon">🔒 Coming Soon</span></div>
     </a>
     <a href="unit11.html" class="unit-card blue locked">
-      <div class="uc-top"><div class="uc-num blue gray">11</div><div><div class="uc-title">Dulava (ੈ)</div><div class="uc-gurmukhi">ਦੁਲਾਵਾਂ</div></div></div>
-      <div class="uc-topics"><span class="uc-topic blue">All 35 letters</span><span class="uc-topic blue">🎮 Game</span><span class="uc-topic blue">🧠 Quiz</span></div>
+      <div class="uc-top"><div class="uc-num blue gray">11</div><div><div class="uc-title">Aunkar (ੁ)</div><div class="uc-gurmukhi">ਔਂਕੜ</div></div></div>
+      <div class="uc-topics"><span class="uc-topic blue">All 35 letters</span><span class="uc-topic blue">📝 Words</span></div>
       <div class="uc-badge"><span class="uc-status status-soon">🔒 Coming Soon</span></div>
     </a>
     <a href="unit12.html" class="unit-card blue locked">
-      <div class="uc-top"><div class="uc-num blue gray">12</div><div><div class="uc-title">Hora (ੋ)</div><div class="uc-gurmukhi">ਹੋੜਾ</div></div></div>
-      <div class="uc-topics"><span class="uc-topic blue">All 35 letters</span><span class="uc-topic blue">🎮 Game</span><span class="uc-topic blue">🧠 Quiz</span></div>
+      <div class="uc-top"><div class="uc-num blue gray">12</div><div><div class="uc-title">Dulainkar (ੂ)</div><div class="uc-gurmukhi">ਦੁਲੈਂਕੜ</div></div></div>
+      <div class="uc-topics"><span class="uc-topic blue">All 35 letters</span><span class="uc-topic blue">📝 Words</span></div>
       <div class="uc-badge"><span class="uc-status status-soon">🔒 Coming Soon</span></div>
     </a>
     <a href="unit13.html" class="unit-card blue locked">
-      <div class="uc-top"><div class="uc-num blue gray">13</div><div><div class="uc-title">Kanaura (ੌ)</div><div class="uc-gurmukhi">ਕਨੌੜਾ</div></div></div>
-      <div class="uc-topics"><span class="uc-topic blue">All 35 letters</span><span class="uc-topic blue">🎮 Game</span><span class="uc-topic blue">🧠 Quiz</span></div>
+      <div class="uc-top"><div class="uc-num blue gray">13</div><div><div class="uc-title">Lava (ੇ)</div><div class="uc-gurmukhi">ਲਾਂਵਾਂ</div></div></div>
+      <div class="uc-topics"><span class="uc-topic blue">All 35 letters</span><span class="uc-topic blue">📝 Words</span></div>
+      <div class="uc-badge"><span class="uc-status status-soon">🔒 Coming Soon</span></div>
+    </a>
+    <a href="unit14.html" class="unit-card blue locked">
+      <div class="uc-top"><div class="uc-num blue gray">14</div><div><div class="uc-title">Dulava (ੈ)</div><div class="uc-gurmukhi">ਦੁਲਾਵਾਂ</div></div></div>
+      <div class="uc-topics"><span class="uc-topic blue">All 35 letters</span><span class="uc-topic blue">📝 Words</span></div>
+      <div class="uc-badge"><span class="uc-status status-soon">🔒 Coming Soon</span></div>
+    </a>
+    <a href="unit15.html" class="unit-card blue locked">
+      <div class="uc-top"><div class="uc-num blue gray">15</div><div><div class="uc-title">Hora (ੋ)</div><div class="uc-gurmukhi">ਹੋੜਾ</div></div></div>
+      <div class="uc-topics"><span class="uc-topic blue">All 35 letters</span><span class="uc-topic blue">📝 Words</span></div>
+      <div class="uc-badge"><span class="uc-status status-soon">🔒 Coming Soon</span></div>
+    </a>
+    <a href="unit16.html" class="unit-card blue locked">
+      <div class="uc-top"><div class="uc-num blue gray">16</div><div><div class="uc-title">Kanaura (ੌ)</div><div class="uc-gurmukhi">ਕਨੌੜਾ</div></div></div>
+      <div class="uc-topics"><span class="uc-topic blue">All 35 letters</span><span class="uc-topic blue">📝 Words</span></div>
       <div class="uc-badge"><span class="uc-status status-soon">🔒 Coming Soon</span></div>
     </a>
   </div>
@@ -295,9 +347,9 @@
   <!-- FULL MUHARNI -->
   <div class="category-label cat-amber" style="margin-top:8px;">⭐ Complete Muharni</div>
   <div class="units-grid">
-    <a href="unit14.html" class="unit-card amber locked">
-      <div class="uc-top"><div class="uc-num amber gray">14</div><div><div class="uc-title">Full Muharni Review</div><div class="uc-gurmukhi">ਸਾਰੀ ਮੁਹਾਰਨੀ</div></div></div>
-      <div class="uc-topics"><span class="uc-topic">35 × 10 forms</span><span class="uc-topic">🎮 Game</span><span class="uc-topic">🧠 Quiz</span></div>
+    <a href="unit17.html" class="unit-card amber locked">
+      <div class="uc-top"><div class="uc-num amber gray">17</div><div><div class="uc-title">Full Muharni Review</div><div class="uc-gurmukhi">ਸਾਰੀ ਮੁਹਾਰਨੀ</div></div></div>
+      <div class="uc-topics"><span class="uc-topic">35 × 10 forms</span><span class="uc-topic">📝 Words</span></div>
       <div class="uc-badge"><span class="uc-status status-soon">🔒 Coming Soon</span></div>
     </a>
   </div>
