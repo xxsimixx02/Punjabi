@@ -54,36 +54,61 @@
   .intro-banner h2 { font-size:1.1rem; font-weight:800; margin-bottom:6px; }
   .intro-banner p  { font-size:.88rem; color:rgba(255,255,255,.82); line-height:1.7; max-width:500px; }
 
-  /* ══ LETTER TABLE ══ */
-  .table-wrap { overflow-x:auto; border-radius:14px; box-shadow:0 2px 12px rgba(0,0,0,.07); -webkit-overflow-scrolling:touch; }
-  table.lt { width:100%; border-collapse:collapse; background:#FFFFFF; font-size:.88rem; }
-  table.lt thead tr { background:var(--navy); color:#FFFFFF; }
-  table.lt thead th { padding:13px 16px; text-align:left; font-size:.67rem; font-weight:700; letter-spacing:1px; text-transform:uppercase; }
-  table.lt tbody tr { border-bottom:1px solid var(--border); transition:background .15s; }
-  table.lt tbody tr:hover { background:var(--teal-bg); }
-  table.lt tbody tr:last-child { border-bottom:none; }
-  table.lt td { padding:13px 16px; vertical-align:middle; }
-  .lt-num    { width:28px; height:28px; border-radius:8px; background:var(--navy); color:#FFFFFF; display:inline-flex; align-items:center; justify-content:center; font-size:.75rem; font-weight:800; }
-  .lt-letter { font-family:'Noto Sans Gurmukhi',sans-serif; font-size:2rem; font-weight:700; color:var(--teal); line-height:1; }
-  .lt-name   { font-weight:700; color:var(--ink); font-size:.92rem; }
-  .lt-roman  { color:var(--muted); font-size:.76rem; margin-top:2px; }
-  .lt-sound  { display:inline-flex; background:var(--teal-bg); color:var(--teal); border-radius:20px; padding:3px 11px; font-size:.76rem; font-weight:700; }
-  .lt-ex-g   { font-family:'Noto Sans Gurmukhi',sans-serif; font-size:.95rem; color:var(--navy); font-weight:600; }
-  .lt-ex-e   { color:var(--muted); font-size:.8rem; }
+  /* ══ LETTER CARDS ══ */
+  .letters-row { display:flex; gap:8px; margin-bottom:10px; }
+  .letter-card {
+    flex:1;
+    background:#FFFFFF;
+    border:1.5px solid var(--border);
+    border-radius:14px;
+    padding:12px 6px 10px;
+    text-align:center;
+    cursor:pointer;
+    transition:transform .15s, border-color .15s, box-shadow .15s;
+    min-width:0;
+    position:relative;
+    overflow:hidden;
+  }
+  .letter-card::before {
+    content:'';
+    position:absolute;
+    top:0; left:0; right:0;
+    height:3px;
+    background:linear-gradient(90deg,var(--teal),var(--teal-lt));
+    border-radius:14px 14px 0 0;
+  }
+  .letter-card:hover { transform:translateY(-3px); border-color:var(--teal); box-shadow:0 6px 18px rgba(13,126,116,.12); }
+  .lc-num    { font-size:.65rem; color:var(--muted); font-weight:700; margin-bottom:2px; }
+  .lc-letter { font-family:'Noto Sans Gurmukhi',sans-serif; font-size:2.4rem; font-weight:700; color:var(--teal); line-height:1.1; display:block; }
+  .lc-name   { font-size:.72rem; font-weight:700; color:var(--ink); margin-top:5px; }
+  .lc-sound  { font-size:.65rem; color:var(--muted); margin-top:2px; }
+  .lc-hear   {
+    margin-top:8px;
+    width:100%;
+    padding:7px 2px;
+    background:var(--teal-bg);
+    border:1.5px solid var(--teal);
+    border-radius:20px;
+    color:var(--teal);
+    font-size:.72rem;
+    font-weight:700;
+    cursor:pointer;
+    transition:background .2s;
+    min-height:36px;
+  }
+  .lc-hear:hover   { background:var(--teal); color:#FFFFFF; }
+  .lc-hear.playing { background:var(--teal); color:#FFFFFF; }
 
   /* ══ LISTEN BUTTON ══ */
-  .listen-btn { background:var(--teal-bg); border:1.5px solid var(--teal); border-radius:20px; color:var(--teal); font-size:.8rem; font-weight:700; padding:10px 14px; cursor:pointer; transition:background .2s,transform .15s; display:inline-flex; align-items:center; gap:5px; white-space:nowrap; min-height:40px; }
-  .listen-btn:hover   { background:var(--teal); color:#FFFFFF; transform:scale(1.04); }
-  .listen-btn.playing { background:var(--teal); color:#FFFFFF; }
 
-  /* ══ TIPPI BINDI BOX ══ */
-  .tippi-box { background:var(--gold-bg); border:1.5px solid var(--gold); border-radius:14px; padding:16px 20px; margin-bottom:24px; }
-  .tippi-box h3 { font-size:.9rem; font-weight:800; color:var(--gold); margin-bottom:8px; display:flex; align-items:center; gap:8px; }
-  .tippi-box p  { font-size:.85rem; color:#7A5000; line-height:1.7; }
-  .tippi-box .marks { display:flex; gap:12px; margin-top:12px; flex-wrap:wrap; }
-  .tippi-mark { background:#FFFFFF; border:1.5px solid var(--gold); border-radius:10px; padding:12px 16px; display:flex; align-items:flex-start; gap:12px; flex:1; min-width:200px; }
-  .tippi-mark .gur { font-family:'Noto Sans Gurmukhi',sans-serif; font-size:2rem; color:var(--teal); font-weight:700; flex-shrink:0; }
-  .tippi-mark .desc { font-size:.82rem; color:#7A5000; line-height:1.6; }
+  /* ══ TIPPI ADHAK BOX ══ */
+  .tippi-box { background:var(--gold-bg); border:1.5px solid var(--gold); border-radius:12px; padding:12px 16px; margin-bottom:20px; }
+  .tippi-box h3 { font-size:.82rem; font-weight:800; color:var(--gold); margin-bottom:5px; }
+  .tippi-box > p { font-size:.8rem; color:#7A5000; line-height:1.5; margin-bottom:8px; }
+  .tippi-box .marks { display:flex; gap:8px; flex-wrap:wrap; }
+  .tippi-mark { background:#FFFFFF; border:1px solid var(--gold); border-radius:8px; padding:8px 12px; display:flex; align-items:center; gap:10px; flex:1; min-width:160px; }
+  .tippi-mark .gur { font-family:'Noto Sans Gurmukhi',sans-serif; font-size:1.4rem; color:var(--teal); font-weight:700; flex-shrink:0; }
+  .tippi-mark .desc { font-size:.78rem; color:#7A5000; line-height:1.5; }
 
   /* ══ WORD CARDS ══ */
   .words-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(180px,1fr)); gap:14px; }
@@ -113,8 +138,7 @@
     .panel { padding:20px 18px 48px; }
     .tabs-bar { padding:0 10px; }
     .tab-btn { padding:12px 14px 10px; font-size:.82rem; }
-    table.lt { font-size:.82rem; }
-    .lt-letter { font-size:1.6rem; }
+    .lc-letter { font-size:2rem; }
     .words-grid { grid-template-columns:1fr 1fr; }
     .tippi-box .marks { flex-direction:column; }
   }
@@ -125,19 +149,18 @@
     .hero-title { font-size:1.2rem; }
     .hero-gurmukhi { display:none; }
     .hero-pills { display:none; }
-    .panel { padding:16px 14px 48px; }
-    .tabs-bar { padding:0 6px; }
-    .tab-btn { padding:11px 10px 9px; font-size:.78rem; gap:4px; }
-    .intro-banner { padding:18px 16px; }
-    .intro-banner h2 { font-size:1rem; }
-    .intro-banner p { font-size:.84rem; }
-    table.lt { font-size:.8rem; }
-    table.lt thead th { padding:10px 10px; font-size:.62rem; }
-    table.lt td { padding:10px 10px; }
-    .lt-letter { font-size:1.5rem; }
-    .lt-num { width:24px; height:24px; font-size:.68rem; }
-    .lt-sound { font-size:.7rem; padding:2px 8px; }
-    .listen-btn { font-size:.74rem; padding:5px 10px; }
+    .panel { padding:16px 10px 48px; }
+    .tabs-bar { padding:0 4px; }
+    .tab-btn { padding:11px 8px 9px; font-size:.74rem; gap:3px; }
+    .intro-banner { padding:16px 14px; }
+    .intro-banner h2 { font-size:.95rem; }
+    .intro-banner p { font-size:.82rem; }
+    .letters-row { gap:5px; }
+    .letter-card { padding:10px 4px 8px; border-radius:10px; }
+    .lc-letter { font-size:1.8rem; }
+    .lc-name   { font-size:.62rem; }
+    .lc-sound  { font-size:.58rem; }
+    .lc-hear   { font-size:.65rem; padding:6px 2px; min-height:32px; margin-top:6px; }
     .words-grid { grid-template-columns:1fr 1fr; gap:10px; }
     .wc-gurmukhi { font-size:1.8rem; }
     .wc-english { font-size:.88rem; }
@@ -178,59 +201,42 @@
     <p>These are the first 5 letters of the Gurmukhi alphabet. Tap <strong>🔊 Hear</strong> on each row to listen to the letter name and its sound!</p>
   </div>
 
-  <div class="table-wrap">
-    <table class="lt">
-      <thead>
-        <tr><th>#</th><th>Letter</th><th>Name</th><th>Roman</th><th>Sound</th><th>Example Word</th><th>Listen</th></tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><div class="lt-num">1</div></td>
-          <td><span class="lt-letter">ੳ</span></td>
-          <td><div class="lt-name">Ura</div><div class="lt-roman">oo-raa</div></td>
-          <td>U</td>
-          <td><span class="lt-sound">oo</span></td>
-          <td><span class="lt-ex-g">ਊਠ</span> <span class="lt-ex-e">— camel</span></td>
-          <td><button class="listen-btn" onclick="playAudio('audio/alphabets/Ura.m4a',this)">🔊 Hear</button></td>
-        </tr>
-        <tr>
-          <td><div class="lt-num">2</div></td>
-          <td><span class="lt-letter">ਅ</span></td>
-          <td><div class="lt-name">Airaa</div><div class="lt-roman">ay-raa</div></td>
-          <td>A</td>
-          <td><span class="lt-sound">a</span></td>
-          <td><span class="lt-ex-g">ਅੰਬ</span> <span class="lt-ex-e">— mango</span></td>
-          <td><button class="listen-btn" onclick="playAudio('audio/alphabets/Airaa.m4a',this)">🔊 Hear</button></td>
-        </tr>
-        <tr>
-          <td><div class="lt-num">3</div></td>
-          <td><span class="lt-letter">ੲ</span></td>
-          <td><div class="lt-name">Iree</div><div class="lt-roman">ee-ree</div></td>
-          <td>I</td>
-          <td><span class="lt-sound">ee</span></td>
-          <td><span class="lt-ex-g">ਇੱਟ</span> <span class="lt-ex-e">— brick</span></td>
-          <td><button class="listen-btn" onclick="playAudio('audio/alphabets/Iree.m4a',this)">🔊 Hear</button></td>
-        </tr>
-        <tr>
-          <td><div class="lt-num">4</div></td>
-          <td><span class="lt-letter">ਸ</span></td>
-          <td><div class="lt-name">Sassa</div><div class="lt-roman">sas-saa</div></td>
-          <td>S</td>
-          <td><span class="lt-sound">s</span></td>
-          <td><span class="lt-ex-g">ਸੇਬ</span> <span class="lt-ex-e">— apple</span></td>
-          <td><button class="listen-btn" onclick="playAudio('audio/alphabets/Sassa.m4a',this)">🔊 Hear</button></td>
-        </tr>
-        <tr>
-          <td><div class="lt-num">5</div></td>
-          <td><span class="lt-letter">ਹ</span></td>
-          <td><div class="lt-name">Hahaa</div><div class="lt-roman">haa-haa</div></td>
-          <td>H</td>
-          <td><span class="lt-sound">h</span></td>
-          <td><span class="lt-ex-g">ਹੱਥ</span> <span class="lt-ex-e">— hand</span></td>
-          <td><button class="listen-btn" onclick="playAudio('audio/alphabets/Hahaa.m4a',this)">🔊 Hear</button></td>
-        </tr>
-      </tbody>
-    </table>
+  <div class="letters-row">
+    <div class="letter-card">
+      <div class="lc-num">1</div>
+      <span class="lc-letter">ੳ</span>
+      <div class="lc-name">Ura</div>
+      <div class="lc-sound">oo</div>
+      <button class="lc-hear" onclick="playAudio('audio/alphabets/Ura.m4a',this)">🔊</button>
+    </div>
+    <div class="letter-card">
+      <div class="lc-num">2</div>
+      <span class="lc-letter">ਅ</span>
+      <div class="lc-name">Airaa</div>
+      <div class="lc-sound">a</div>
+      <button class="lc-hear" onclick="playAudio('audio/alphabets/Airaa.m4a',this)">🔊</button>
+    </div>
+    <div class="letter-card">
+      <div class="lc-num">3</div>
+      <span class="lc-letter">ੲ</span>
+      <div class="lc-name">Iree</div>
+      <div class="lc-sound">ee</div>
+      <button class="lc-hear" onclick="playAudio('audio/alphabets/Iree.m4a',this)">🔊</button>
+    </div>
+    <div class="letter-card">
+      <div class="lc-num">4</div>
+      <span class="lc-letter">ਸ</span>
+      <div class="lc-name">Sassa</div>
+      <div class="lc-sound">s</div>
+      <button class="lc-hear" onclick="playAudio('audio/alphabets/Sassa.m4a',this)">🔊</button>
+    </div>
+    <div class="letter-card">
+      <div class="lc-num">5</div>
+      <span class="lc-letter">ਹ</span>
+      <div class="lc-name">Hahaa</div>
+      <div class="lc-sound">h</div>
+      <button class="lc-hear" onclick="playAudio('audio/alphabets/Hahaa.m4a',this)">🔊</button>
+    </div>
   </div>
 </div>
 
@@ -239,27 +245,18 @@
 
   <!-- Tippi & Adhak box -->
   <div class="tippi-box">
-    <h3>🪄 Two Magic Marks to Know!</h3>
-    <p>Some words below wear special marks. Spot them on top of letters and remember what they do!</p>
+    <h3>🪄 Two Magic Marks to Know</h3>
+    <p>Some words below wear special marks. Spot them sitting on top of letters!</p>
     <div class="marks">
       <div class="tippi-mark">
         <span class="gur">ੰ</span>
-        <div class="desc">
-          <strong>Tippi — The Nose Buzz</strong><br>
-          Curves down like a little tunnel 🌀<br>
-          Makes you hum through your nose — like <strong>"si<u>ng</u>"</strong>
-        </div>
+        <div class="desc"><strong>Tippi</strong> — hum through your nose like <em>"si<u>ng</u>"</em></div>
       </div>
       <div class="tippi-mark">
         <span class="gur">ੱ</span>
-        <div class="desc">
-          <strong>Adhak — The Bouncing Ball</strong><br>
-          Curves up like a smile 😊<br>
-          Makes your voice <strong>bounce hard</strong> on the next sound — like <strong>"bu<u>tt</u>er"</strong>
-        </div>
+        <div class="desc"><strong>Adhak</strong> — give the next sound an extra bounce like <em>"bu<u>tt</u>er"</em></div>
       </div>
     </div>
-    <p style="margin-top:12px;font-size:.82rem;color:#7A5000;">💡 <strong>Tip:</strong> See a mark curving <em>down</em>? Hum through your nose. See one curving <em>up</em>? Give the next sound an extra bounce!</p>
   </div>
 
   <!-- Word cards -->
@@ -332,15 +329,15 @@ function playAudio(src, btn) {
   btn.innerHTML = '🔊 ...';
   audio.onended = () => {
     btn.classList.remove('playing');
-    btn.innerHTML = btn.classList.contains('wc-hear') ? '🔊 Hear word' : '🔊 Hear';
+    btn.innerHTML = btn.classList.contains('wc-hear') ? '🔊 Hear word' : '🔊';
   };
   audio.onerror = () => {
     btn.classList.remove('playing');
-    btn.innerHTML = btn.classList.contains('wc-hear') ? '🔊 Hear word' : '🔊 Hear';
+    btn.innerHTML = btn.classList.contains('wc-hear') ? '🔊 Hear word' : '🔊';
   };
   audio.play().catch(() => {
     btn.classList.remove('playing');
-    btn.innerHTML = btn.classList.contains('wc-hear') ? '🔊 Hear word' : '🔊 Hear';
+    btn.innerHTML = btn.classList.contains('wc-hear') ? '🔊 Hear word' : '🔊';
   });
 }
 
