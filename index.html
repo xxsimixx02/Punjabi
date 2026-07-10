@@ -124,6 +124,19 @@
   .alpha-letter { font-family:'Noto Sans Gurmukhi',sans-serif; font-size:1.5rem; font-weight:700; color:var(--teal); line-height:1; }
   .alpha-name   { font-weight:700; color:var(--ink); }
   .alpha-roman  { color:var(--muted); font-size:.79rem; }
+  .listen-btn {
+    background: var(--teal-bg);
+    border: 1.5px solid var(--teal);
+    border-radius: 20px;
+    color: var(--teal);
+    font-size: .85rem;
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: background .2s, transform .15s;
+    white-space: nowrap;
+  }
+  .listen-btn:hover  { background: var(--teal); color: #fff; transform: scale(1.05); }
+  .listen-btn.playing { background: var(--teal); color: #fff; }
   .alpha-sound  { display:inline-flex; background:var(--teal-bg); color:var(--teal); border-radius:20px; padding:3px 10px; font-size:.73rem; font-weight:700; }
   .alpha-ex-g   { font-family:'Noto Sans Gurmukhi',sans-serif; font-size:.92rem; color:var(--navy); font-weight:600; }
   .alpha-ex-e   { color:var(--muted); font-size:.79rem; }
@@ -167,7 +180,7 @@
     <div class="hero-avatar">🦁</div>
     <div class="hero-text">
       <div class="hero-label">Punjabi Curriculum · Student Dashboard</div>
-      <div class="hero-name">Hello, <span id="hero-name">Sehaj Singh!</span> 👋</div>
+      <div class="hero-name">Hello, <span id="hero-name">Student Singh!</span> 👋</div>
       <div class="hero-gurmukhi"><span id="hero-gurmukhi">ਸਤਿ ਸ੍ਰੀ ਅਕਾਲ — Sehaj Singh</span></div>
     </div>
     <div class="hero-pills">
@@ -187,7 +200,7 @@
 <!-- ══ HOME ══ -->
 <div id="tab-home" class="panel active">
   <div class="welcome-banner">
-    <h2>Welcome back, <span id="banner-name">Sehaj Singh</span>! ਸੁਆਗਤ ਹੈ 🌟</h2>
+    <h2>Welcome back, <span id="banner-name">Student Singh</span>! ਸੁਆਗਤ ਹੈ 🌟</h2>
     <p>This is your Punjabi learning space. Work through each unit at your own pace — alphabets, muharni, mukta words and much more. You are doing brilliantly!</p>
   </div>
 
@@ -295,50 +308,50 @@
   <div class="alpha-intro"><strong>ਗੁਰਮੁਖੀ ਵਰਣਮਾਲਾ — The Gurmukhi Alphabet</strong><br>All 35 letters arranged in groups by where the sound is made in your mouth. Learn the name, sound and an example word for each!</div>
   <div class="alpha-table-wrap">
     <table class="alpha-table">
-      <thead><tr><th>#</th><th>Letter</th><th>Name</th><th>Roman</th><th>Sound</th><th>Example Word</th></tr></thead>
+      <thead><tr><th>#</th><th>Letter</th><th>Name</th><th>Roman</th><th>Sound</th><th>Example Word</th><th>Listen</th></tr></thead>
       <tbody>
-        <tr class="group-header"><td colspan="6">Group 1 — Vowel Carriers</td></tr>
-        <tr><td>1</td><td><span class="alpha-letter">ੳ</span></td><td><span class="alpha-name">Ura</span><br><span class="alpha-roman">oo-raa</span></td><td>U</td><td><span class="alpha-sound">oo</span></td><td><span class="alpha-ex-g">ਊਠ</span> <span class="alpha-ex-e">— camel</span></td></tr>
-        <tr><td>2</td><td><span class="alpha-letter">ਅ</span></td><td><span class="alpha-name">Airaa</span><br><span class="alpha-roman">ay-raa</span></td><td>A</td><td><span class="alpha-sound">a</span></td><td><span class="alpha-ex-g">ਅੰਬ</span> <span class="alpha-ex-e">— mango</span></td></tr>
-        <tr><td>3</td><td><span class="alpha-letter">ੲ</span></td><td><span class="alpha-name">Iree</span><br><span class="alpha-roman">ee-ree</span></td><td>I</td><td><span class="alpha-sound">ee</span></td><td><span class="alpha-ex-g">ਇੱਟ</span> <span class="alpha-ex-e">— brick</span></td></tr>
-        <tr class="group-header"><td colspan="6">Group 2 — Gutturals & Sibilant</td></tr>
-        <tr><td>4</td><td><span class="alpha-letter">ਸ</span></td><td><span class="alpha-name">Sassa</span><br><span class="alpha-roman">sas-saa</span></td><td>S</td><td><span class="alpha-sound">s</span></td><td><span class="alpha-ex-g">ਸੇਬ</span> <span class="alpha-ex-e">— apple</span></td></tr>
-        <tr><td>5</td><td><span class="alpha-letter">ਹ</span></td><td><span class="alpha-name">Hahaa</span><br><span class="alpha-roman">haa-haa</span></td><td>H</td><td><span class="alpha-sound">h</span></td><td><span class="alpha-ex-g">ਹੱਥ</span> <span class="alpha-ex-e">— hand</span></td></tr>
-        <tr><td>6</td><td><span class="alpha-letter">ਕ</span></td><td><span class="alpha-name">Kakka</span><br><span class="alpha-roman">kak-kaa</span></td><td>K</td><td><span class="alpha-sound">k</span></td><td><span class="alpha-ex-g">ਕਮਲ</span> <span class="alpha-ex-e">— lotus</span></td></tr>
-        <tr><td>7</td><td><span class="alpha-letter">ਖ</span></td><td><span class="alpha-name">Khakhkha</span><br><span class="alpha-roman">khakh-khaa</span></td><td>Kh</td><td><span class="alpha-sound">kh</span></td><td><span class="alpha-ex-g">ਖਰਗੋਸ਼</span> <span class="alpha-ex-e">— rabbit</span></td></tr>
-        <tr><td>8</td><td><span class="alpha-letter">ਗ</span></td><td><span class="alpha-name">Gagga</span><br><span class="alpha-roman">gag-gaa</span></td><td>G</td><td><span class="alpha-sound">g</span></td><td><span class="alpha-ex-g">ਗਾਂ</span> <span class="alpha-ex-e">— cow</span></td></tr>
-        <tr><td>9</td><td><span class="alpha-letter">ਘ</span></td><td><span class="alpha-name">Ghagha</span><br><span class="alpha-roman">ghag-haa</span></td><td>Gh</td><td><span class="alpha-sound">gh</span></td><td><span class="alpha-ex-g">ਘਰ</span> <span class="alpha-ex-e">— house</span></td></tr>
-        <tr><td>10</td><td><span class="alpha-letter">ਙ</span></td><td><span class="alpha-name">Nganga</span><br><span class="alpha-roman">nga-ngaa</span></td><td>Ng</td><td><span class="alpha-sound">ng</span></td><td><span class="alpha-ex-g">ਰੰਗ</span> <span class="alpha-ex-e">— colour</span></td></tr>
-        <tr class="group-header"><td colspan="6">Group 3 — Palatals</td></tr>
-        <tr><td>11</td><td><span class="alpha-letter">ਚ</span></td><td><span class="alpha-name">Chacha</span><br><span class="alpha-roman">chach-aa</span></td><td>Ch</td><td><span class="alpha-sound">ch</span></td><td><span class="alpha-ex-g">ਚੰਦ</span> <span class="alpha-ex-e">— moon</span></td></tr>
-        <tr><td>12</td><td><span class="alpha-letter">ਛ</span></td><td><span class="alpha-name">Chhachha</span><br><span class="alpha-roman">chhach-haa</span></td><td>Chh</td><td><span class="alpha-sound">chh</span></td><td><span class="alpha-ex-g">ਛੱਤਰੀ</span> <span class="alpha-ex-e">— umbrella</span></td></tr>
-        <tr><td>13</td><td><span class="alpha-letter">ਜ</span></td><td><span class="alpha-name">Jajja</span><br><span class="alpha-roman">jaj-jaa</span></td><td>J</td><td><span class="alpha-sound">j</span></td><td><span class="alpha-ex-g">ਜੰਗਲ</span> <span class="alpha-ex-e">— jungle</span></td></tr>
-        <tr><td>14</td><td><span class="alpha-letter">ਝ</span></td><td><span class="alpha-name">Jhajha</span><br><span class="alpha-roman">jhaj-haa</span></td><td>Jh</td><td><span class="alpha-sound">jh</span></td><td><span class="alpha-ex-g">ਝੰਡਾ</span> <span class="alpha-ex-e">— flag</span></td></tr>
-        <tr><td>15</td><td><span class="alpha-letter">ਞ</span></td><td><span class="alpha-name">Nyanya</span><br><span class="alpha-roman">nya-nyaa</span></td><td>Ny</td><td><span class="alpha-sound">ny</span></td><td><span class="alpha-ex-g">ਗਿਆਨ</span> <span class="alpha-ex-e">— knowledge</span></td></tr>
-        <tr class="group-header"><td colspan="6">Group 4 — Retroflex</td></tr>
-        <tr><td>16</td><td><span class="alpha-letter">ਟ</span></td><td><span class="alpha-name">Tanka</span><br><span class="alpha-roman">tan-kaa</span></td><td>Ṭ</td><td><span class="alpha-sound">ṭ</span></td><td><span class="alpha-ex-g">ਟੋਕਰੀ</span> <span class="alpha-ex-e">— basket</span></td></tr>
-        <tr><td>17</td><td><span class="alpha-letter">ਠ</span></td><td><span class="alpha-name">Thatha</span><br><span class="alpha-roman">thath-aa</span></td><td>Ṭh</td><td><span class="alpha-sound">ṭh</span></td><td><span class="alpha-ex-g">ਠੰਡ</span> <span class="alpha-ex-e">— cold</span></td></tr>
-        <tr><td>18</td><td><span class="alpha-letter">ਡ</span></td><td><span class="alpha-name">Dadda</span><br><span class="alpha-roman">dad-daa</span></td><td>Ḍ</td><td><span class="alpha-sound">ḍ</span></td><td><span class="alpha-ex-g">ਡੱਡੂ</span> <span class="alpha-ex-e">— frog</span></td></tr>
-        <tr><td>19</td><td><span class="alpha-letter">ਢ</span></td><td><span class="alpha-name">Dhadha</span><br><span class="alpha-roman">dhad-haa</span></td><td>Ḍh</td><td><span class="alpha-sound">ḍh</span></td><td><span class="alpha-ex-g">ਢੋਲ</span> <span class="alpha-ex-e">— drum</span></td></tr>
-        <tr><td>20</td><td><span class="alpha-letter">ਣ</span></td><td><span class="alpha-name">Nanna</span><br><span class="alpha-roman">nan-naa</span></td><td>Ṇ</td><td><span class="alpha-sound">ṇ</span></td><td><span class="alpha-ex-g">ਬਾਣ</span> <span class="alpha-ex-e">— arrow</span></td></tr>
-        <tr class="group-header"><td colspan="6">Group 5 — Dentals</td></tr>
-        <tr><td>21</td><td><span class="alpha-letter">ਤ</span></td><td><span class="alpha-name">Tatta</span><br><span class="alpha-roman">tat-taa</span></td><td>T</td><td><span class="alpha-sound">t</span></td><td><span class="alpha-ex-g">ਤਾਰਾ</span> <span class="alpha-ex-e">— star</span></td></tr>
-        <tr><td>22</td><td><span class="alpha-letter">ਥ</span></td><td><span class="alpha-name">Thatha</span><br><span class="alpha-roman">thath-aa</span></td><td>Th</td><td><span class="alpha-sound">th</span></td><td><span class="alpha-ex-g">ਥਾਲੀ</span> <span class="alpha-ex-e">— plate</span></td></tr>
-        <tr><td>23</td><td><span class="alpha-letter">ਦ</span></td><td><span class="alpha-name">Dadda</span><br><span class="alpha-roman">dad-daa</span></td><td>D</td><td><span class="alpha-sound">d</span></td><td><span class="alpha-ex-g">ਦਰਖ਼ਤ</span> <span class="alpha-ex-e">— tree</span></td></tr>
-        <tr><td>24</td><td><span class="alpha-letter">ਧ</span></td><td><span class="alpha-name">Dhadha</span><br><span class="alpha-roman">dhad-haa</span></td><td>Dh</td><td><span class="alpha-sound">dh</span></td><td><span class="alpha-ex-g">ਧਰਤੀ</span> <span class="alpha-ex-e">— earth</span></td></tr>
-        <tr><td>25</td><td><span class="alpha-letter">ਨ</span></td><td><span class="alpha-name">Nanna</span><br><span class="alpha-roman">nan-naa</span></td><td>N</td><td><span class="alpha-sound">n</span></td><td><span class="alpha-ex-g">ਨੱਕ</span> <span class="alpha-ex-e">— nose</span></td></tr>
-        <tr class="group-header"><td colspan="6">Group 6 — Labials</td></tr>
-        <tr><td>26</td><td><span class="alpha-letter">ਪ</span></td><td><span class="alpha-name">Pappa</span><br><span class="alpha-roman">pap-paa</span></td><td>P</td><td><span class="alpha-sound">p</span></td><td><span class="alpha-ex-g">ਪੰਜਾਬ</span> <span class="alpha-ex-e">— Punjab</span></td></tr>
-        <tr><td>27</td><td><span class="alpha-letter">ਫ</span></td><td><span class="alpha-name">Phappha</span><br><span class="alpha-roman">phap-phaa</span></td><td>Ph/F</td><td><span class="alpha-sound">ph</span></td><td><span class="alpha-ex-g">ਫੁੱਲ</span> <span class="alpha-ex-e">— flower</span></td></tr>
-        <tr><td>28</td><td><span class="alpha-letter">ਬ</span></td><td><span class="alpha-name">Babba</span><br><span class="alpha-roman">bab-baa</span></td><td>B</td><td><span class="alpha-sound">b</span></td><td><span class="alpha-ex-g">ਬੱਕਰੀ</span> <span class="alpha-ex-e">— goat</span></td></tr>
-        <tr><td>29</td><td><span class="alpha-letter">ਭ</span></td><td><span class="alpha-name">Bhabha</span><br><span class="alpha-roman">bhab-haa</span></td><td>Bh</td><td><span class="alpha-sound">bh</span></td><td><span class="alpha-ex-g">ਭਾਲੂ</span> <span class="alpha-ex-e">— bear</span></td></tr>
-        <tr><td>30</td><td><span class="alpha-letter">ਮ</span></td><td><span class="alpha-name">Mamma</span><br><span class="alpha-roman">mam-maa</span></td><td>M</td><td><span class="alpha-sound">m</span></td><td><span class="alpha-ex-g">ਮੱਛੀ</span> <span class="alpha-ex-e">— fish</span></td></tr>
-        <tr class="group-header"><td colspan="6">Group 7 — Semi-vowels & Fricatives</td></tr>
-        <tr><td>31</td><td><span class="alpha-letter">ਯ</span></td><td><span class="alpha-name">Yayya</span><br><span class="alpha-roman">yay-yaa</span></td><td>Y</td><td><span class="alpha-sound">y</span></td><td><span class="alpha-ex-g">ਯਾਰ</span> <span class="alpha-ex-e">— friend</span></td></tr>
-        <tr><td>32</td><td><span class="alpha-letter">ਰ</span></td><td><span class="alpha-name">Rarra</span><br><span class="alpha-roman">rar-raa</span></td><td>R</td><td><span class="alpha-sound">r</span></td><td><span class="alpha-ex-g">ਰੋਟੀ</span> <span class="alpha-ex-e">— bread</span></td></tr>
-        <tr><td>33</td><td><span class="alpha-letter">ਲ</span></td><td><span class="alpha-name">Lalla</span><br><span class="alpha-roman">lal-laa</span></td><td>L</td><td><span class="alpha-sound">l</span></td><td><span class="alpha-ex-g">ਲੱਡੂ</span> <span class="alpha-ex-e">— sweet</span></td></tr>
-        <tr><td>34</td><td><span class="alpha-letter">ਵ</span></td><td><span class="alpha-name">Vavva</span><br><span class="alpha-roman">vav-vaa</span></td><td>V/W</td><td><span class="alpha-sound">v</span></td><td><span class="alpha-ex-g">ਵਾਲ</span> <span class="alpha-ex-e">— hair</span></td></tr>
-        <tr><td>35</td><td><span class="alpha-letter">ੜ</span></td><td><span class="alpha-name">Rarra</span><br><span class="alpha-roman">rar-raa</span></td><td>Ṛ</td><td><span class="alpha-sound">ṛ</span></td><td><span class="alpha-ex-g">ਪੜ੍ਹਨਾ</span> <span class="alpha-ex-e">— to read</span></td></tr>
+        <tr class="group-header"><td colspan="7">Group 1 — Vowel Carriers</td></tr>
+        <tr><td>1</td><td><span class="alpha-letter">ੳ</span></td><td><span class="alpha-name">Ura</span><br><span class="alpha-roman">oo-raa</span></td><td>U</td><td><span class="alpha-sound">oo</span></td><td><span class="alpha-ex-g">ਊਠ</span> <span class="alpha-ex-e">— camel</span></td><td><button class="listen-btn" onclick="playAlphaAudio('Ura.m4a', this)">🔊</button></td></tr>
+        <tr><td>2</td><td><span class="alpha-letter">ਅ</span></td><td><span class="alpha-name">Airaa</span><br><span class="alpha-roman">ay-raa</span></td><td>A</td><td><span class="alpha-sound">a</span></td><td><span class="alpha-ex-g">ਅੰਬ</span> <span class="alpha-ex-e">— mango</span></td><td><button class="listen-btn" onclick="playAlphaAudio('Airaa.m4a', this)">🔊</button></td></tr>
+        <tr><td>3</td><td><span class="alpha-letter">ੲ</span></td><td><span class="alpha-name">Iree</span><br><span class="alpha-roman">ee-ree</span></td><td>I</td><td><span class="alpha-sound">ee</span></td><td><span class="alpha-ex-g">ਇੱਟ</span> <span class="alpha-ex-e">— brick</span></td><td><button class="listen-btn" onclick="playAlphaAudio('Iree.m4a', this)">🔊</button></td></tr>
+        <tr class="group-header"><td colspan="7">Group 2 — Gutturals & Sibilant</td></tr>
+        <tr><td>4</td><td><span class="alpha-letter">ਸ</span></td><td><span class="alpha-name">Sassa</span><br><span class="alpha-roman">sas-saa</span></td><td>S</td><td><span class="alpha-sound">s</span></td><td><span class="alpha-ex-g">ਸੇਬ</span> <span class="alpha-ex-e">— apple</span></td><td><button class="listen-btn" onclick="playAlphaAudio('Sassa.m4a', this)">🔊</button></td></tr>
+        <tr><td>5</td><td><span class="alpha-letter">ਹ</span></td><td><span class="alpha-name">Hahaa</span><br><span class="alpha-roman">haa-haa</span></td><td>H</td><td><span class="alpha-sound">h</span></td><td><span class="alpha-ex-g">ਹੱਥ</span> <span class="alpha-ex-e">— hand</span></td><td><button class="listen-btn" onclick="playAlphaAudio('Hahaa.m4a', this)">🔊</button></td></tr>
+        <tr><td>6</td><td><span class="alpha-letter">ਕ</span></td><td><span class="alpha-name">Kakka</span><br><span class="alpha-roman">kak-kaa</span></td><td>K</td><td><span class="alpha-sound">k</span></td><td><span class="alpha-ex-g">ਕਮਲ</span> <span class="alpha-ex-e">— lotus</span></td><td><button class="listen-btn" onclick="playAlphaAudio('Kakka.m4a', this)">🔊</button></td></tr>
+        <tr><td>7</td><td><span class="alpha-letter">ਖ</span></td><td><span class="alpha-name">Khakhkha</span><br><span class="alpha-roman">khakh-khaa</span></td><td>Kh</td><td><span class="alpha-sound">kh</span></td><td><span class="alpha-ex-g">ਖਰਗੋਸ਼</span> <span class="alpha-ex-e">— rabbit</span></td><td><button class="listen-btn" onclick="playAlphaAudio('Khakhkha.m4a', this)">🔊</button></td></tr>
+        <tr><td>8</td><td><span class="alpha-letter">ਗ</span></td><td><span class="alpha-name">Gagga</span><br><span class="alpha-roman">gag-gaa</span></td><td>G</td><td><span class="alpha-sound">g</span></td><td><span class="alpha-ex-g">ਗਾਂ</span> <span class="alpha-ex-e">— cow</span></td><td><button class="listen-btn" onclick="playAlphaAudio('Gagga.m4a', this)">🔊</button></td></tr>
+        <tr><td>9</td><td><span class="alpha-letter">ਘ</span></td><td><span class="alpha-name">Ghagha</span><br><span class="alpha-roman">ghag-haa</span></td><td>Gh</td><td><span class="alpha-sound">gh</span></td><td><span class="alpha-ex-g">ਘਰ</span> <span class="alpha-ex-e">— house</span></td><td><button class="listen-btn" onclick="playAlphaAudio('Ghagha.m4a', this)">🔊</button></td></tr>
+        <tr><td>10</td><td><span class="alpha-letter">ਙ</span></td><td><span class="alpha-name">Nganga</span><br><span class="alpha-roman">nga-ngaa</span></td><td>Ng</td><td><span class="alpha-sound">ng</span></td><td><span class="alpha-ex-g">ਰੰਗ</span> <span class="alpha-ex-e">— colour</span></td><td><button class="listen-btn" onclick="playAlphaAudio('Nganga.m4a', this)">🔊</button></td></tr>
+        <tr class="group-header"><td colspan="7">Group 3 — Palatals</td></tr>
+        <tr><td>11</td><td><span class="alpha-letter">ਚ</span></td><td><span class="alpha-name">Chacha</span><br><span class="alpha-roman">chach-aa</span></td><td>Ch</td><td><span class="alpha-sound">ch</span></td><td><span class="alpha-ex-g">ਚੰਦ</span> <span class="alpha-ex-e">— moon</span></td><td><button class="listen-btn" onclick="playAlphaAudio('Chacha.m4a', this)">🔊</button></td></tr>
+        <tr><td>12</td><td><span class="alpha-letter">ਛ</span></td><td><span class="alpha-name">Chhachha</span><br><span class="alpha-roman">chhach-haa</span></td><td>Chh</td><td><span class="alpha-sound">chh</span></td><td><span class="alpha-ex-g">ਛੱਤਰੀ</span> <span class="alpha-ex-e">— umbrella</span></td><td><button class="listen-btn" onclick="playAlphaAudio('Chhachha.m4a', this)">🔊</button></td></tr>
+        <tr><td>13</td><td><span class="alpha-letter">ਜ</span></td><td><span class="alpha-name">Jajja</span><br><span class="alpha-roman">jaj-jaa</span></td><td>J</td><td><span class="alpha-sound">j</span></td><td><span class="alpha-ex-g">ਜੰਗਲ</span> <span class="alpha-ex-e">— jungle</span></td><td><button class="listen-btn" onclick="playAlphaAudio('Jajja.m4a', this)">🔊</button></td></tr>
+        <tr><td>14</td><td><span class="alpha-letter">ਝ</span></td><td><span class="alpha-name">Jhajha</span><br><span class="alpha-roman">jhaj-haa</span></td><td>Jh</td><td><span class="alpha-sound">jh</span></td><td><span class="alpha-ex-g">ਝੰਡਾ</span> <span class="alpha-ex-e">— flag</span></td><td><button class="listen-btn" onclick="playAlphaAudio('Jhajha.m4a', this)">🔊</button></td></tr>
+        <tr><td>15</td><td><span class="alpha-letter">ਞ</span></td><td><span class="alpha-name">Nyanya</span><br><span class="alpha-roman">nya-nyaa</span></td><td>Ny</td><td><span class="alpha-sound">ny</span></td><td><span class="alpha-ex-g">ਗਿਆਨ</span> <span class="alpha-ex-e">— knowledge</span></td><td><button class="listen-btn" onclick="playAlphaAudio('Nyanya.m4a', this)">🔊</button></td></tr>
+        <tr class="group-header"><td colspan="7">Group 4 — Retroflex</td></tr>
+        <tr><td>16</td><td><span class="alpha-letter">ਟ</span></td><td><span class="alpha-name">Tanka</span><br><span class="alpha-roman">tan-kaa</span></td><td>Ṭ</td><td><span class="alpha-sound">ṭ</span></td><td><span class="alpha-ex-g">ਟੋਕਰੀ</span> <span class="alpha-ex-e">— basket</span></td><td><button class="listen-btn" onclick="playAlphaAudio('Tanka.m4a', this)">🔊</button></td></tr>
+        <tr><td>17</td><td><span class="alpha-letter">ਠ</span></td><td><span class="alpha-name">Thatha</span><br><span class="alpha-roman">thath-aa</span></td><td>Ṭh</td><td><span class="alpha-sound">ṭh</span></td><td><span class="alpha-ex-g">ਠੰਡ</span> <span class="alpha-ex-e">— cold</span></td><td><button class="listen-btn" onclick="playAlphaAudio('Thatha.m4a', this)">🔊</button></td></tr>
+        <tr><td>18</td><td><span class="alpha-letter">ਡ</span></td><td><span class="alpha-name">Dadda</span><br><span class="alpha-roman">dad-daa</span></td><td>Ḍ</td><td><span class="alpha-sound">ḍ</span></td><td><span class="alpha-ex-g">ਡੱਡੂ</span> <span class="alpha-ex-e">— frog</span></td><td><button class="listen-btn" onclick="playAlphaAudio('Dadda.m4a', this)">🔊</button></td></tr>
+        <tr><td>19</td><td><span class="alpha-letter">ਢ</span></td><td><span class="alpha-name">Dhadha</span><br><span class="alpha-roman">dhad-haa</span></td><td>Ḍh</td><td><span class="alpha-sound">ḍh</span></td><td><span class="alpha-ex-g">ਢੋਲ</span> <span class="alpha-ex-e">— drum</span></td><td><button class="listen-btn" onclick="playAlphaAudio('Dhadha.m4a', this)">🔊</button></td></tr>
+        <tr><td>20</td><td><span class="alpha-letter">ਣ</span></td><td><span class="alpha-name">Nanna</span><br><span class="alpha-roman">nan-naa</span></td><td>Ṇ</td><td><span class="alpha-sound">ṇ</span></td><td><span class="alpha-ex-g">ਬਾਣ</span> <span class="alpha-ex-e">— arrow</span></td><td><button class="listen-btn" onclick="playAlphaAudio('Nanna.m4a', this)">🔊</button></td></tr>
+        <tr class="group-header"><td colspan="7">Group 5 — Dentals</td></tr>
+        <tr><td>21</td><td><span class="alpha-letter">ਤ</span></td><td><span class="alpha-name">Tatta</span><br><span class="alpha-roman">tat-taa</span></td><td>T</td><td><span class="alpha-sound">t</span></td><td><span class="alpha-ex-g">ਤਾਰਾ</span> <span class="alpha-ex-e">— star</span></td><td><button class="listen-btn" onclick="playAlphaAudio('Tatta.m4a', this)">🔊</button></td></tr>
+        <tr><td>22</td><td><span class="alpha-letter">ਥ</span></td><td><span class="alpha-name">Thatha</span><br><span class="alpha-roman">thath-aa</span></td><td>Th</td><td><span class="alpha-sound">th</span></td><td><span class="alpha-ex-g">ਥਾਲੀ</span> <span class="alpha-ex-e">— plate</span></td><td><button class="listen-btn" onclick="playAlphaAudio('Thatha%202.m4a', this)">🔊</button></td></tr>
+        <tr><td>23</td><td><span class="alpha-letter">ਦ</span></td><td><span class="alpha-name">Dadda</span><br><span class="alpha-roman">dad-daa</span></td><td>D</td><td><span class="alpha-sound">d</span></td><td><span class="alpha-ex-g">ਦਰਖ਼ਤ</span> <span class="alpha-ex-e">— tree</span></td><td><button class="listen-btn" onclick="playAlphaAudio('Dadda%202.m4a', this)">🔊</button></td></tr>
+        <tr><td>24</td><td><span class="alpha-letter">ਧ</span></td><td><span class="alpha-name">Dhadha</span><br><span class="alpha-roman">dhad-haa</span></td><td>Dh</td><td><span class="alpha-sound">dh</span></td><td><span class="alpha-ex-g">ਧਰਤੀ</span> <span class="alpha-ex-e">— earth</span></td><td><button class="listen-btn" onclick="playAlphaAudio('Dhadha%202.m4a', this)">🔊</button></td></tr>
+        <tr><td>25</td><td><span class="alpha-letter">ਨ</span></td><td><span class="alpha-name">Nanna</span><br><span class="alpha-roman">nan-naa</span></td><td>N</td><td><span class="alpha-sound">n</span></td><td><span class="alpha-ex-g">ਨੱਕ</span> <span class="alpha-ex-e">— nose</span></td><td><button class="listen-btn" onclick="playAlphaAudio('Nanna%202.m4a', this)">🔊</button></td></tr>
+        <tr class="group-header"><td colspan="7">Group 6 — Labials</td></tr>
+        <tr><td>26</td><td><span class="alpha-letter">ਪ</span></td><td><span class="alpha-name">Pappa</span><br><span class="alpha-roman">pap-paa</span></td><td>P</td><td><span class="alpha-sound">p</span></td><td><span class="alpha-ex-g">ਪੰਜਾਬ</span> <span class="alpha-ex-e">— Punjab</span></td><td><button class="listen-btn" onclick="playAlphaAudio('Pappa.m4a', this)">🔊</button></td></tr>
+        <tr><td>27</td><td><span class="alpha-letter">ਫ</span></td><td><span class="alpha-name">Phappha</span><br><span class="alpha-roman">phap-phaa</span></td><td>Ph/F</td><td><span class="alpha-sound">ph</span></td><td><span class="alpha-ex-g">ਫੁੱਲ</span> <span class="alpha-ex-e">— flower</span></td><td><button class="listen-btn" onclick="playAlphaAudio('Phappha.m4a', this)">🔊</button></td></tr>
+        <tr><td>28</td><td><span class="alpha-letter">ਬ</span></td><td><span class="alpha-name">Babba</span><br><span class="alpha-roman">bab-baa</span></td><td>B</td><td><span class="alpha-sound">b</span></td><td><span class="alpha-ex-g">ਬੱਕਰੀ</span> <span class="alpha-ex-e">— goat</span></td><td><button class="listen-btn" onclick="playAlphaAudio('Babba.m4a', this)">🔊</button></td></tr>
+        <tr><td>29</td><td><span class="alpha-letter">ਭ</span></td><td><span class="alpha-name">Bhabha</span><br><span class="alpha-roman">bhab-haa</span></td><td>Bh</td><td><span class="alpha-sound">bh</span></td><td><span class="alpha-ex-g">ਭਾਲੂ</span> <span class="alpha-ex-e">— bear</span></td><td><button class="listen-btn" onclick="playAlphaAudio('Bhabha.m4a', this)">🔊</button></td></tr>
+        <tr><td>30</td><td><span class="alpha-letter">ਮ</span></td><td><span class="alpha-name">Mamma</span><br><span class="alpha-roman">mam-maa</span></td><td>M</td><td><span class="alpha-sound">m</span></td><td><span class="alpha-ex-g">ਮੱਛੀ</span> <span class="alpha-ex-e">— fish</span></td><td><button class="listen-btn" onclick="playAlphaAudio('Mamma.m4a', this)">🔊</button></td></tr>
+        <tr class="group-header"><td colspan="7">Group 7 — Semi-vowels & Fricatives</td></tr>
+        <tr><td>31</td><td><span class="alpha-letter">ਯ</span></td><td><span class="alpha-name">Yayya</span><br><span class="alpha-roman">yay-yaa</span></td><td>Y</td><td><span class="alpha-sound">y</span></td><td><span class="alpha-ex-g">ਯਾਰ</span> <span class="alpha-ex-e">— friend</span></td><td><button class="listen-btn" onclick="playAlphaAudio('Yayya.m4a', this)">🔊</button></td></tr>
+        <tr><td>32</td><td><span class="alpha-letter">ਰ</span></td><td><span class="alpha-name">Rarra</span><br><span class="alpha-roman">rar-raa</span></td><td>R</td><td><span class="alpha-sound">r</span></td><td><span class="alpha-ex-g">ਰੋਟੀ</span> <span class="alpha-ex-e">— bread</span></td><td><button class="listen-btn" onclick="playAlphaAudio('Rarra.m4a', this)">🔊</button></td></tr>
+        <tr><td>33</td><td><span class="alpha-letter">ਲ</span></td><td><span class="alpha-name">Lalla</span><br><span class="alpha-roman">lal-laa</span></td><td>L</td><td><span class="alpha-sound">l</span></td><td><span class="alpha-ex-g">ਲੱਡੂ</span> <span class="alpha-ex-e">— sweet</span></td><td><button class="listen-btn" onclick="playAlphaAudio('Lalla.m4a', this)">🔊</button></td></tr>
+        <tr><td>34</td><td><span class="alpha-letter">ਵ</span></td><td><span class="alpha-name">Vavva</span><br><span class="alpha-roman">vav-vaa</span></td><td>V/W</td><td><span class="alpha-sound">v</span></td><td><span class="alpha-ex-g">ਵਾਲ</span> <span class="alpha-ex-e">— hair</span></td><td><button class="listen-btn" onclick="playAlphaAudio('Vavva.m4a', this)">🔊</button></td></tr>
+        <tr><td>35</td><td><span class="alpha-letter">ੜ</span></td><td><span class="alpha-name">Rarra</span><br><span class="alpha-roman">rar-raa</span></td><td>Ṛ</td><td><span class="alpha-sound">ṛ</span></td><td><span class="alpha-ex-g">ਪੜ੍ਹਨਾ</span> <span class="alpha-ex-e">— to read</span></td><td><button class="listen-btn" onclick="playAlphaAudio('Rarra%202.m4a', this)">🔊</button></td></tr>
       </tbody>
     </table>
   </div>
@@ -426,10 +439,30 @@ const MD=[
   });
 })();
 
+/* ── ALPHABET AUDIO PLAYER ── */
+let alphaAudio = null;
+function playAlphaAudio(file, btn) {
+  if (alphaAudio) {
+    alphaAudio.pause();
+    alphaAudio.currentTime = 0;
+  }
+  document.querySelectorAll('.listen-btn.playing').forEach(b => {
+    b.classList.remove('playing');
+    b.textContent = '🔊';
+  });
+  const audio = new Audio('audio/alphabets/' + decodeURIComponent(file));
+  alphaAudio = audio;
+  btn.classList.add('playing');
+  btn.textContent = '🔊...';
+  audio.onended = () => { btn.classList.remove('playing'); btn.textContent = '🔊'; };
+  audio.onerror = () => { btn.classList.remove('playing'); btn.textContent = '🔊'; };
+  audio.play().catch(() => { btn.classList.remove('playing'); btn.textContent = '🔊'; });
+}
+
 /* ── STUDENT DETECTION FROM URL ── */
 // Teacher assigns: https://yoursite.netlify.app?student=Sehaj+Singh
 const params  = new URLSearchParams(window.location.search);
-const STUDENT = params.get('student') || 'Sehaj Singh';
+const STUDENT = params.get('student') || 'Student Singh';
 
 // Update name placeholders once DOM is ready
 document.addEventListener('DOMContentLoaded', () => {

@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Unit 1 – First 20 Alphabets</title>
+<title>Unit 1 – First 5 Alphabets</title>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+Gurmukhi:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -13,17 +13,11 @@
     --teal-bg: #EBF6F5;
     --gold:    #E8A020;
     --gold-bg: #FEF3E0;
-    --coral:   #C2185B;
-    --coral-bg:#FDE8EF;
     --cream:   #FFFFFF;
     --white:   #FFFFFF;
     --ink:     #1A2744;
     --muted:   #6B7590;
     --border:  #E4E1DA;
-    --green:   #2E7D32;
-    --green-bg:#E8F5E9;
-    --red:     #C62828;
-    --red-bg:  #FFEBEE;
   }
   *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
   html, body { width:100%; font-family:'Plus Jakarta Sans',sans-serif; background:#FFFFFF; color:var(--ink); }
@@ -33,199 +27,84 @@
   .hero::before { content:''; position:absolute; inset:0; background-image:radial-gradient(circle,rgba(255,255,255,.05) 1px,transparent 1px); background-size:26px 26px; pointer-events:none; }
   .hero::after  { content:''; position:absolute; bottom:0; left:0; right:0; height:3px; background:linear-gradient(90deg,var(--teal),var(--gold)); }
   .hero-inner   { position:relative; display:flex; align-items:center; gap:16px; flex-wrap:wrap; }
-  .hero-back    { background:rgba(255,255,255,.1); border:1px solid rgba(255,255,255,.2); border-radius:10px; color:rgba(255,255,255,.8); font-size:.78rem; font-weight:700; padding:7px 14px; text-decoration:none; display:flex; align-items:center; gap:5px; flex-shrink:0; transition:background .2s; }
+  .hero-back    { background:rgba(255,255,255,.1); border:1px solid rgba(255,255,255,.2); border-radius:10px; color:rgba(255,255,255,.8); font-size:.78rem; font-weight:700; padding:7px 14px; text-decoration:none; display:flex; align-items:center; gap:5px; flex-shrink:0; }
   .hero-back:hover { background:rgba(255,255,255,.18); }
   .hero-text    { flex:1; min-width:160px; }
   .hero-eyebrow { font-size:.65rem; font-weight:700; letter-spacing:1.4px; text-transform:uppercase; color:var(--teal-lt); margin-bottom:4px; }
-  .hero-title   { font-size:clamp(1.2rem,3vw,1.8rem); font-weight:800; color:var(--white); line-height:1.2; }
+  .hero-title   { font-size:clamp(1.2rem,3vw,1.8rem); font-weight:800; color:#FFFFFF; line-height:1.2; }
   .hero-title span { color:var(--gold); }
   .hero-gurmukhi{ font-family:'Noto Sans Gurmukhi',sans-serif; font-size:.88rem; color:rgba(255,255,255,.4); margin-top:3px; }
   .hero-pills   { display:flex; gap:8px; flex-wrap:wrap; }
   .hero-pill    { background:rgba(255,255,255,.1); border:1px solid rgba(255,255,255,.15); border-radius:20px; padding:5px 12px; font-size:.7rem; font-weight:600; color:rgba(255,255,255,.75); }
 
   /* ══ TABS ══ */
-  .tabs-bar { background:var(--white); border-bottom:2px solid var(--border); display:flex; overflow-x:auto; scrollbar-width:none; padding:0 24px; position:sticky; top:0; z-index:100; box-shadow:0 2px 8px rgba(0,0,0,.06); }
+  .tabs-bar { background:#FFFFFF; border-bottom:2px solid var(--border); display:flex; overflow-x:auto; scrollbar-width:none; padding:0 24px; position:sticky; top:0; z-index:100; box-shadow:0 2px 8px rgba(0,0,0,.06); }
   .tabs-bar::-webkit-scrollbar { display:none; }
-  .tab-btn { flex-shrink:0; padding:14px 18px 12px; border:none; background:transparent; cursor:pointer; font-family:'Plus Jakarta Sans',sans-serif; font-size:.83rem; font-weight:700; color:var(--muted); border-bottom:3px solid transparent; margin-bottom:-2px; transition:color .2s,border-color .2s; display:flex; align-items:center; gap:6px; white-space:nowrap; }
+  .tab-btn { flex-shrink:0; padding:14px 20px 12px; border:none; background:transparent; cursor:pointer; font-family:'Plus Jakarta Sans',sans-serif; font-size:.85rem; font-weight:700; color:var(--muted); border-bottom:3px solid transparent; margin-bottom:-2px; transition:color .2s,border-color .2s; display:flex; align-items:center; gap:6px; white-space:nowrap; }
   .tab-btn:hover  { color:var(--teal); }
   .tab-btn.active { color:var(--teal); border-bottom-color:var(--teal); }
 
   /* ══ PANELS ══ */
   .panel { display:none; padding:28px 32px 56px; background:#FFFFFF; }
   .panel.active { display:block; }
-  .section-label { font-size:.65rem; font-weight:700; letter-spacing:1.4px; text-transform:uppercase; color:var(--muted); margin-bottom:14px; }
-
-  /* ══ OVERVIEW CARDS (like homepage) ══ */
-  .overview-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:14px; margin-bottom:32px; }
-  .ov-card { background:var(--white); border:1.5px solid var(--border); border-radius:16px; padding:20px 18px; display:flex; flex-direction:column; gap:10px; cursor:pointer; transition:border-color .2s,transform .2s,box-shadow .2s; position:relative; overflow:hidden; text-decoration:none; color:var(--ink); }
-  .ov-card::before { content:''; position:absolute; top:0; left:0; right:0; height:4px; border-radius:16px 16px 0 0; }
-  .ov-card.teal::before  { background:linear-gradient(90deg,var(--teal),var(--teal-lt)); }
-  .ov-card.gold::before  { background:linear-gradient(90deg,var(--gold),#FFD54F); }
-  .ov-card.coral::before { background:linear-gradient(90deg,var(--coral),#F06292); }
-  .ov-card:hover { transform:translateY(-3px); box-shadow:0 8px 22px rgba(13,126,116,.12); border-color:var(--teal); }
-  .ov-card.gold:hover  { border-color:var(--gold);  box-shadow:0 8px 22px rgba(232,160,32,.12); }
-  .ov-card.coral:hover { border-color:var(--coral); box-shadow:0 8px 22px rgba(194,24,91,.12); }
-  .ov-icon { font-size:2rem; }
-  .ov-title { font-weight:800; font-size:1rem; color:var(--ink); }
-  .ov-sub   { font-size:.82rem; color:var(--muted); line-height:1.5; }
-  .ov-go    { margin-top:auto; font-size:.75rem; font-weight:700; color:var(--teal); display:flex; align-items:center; gap:4px; }
-  .ov-card.gold  .ov-go { color:var(--gold); }
-  .ov-card.coral .ov-go { color:var(--coral); }
 
   /* ══ INTRO BANNER ══ */
-  .intro-banner { background:linear-gradient(135deg,var(--teal),#0a5855); border-radius:16px; padding:24px 28px; color:var(--white); margin-bottom:24px; position:relative; overflow:hidden; }
-  .intro-banner::before { content:'ਕ'; font-family:'Noto Sans Gurmukhi',sans-serif; font-size:7rem; font-weight:700; color:rgba(255,255,255,.05); position:absolute; right:16px; bottom:-10px; line-height:1; pointer-events:none; }
-  .intro-banner h2 { font-size:1.15rem; font-weight:800; margin-bottom:6px; }
+  .intro-banner { background:linear-gradient(135deg,var(--teal),#0a5855); border-radius:16px; padding:24px 28px; color:#FFFFFF; margin-bottom:24px; position:relative; overflow:hidden; }
+  .intro-banner::before { content:'ਅ'; font-family:'Noto Sans Gurmukhi',sans-serif; font-size:7rem; font-weight:700; color:rgba(255,255,255,.05); position:absolute; right:16px; bottom:-10px; line-height:1; pointer-events:none; }
+  .intro-banner h2 { font-size:1.1rem; font-weight:800; margin-bottom:6px; }
   .intro-banner p  { font-size:.88rem; color:rgba(255,255,255,.82); line-height:1.7; max-width:500px; }
-
-  .info-note { background:var(--white); border:1.5px solid var(--border); border-left:5px solid var(--gold); border-radius:12px; padding:13px 18px; margin-bottom:20px; font-size:.86rem; color:var(--muted); line-height:1.65; }
-  .info-note strong { color:var(--ink); }
 
   /* ══ LETTER TABLE ══ */
   .table-wrap { overflow-x:auto; border-radius:14px; box-shadow:0 2px 12px rgba(0,0,0,.07); }
-  table.lt { width:100%; border-collapse:collapse; background:var(--white); font-size:.86rem; }
-  table.lt thead tr { background:var(--navy); color:var(--white); }
-  table.lt thead th { padding:12px 14px; text-align:left; font-size:.66rem; font-weight:700; letter-spacing:1px; text-transform:uppercase; white-space:nowrap; }
+  table.lt { width:100%; border-collapse:collapse; background:#FFFFFF; font-size:.88rem; }
+  table.lt thead tr { background:var(--navy); color:#FFFFFF; }
+  table.lt thead th { padding:13px 16px; text-align:left; font-size:.67rem; font-weight:700; letter-spacing:1px; text-transform:uppercase; }
   table.lt tbody tr { border-bottom:1px solid var(--border); transition:background .15s; }
   table.lt tbody tr:hover { background:var(--teal-bg); }
   table.lt tbody tr:last-child { border-bottom:none; }
-  table.lt td { padding:11px 14px; vertical-align:middle; }
-  .lt-num    { width:26px; height:26px; border-radius:7px; background:var(--navy); color:var(--white); display:inline-flex; align-items:center; justify-content:center; font-size:.72rem; font-weight:800; }
-  .lt-letter { font-family:'Noto Sans Gurmukhi',sans-serif; font-size:1.8rem; font-weight:700; color:var(--teal); line-height:1; }
-  .lt-name   { font-weight:700; color:var(--ink); font-size:.9rem; }
+  table.lt td { padding:13px 16px; vertical-align:middle; }
+  .lt-num    { width:28px; height:28px; border-radius:8px; background:var(--navy); color:#FFFFFF; display:inline-flex; align-items:center; justify-content:center; font-size:.75rem; font-weight:800; }
+  .lt-letter { font-family:'Noto Sans Gurmukhi',sans-serif; font-size:2rem; font-weight:700; color:var(--teal); line-height:1; }
+  .lt-name   { font-weight:700; color:var(--ink); font-size:.92rem; }
   .lt-roman  { color:var(--muted); font-size:.76rem; margin-top:2px; }
-  .lt-sound  { display:inline-flex; background:var(--teal-bg); color:var(--teal); border-radius:20px; padding:3px 10px; font-size:.75rem; font-weight:700; }
-  .lt-ex-g   { font-family:'Noto Sans Gurmukhi',sans-serif; font-size:.92rem; color:var(--navy); font-weight:600; }
-  .lt-ex-e   { color:var(--muted); font-size:.78rem; }
-  .group-row td { background:var(--gold-bg)!important; color:var(--gold); font-size:.64rem; font-weight:800; letter-spacing:1.2px; text-transform:uppercase; padding:6px 14px!important; }
+  .lt-sound  { display:inline-flex; background:var(--teal-bg); color:var(--teal); border-radius:20px; padding:3px 11px; font-size:.76rem; font-weight:700; }
+  .lt-ex-g   { font-family:'Noto Sans Gurmukhi',sans-serif; font-size:.95rem; color:var(--navy); font-weight:600; }
+  .lt-ex-e   { color:var(--muted); font-size:.8rem; }
 
-  /* ══ WORD LIST ══ */
-  .word-note { background:var(--white); border:1.5px solid var(--border); border-left:5px solid var(--teal); border-radius:12px; padding:13px 18px; margin-bottom:20px; font-size:.86rem; color:var(--muted); line-height:1.65; }
-  .word-note strong { color:var(--ink); }
+  /* ══ LISTEN BUTTON ══ */
+  .listen-btn { background:var(--teal-bg); border:1.5px solid var(--teal); border-radius:20px; color:var(--teal); font-size:.8rem; font-weight:700; padding:6px 14px; cursor:pointer; transition:background .2s,transform .15s; display:inline-flex; align-items:center; gap:5px; white-space:nowrap; }
+  .listen-btn:hover   { background:var(--teal); color:#FFFFFF; transform:scale(1.04); }
+  .listen-btn.playing { background:var(--teal); color:#FFFFFF; }
 
-  .word-section-title { font-family:'Plus Jakarta Sans',sans-serif; font-size:.8rem; font-weight:800; color:var(--white); background:var(--teal); border-radius:10px; padding:6px 14px; display:inline-block; margin:20px 0 12px; }
-  .word-section-title.gold  { background:var(--gold); }
-  .word-section-title.coral { background:var(--coral); }
-  .word-section-title.navy  { background:var(--navy); }
+  /* ══ TIPPI BINDI BOX ══ */
+  .tippi-box { background:var(--gold-bg); border:1.5px solid var(--gold); border-radius:14px; padding:16px 20px; margin-bottom:24px; }
+  .tippi-box h3 { font-size:.9rem; font-weight:800; color:var(--gold); margin-bottom:8px; display:flex; align-items:center; gap:8px; }
+  .tippi-box p  { font-size:.85rem; color:#7A5000; line-height:1.7; }
+  .tippi-box .marks { display:flex; gap:16px; margin-top:10px; flex-wrap:wrap; }
+  .tippi-mark { background:#FFFFFF; border:1.5px solid var(--gold); border-radius:10px; padding:8px 14px; display:flex; align-items:center; gap:8px; }
+  .tippi-mark .gur { font-family:'Noto Sans Gurmukhi',sans-serif; font-size:1.4rem; color:var(--teal); font-weight:700; }
+  .tippi-mark .desc { font-size:.78rem; color:#7A5000; font-weight:600; line-height:1.4; }
 
-  .words-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(160px,1fr)); gap:10px; margin-bottom:8px; }
-  .word-card { background:var(--white); border:1.5px solid var(--border); border-radius:14px; padding:16px 14px; display:flex; flex-direction:column; gap:6px; transition:border-color .2s,transform .2s,box-shadow .2s; position:relative; overflow:hidden; }
-  .word-card::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; background:linear-gradient(90deg,var(--teal),var(--teal-lt)); border-radius:14px 14px 0 0; }
-  .word-card:hover { border-color:var(--teal); transform:translateY(-2px); box-shadow:0 6px 18px rgba(13,126,116,.1); }
-  .wc-num   { font-size:.62rem; font-weight:800; color:var(--muted); text-transform:uppercase; letter-spacing:.4px; }
-  .wc-g     { font-family:'Noto Sans Gurmukhi',sans-serif; font-size:1.8rem; font-weight:700; color:var(--teal); line-height:1.1; }
-  .wc-r     { font-size:.78rem; font-weight:700; color:var(--muted); }
-  .wc-e     { font-size:.88rem; font-weight:700; color:var(--ink); }
-
-  /* sentence cards */
-  .sent-list { display:flex; flex-direction:column; gap:10px; margin-bottom:8px; }
-  .sent-card { background:var(--white); border:1.5px solid var(--border); border-radius:14px; padding:16px 18px; display:flex; gap:16px; align-items:flex-start; transition:border-color .2s,transform .2s; }
-  .sent-card:hover { border-color:var(--teal); transform:translateX(3px); }
-  .sent-g { font-family:'Noto Sans Gurmukhi',sans-serif; font-size:1.2rem; font-weight:700; color:var(--teal); flex-shrink:0; min-width:140px; }
-  .sent-body { flex:1; }
-  .sent-r { font-size:.8rem; font-weight:600; color:var(--muted); }
-  .sent-e { font-size:.88rem; font-weight:700; color:var(--ink); margin-top:2px; }
-
-  /* ══ GAME ══ */
-  .game-wrap { max-width:600px; margin:0 auto; }
-  .game-intro { background:linear-gradient(135deg,var(--coral),#8B0037); border-radius:16px; padding:22px 26px; color:var(--white); margin-bottom:24px; }
-  .game-intro h2 { font-size:1.15rem; font-weight:800; margin-bottom:6px; }
-  .game-intro p  { font-size:.88rem; color:rgba(255,255,255,.85); line-height:1.6; }
-
-  /* difficulty */
-  .diff-row { display:flex; gap:10px; margin-bottom:24px; flex-wrap:wrap; }
-  .diff-btn { flex:1; min-width:80px; padding:12px 10px; border-radius:12px; border:2px solid var(--border); background:#FFFFFF; font-family:'Plus Jakarta Sans',sans-serif; font-size:.82rem; font-weight:700; cursor:pointer; text-align:center; transition:all .2s; }
-  .diff-btn:hover   { border-color:var(--teal); background:var(--teal-bg); }
-  .diff-btn.active  { background:var(--teal); color:var(--white); border-color:var(--teal); }
-
-  /* score bar */
-  .game-score-bar { background:#FFFFFF; border:1.5px solid var(--border); border-radius:14px; padding:14px 18px; margin-bottom:20px; display:flex; align-items:center; gap:16px; flex-wrap:wrap; }
-  .gsb-label { font-size:.8rem; font-weight:700; color:var(--muted); }
-  .gsb-prog  { flex:1; background:#EEE; border-radius:10px; height:10px; min-width:80px; overflow:hidden; }
-  .gsb-fill  { height:100%; background:linear-gradient(90deg,var(--teal),var(--teal-lt)); border-radius:10px; transition:width .4s; }
-  .gsb-score { display:flex; gap:12px; }
-  .gsb-correct { font-weight:800; color:var(--green); font-size:.9rem; }
-  .gsb-wrong   { font-weight:800; color:var(--red);   font-size:.9rem; }
-  .gsb-q       { font-size:.78rem; color:var(--muted); font-weight:600; }
-
-  /* question area */
-  .q-area { background:#FFFFFF; border:1.5px solid var(--border); border-radius:18px; padding:28px 24px; text-align:center; margin-bottom:20px; box-shadow:0 2px 12px rgba(0,0,0,.06); }
-  .q-listen-label { font-size:.7rem; font-weight:700; letter-spacing:1.2px; text-transform:uppercase; color:var(--muted); margin-bottom:12px; }
-  .q-word { font-size:2rem; font-weight:800; color:var(--navy); margin-bottom:16px; font-family:'Plus Jakarta Sans',sans-serif; }
-  .speak-btn { background:linear-gradient(135deg,var(--coral),#8B0037); color:var(--white); border:none; border-radius:30px; padding:12px 28px; font-family:'Plus Jakarta Sans',sans-serif; font-size:.95rem; font-weight:700; cursor:pointer; display:inline-flex; align-items:center; gap:8px; box-shadow:0 4px 14px rgba(194,24,91,.3); transition:transform .2s,box-shadow .2s; }
-  .speak-btn:hover { transform:translateY(-2px); box-shadow:0 6px 18px rgba(194,24,91,.4); }
-  .speak-btn.speaking { animation:pulse 0.6s infinite alternate; }
-  @keyframes pulse { from{transform:scale(1)} to{transform:scale(1.05)} }
-
-  /* letter grid */
-  .letter-grid { display:grid; gap:12px; margin-bottom:20px; }
-  .letter-grid.easy   { grid-template-columns:repeat(2,1fr); }
-  .letter-grid.medium { grid-template-columns:repeat(3,1fr); }
-  .letter-grid.hard   { grid-template-columns:repeat(3,1fr); }
-
-  .lg-btn { background:#FFFFFF; border:2.5px solid var(--border); border-radius:16px; padding:20px 12px; font-family:'Noto Sans Gurmukhi',sans-serif; font-size:2.4rem; font-weight:700; color:var(--teal); cursor:pointer; text-align:center; transition:all .2s; line-height:1; }
-  .lg-btn:hover:not(:disabled) { border-color:var(--teal); background:var(--teal-bg); transform:scale(1.04); }
-  .lg-btn:disabled { cursor:default; }
-  .lg-btn.correct { background:var(--green-bg); border-color:var(--green); color:var(--green); animation:popIn .3s ease; }
-  .lg-btn.wrong   { background:var(--red-bg);   border-color:var(--red);   color:var(--red);   animation:shake .4s ease; }
-  @keyframes popIn { 0%{transform:scale(.9)} 60%{transform:scale(1.08)} 100%{transform:scale(1)} }
-  @keyframes shake { 0%,100%{transform:translateX(0)} 25%{transform:translateX(-8px)} 75%{transform:translateX(8px)} }
-
-  /* feedback */
-  .feedback { text-align:center; padding:14px; border-radius:12px; font-weight:800; font-size:1rem; margin-bottom:16px; display:none; }
-  .feedback.show { display:block; animation:popIn .3s ease; }
-  .feedback.correct { background:var(--green-bg); color:var(--green); }
-  .feedback.wrong   { background:var(--red-bg);   color:var(--red); }
-
-  /* end screen */
-  .end-screen { display:none; text-align:center; background:#FFFFFF; border:1.5px solid var(--border); border-radius:18px; padding:40px 28px; box-shadow:0 2px 14px rgba(0,0,0,.07); }
-  .end-screen.show { display:block; animation:popIn .4s ease; }
-  .end-trophy { font-size:4rem; margin-bottom:12px; }
-  .end-title  { font-size:1.5rem; font-weight:800; color:var(--navy); margin-bottom:8px; }
-  .end-score  { font-size:1rem; color:var(--muted); font-weight:600; margin-bottom:24px; }
-  .end-score span { color:var(--teal); font-weight:800; font-size:1.3rem; }
-  .play-again { background:linear-gradient(135deg,var(--teal),var(--teal-lt)); color:var(--white); border:none; border-radius:30px; padding:14px 32px; font-family:'Plus Jakarta Sans',sans-serif; font-size:1rem; font-weight:700; cursor:pointer; box-shadow:0 4px 14px rgba(13,126,116,.3); transition:transform .2s; }
-  .play-again:hover { transform:translateY(-2px); }
-
-  /* ══ QUIZ ══ */
-  .quiz-wrap { background:var(--white); border-radius:18px; box-shadow:0 2px 14px rgba(0,0,0,.08); overflow:hidden; }
-  .quiz-head { background:linear-gradient(135deg,#C2185B,#8B0037); padding:18px 24px; color:var(--white); display:flex; align-items:center; gap:14px; flex-wrap:wrap; }
-  .quiz-head h3 { font-size:1.1rem; font-weight:800; }
-  .quiz-head p  { font-size:.82rem; opacity:.85; margin-top:2px; }
-  .quiz-score-pill { margin-left:auto; background:rgba(255,255,255,.2); border-radius:30px; padding:5px 16px; font-weight:800; font-size:.95rem; }
-  .quiz-body   { padding:22px; display:flex; flex-direction:column; gap:18px; }
-  .quiz-footer { padding:0 22px 22px; display:flex; align-items:center; gap:12px; flex-wrap:wrap; }
-  .q-card { border:2px solid var(--border); border-radius:14px; padding:18px; background:#FFFFFF; transition:border-color .3s; }
-  .q-card.correct-card { border-color:var(--teal); background:#F0FAFA; }
-  .q-card.wrong-card   { border-color:#E57373; background:#FFF5F5; }
-  .q-label { font-size:.66rem; font-weight:800; color:#C2185B; text-transform:uppercase; letter-spacing:.8px; margin-bottom:7px; }
-  .q-text  { font-size:.97rem; font-weight:700; margin-bottom:13px; line-height:1.5; }
-  .q-g { font-family:'Noto Sans Gurmukhi',sans-serif; font-size:1.5rem; color:var(--teal); display:block; margin-bottom:3px; }
-  .options { display:grid; grid-template-columns:1fr 1fr; gap:8px; }
-  .opt { padding:10px 13px; border-radius:11px; border:2px solid var(--border); background:#FFFFFF; cursor:pointer; font-family:'Plus Jakarta Sans',sans-serif; font-size:.86rem; font-weight:700; text-align:left; transition:all .15s; display:flex; align-items:center; gap:7px; }
-  .opt:hover:not(:disabled) { background:var(--teal-bg); border-color:var(--teal-lt); }
-  .opt:disabled { cursor:default; }
-  .opt.correct { background:#E0F7F5; border-color:var(--teal); color:#005f5a; }
-  .opt.wrong   { background:#FFEBEE; border-color:#E57373; color:#C62828; }
-  .opt.reveal  { background:#E0F7F5; border-color:var(--teal); color:#005f5a; opacity:.7; }
-  .q-fb { margin-top:10px; padding:9px 13px; border-radius:10px; font-weight:700; font-size:.86rem; display:none; align-items:center; gap:7px; }
-  .q-fb.show { display:flex; }
-  .fb-c { background:#E0F7F5; color:#005f5a; }
-  .fb-w { background:#FFEBEE; color:#C62828; }
-  .quiz-result { flex:1; padding:12px 16px; border-radius:12px; background:#F0F0F0; font-weight:700; font-size:.88rem; color:var(--muted); min-width:140px; }
-  .reset-btn { padding:11px 24px; background:linear-gradient(135deg,#C2185B,#8B0037); color:var(--white); border:none; border-radius:30px; font-family:'Plus Jakarta Sans',sans-serif; font-size:.88rem; font-weight:700; cursor:pointer; transition:transform .2s; }
-  .reset-btn:hover { transform:translateY(-2px); }
+  /* ══ WORD CARDS ══ */
+  .words-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(180px,1fr)); gap:14px; }
+  .word-card { background:#FFFFFF; border:1.5px solid var(--border); border-radius:16px; padding:20px 18px; display:flex; flex-direction:column; gap:8px; transition:border-color .2s,transform .2s,box-shadow .2s; position:relative; overflow:hidden; }
+  .word-card::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; background:linear-gradient(90deg,var(--teal),var(--teal-lt)); border-radius:16px 16px 0 0; }
+  .word-card:hover { border-color:var(--teal); transform:translateY(-3px); box-shadow:0 8px 22px rgba(13,126,116,.11); }
+  .wc-gurmukhi { font-family:'Noto Sans Gurmukhi',sans-serif; font-size:2.2rem; font-weight:700; color:var(--teal); line-height:1.1; }
+  .wc-roman    { font-size:.8rem; font-weight:700; color:var(--muted); }
+  .wc-english  { font-size:.95rem; font-weight:700; color:var(--ink); }
+  .wc-hear     { margin-top:6px; background:var(--teal-bg); border:1.5px solid var(--teal); border-radius:20px; color:var(--teal); font-size:.78rem; font-weight:700; padding:7px 14px; cursor:pointer; display:inline-flex; align-items:center; gap:6px; transition:background .2s; width:fit-content; }
+  .wc-hear:hover   { background:var(--teal); color:#FFFFFF; }
+  .wc-hear.playing { background:var(--teal); color:#FFFFFF; }
 
   /* ══ RESPONSIVE ══ */
   @media(max-width:560px){
-    .panel{padding:18px 14px 48px;}
-    .hero{padding:18px 14px 16px;}
-    .tabs-bar{padding:0 6px;}
-    .tab-btn{padding:11px 10px 9px;font-size:.76rem;}
-    .hero-pills{display:none;}
-    .options{grid-template-columns:1fr;}
-    .words-grid{grid-template-columns:1fr 1fr;}
-    .overview-grid{grid-template-columns:1fr;}
+    .panel { padding:18px 14px 48px; }
+    .hero  { padding:18px 14px 16px; }
+    .tabs-bar { padding:0 6px; }
+    .tab-btn  { padding:11px 12px 9px; font-size:.78rem; }
+    .hero-pills { display:none; }
+    .words-grid { grid-template-columns:1fr 1fr; }
   }
 </style>
 </head>
@@ -237,347 +116,123 @@
     <a href="index.html" class="hero-back">← Home</a>
     <div class="hero-text">
       <div class="hero-eyebrow"><span id="hero-name">Student Singh</span> · Punjabi Level 1</div>
-      <div class="hero-title">Unit 1 — <span>First 20 Alphabets</span></div>
-      <div class="hero-gurmukhi">ਪਹਿਲੇ ੨੦ ਅੱਖਰ</div>
+      <div class="hero-title">Unit 1 — <span>First 5 Alphabets</span></div>
+      <div class="hero-gurmukhi">ਪਹਿਲੇ ੫ ਅੱਖਰ · ੳ ਅ ੲ ਸ ਹ</div>
     </div>
     <div class="hero-pills">
-      <span class="hero-pill">🔤 20 Letters</span>
-      <span class="hero-pill">📝 Words</span>
-      <span class="hero-pill">🎮 Game</span>
+      <span class="hero-pill">🔤 5 Letters</span>
+      <span class="hero-pill">📝 Mukta Words</span>
     </div>
   </div>
 </header>
 
 <!-- TABS -->
 <nav class="tabs-bar">
-  <button class="tab-btn active" onclick="showTab('home',this)">🏠 Overview</button>
-  <button class="tab-btn" onclick="showTab('letters',this)">🔤 Letters</button>
-
-  <button class="tab-btn" onclick="showTab('game',this)">🎮 Game</button>
-  <button class="tab-btn" onclick="showTab('quiz',this)">🧠 Quiz</button>
+  <button class="tab-btn active" onclick="showTab('letters',this)">🔤 Letters</button>
+  <button class="tab-btn" onclick="showTab('words',this)">📝 Mukta Words</button>
 </nav>
 
-<!-- ══ OVERVIEW ══ -->
-<div id="tab-home" class="panel active">
+<!-- ══ LETTERS TAB ══ -->
+<div id="tab-letters" class="panel active">
   <div class="intro-banner">
-    <h2>Unit 1 — First 20 Alphabets 🎉</h2>
-    <p>In this unit you will learn the first 20 letters of the Gurmukhi alphabet, practise reading mukta words, play the Find the Letter game and test yourself with a quiz!</p>
+    <h2>Your First 5 Gurmukhi Letters 🎉</h2>
+    <p>These are the first 5 letters of the Gurmukhi alphabet. Tap <strong>🔊 Hear</strong> on each row to listen to the letter name and its sound!</p>
   </div>
-  <div class="section-label">What's in this unit</div>
-  <div class="overview-grid">
-    <div class="ov-card teal" onclick="showTabById('letters')">
-      <div class="ov-icon">🔤</div>
-      <div class="ov-title">Letters 1–20</div>
-      <div class="ov-sub">Learn all 20 Gurmukhi letters — name, sound and example word for each.</div>
-      <div class="ov-go">Start → </div>
-    </div>
-    <div class="ov-card gold" onclick="showTabById('words')">
-      <div class="ov-icon">📝</div>
-      <div class="ov-title">Mukta Words</div>
-      <div class="ov-sub">2, 3 and 4 letter words plus sentences — all using mukta (no vowel signs).</div>
-      <div class="ov-go">Read →</div>
-    </div>
-    <div class="ov-card coral" onclick="showTabById('game')">
-      <div class="ov-icon">🎮</div>
-      <div class="ov-title">Find the Letter</div>
-      <div class="ov-sub">Hear the letter name — find it in the grid! 3 difficulty levels.</div>
-      <div class="ov-go">Play →</div>
-    </div>
-  </div>
-</div>
 
-<!-- ══ LETTERS ══ -->
-<div id="tab-letters" class="panel">
-  <div class="intro-banner">
-    <h2>First 20 Gurmukhi Letters 🔤</h2>
-    <p>These are the first 20 letters of the Gurmukhi alphabet in their <strong>mukta</strong> form — the base sound with no vowel signs added.</p>
-  </div>
-  <div class="info-note">💡 <strong>Mukta</strong> means the letter is read with its natural short sound — no matra added. For example ਕ = "kuh", ਗ = "guh", ਜ = "juh".</div>
   <div class="table-wrap">
     <table class="lt">
-      <thead><tr><th>#</th><th>Letter</th><th>Name</th><th>Roman</th><th>Sound</th><th>Example Word</th></tr></thead>
+      <thead>
+        <tr><th>#</th><th>Letter</th><th>Name</th><th>Roman</th><th>Sound</th><th>Example Word</th><th>Listen</th></tr>
+      </thead>
       <tbody>
-        <tr class="group-row"><td colspan="6">Group 1 — Vowel Carriers</td></tr>
-        <tr><td><div class="lt-num">1</div></td><td><span class="lt-letter">ੳ</span></td><td><div class="lt-name">Ura</div><div class="lt-roman">oo-raa</div></td><td>U</td><td><span class="lt-sound">oo</span></td><td><span class="lt-ex-g">ਊਠ</span> <span class="lt-ex-e">— camel</span></td></tr>
-        <tr><td><div class="lt-num">2</div></td><td><span class="lt-letter">ਅ</span></td><td><div class="lt-name">Airaa</div><div class="lt-roman">ay-raa</div></td><td>A</td><td><span class="lt-sound">a</span></td><td><span class="lt-ex-g">ਅੰਬ</span> <span class="lt-ex-e">— mango</span></td></tr>
-        <tr><td><div class="lt-num">3</div></td><td><span class="lt-letter">ੲ</span></td><td><div class="lt-name">Iree</div><div class="lt-roman">ee-ree</div></td><td>I</td><td><span class="lt-sound">ee</span></td><td><span class="lt-ex-g">ਇੱਟ</span> <span class="lt-ex-e">— brick</span></td></tr>
-        <tr class="group-row"><td colspan="6">Group 2 — Gutturals & Sibilant</td></tr>
-        <tr><td><div class="lt-num">4</div></td><td><span class="lt-letter">ਸ</span></td><td><div class="lt-name">Sassa</div><div class="lt-roman">sas-saa</div></td><td>S</td><td><span class="lt-sound">s</span></td><td><span class="lt-ex-g">ਸੇਬ</span> <span class="lt-ex-e">— apple</span></td></tr>
-        <tr><td><div class="lt-num">5</div></td><td><span class="lt-letter">ਹ</span></td><td><div class="lt-name">Hahaa</div><div class="lt-roman">haa-haa</div></td><td>H</td><td><span class="lt-sound">h</span></td><td><span class="lt-ex-g">ਹੱਥ</span> <span class="lt-ex-e">— hand</span></td></tr>
-        <tr><td><div class="lt-num">6</div></td><td><span class="lt-letter">ਕ</span></td><td><div class="lt-name">Kakka</div><div class="lt-roman">kak-kaa</div></td><td>K</td><td><span class="lt-sound">k</span></td><td><span class="lt-ex-g">ਕਮਲ</span> <span class="lt-ex-e">— lotus</span></td></tr>
-        <tr><td><div class="lt-num">7</div></td><td><span class="lt-letter">ਖ</span></td><td><div class="lt-name">Khakhkha</div><div class="lt-roman">khakh-khaa</div></td><td>Kh</td><td><span class="lt-sound">kh</span></td><td><span class="lt-ex-g">ਖਰਗੋਸ਼</span> <span class="lt-ex-e">— rabbit</span></td></tr>
-        <tr><td><div class="lt-num">8</div></td><td><span class="lt-letter">ਗ</span></td><td><div class="lt-name">Gagga</div><div class="lt-roman">gag-gaa</div></td><td>G</td><td><span class="lt-sound">g</span></td><td><span class="lt-ex-g">ਗਾਂ</span> <span class="lt-ex-e">— cow</span></td></tr>
-        <tr><td><div class="lt-num">9</div></td><td><span class="lt-letter">ਘ</span></td><td><div class="lt-name">Ghagha</div><div class="lt-roman">ghag-haa</div></td><td>Gh</td><td><span class="lt-sound">gh</span></td><td><span class="lt-ex-g">ਘਰ</span> <span class="lt-ex-e">— house</span></td></tr>
-        <tr><td><div class="lt-num">10</div></td><td><span class="lt-letter">ਙ</span></td><td><div class="lt-name">Nganga</div><div class="lt-roman">nga-ngaa</div></td><td>Ng</td><td><span class="lt-sound">ng</span></td><td><span class="lt-ex-g">ਰੰਗ</span> <span class="lt-ex-e">— colour</span></td></tr>
-        <tr class="group-row"><td colspan="6">Group 3 — Palatals</td></tr>
-        <tr><td><div class="lt-num">11</div></td><td><span class="lt-letter">ਚ</span></td><td><div class="lt-name">Chacha</div><div class="lt-roman">chach-aa</div></td><td>Ch</td><td><span class="lt-sound">ch</span></td><td><span class="lt-ex-g">ਚੰਦ</span> <span class="lt-ex-e">— moon</span></td></tr>
-        <tr><td><div class="lt-num">12</div></td><td><span class="lt-letter">ਛ</span></td><td><div class="lt-name">Chhachha</div><div class="lt-roman">chhach-haa</div></td><td>Chh</td><td><span class="lt-sound">chh</span></td><td><span class="lt-ex-g">ਛੱਤਰੀ</span> <span class="lt-ex-e">— umbrella</span></td></tr>
-        <tr><td><div class="lt-num">13</div></td><td><span class="lt-letter">ਜ</span></td><td><div class="lt-name">Jajja</div><div class="lt-roman">jaj-jaa</div></td><td>J</td><td><span class="lt-sound">j</span></td><td><span class="lt-ex-g">ਜੰਗਲ</span> <span class="lt-ex-e">— jungle</span></td></tr>
-        <tr><td><div class="lt-num">14</div></td><td><span class="lt-letter">ਝ</span></td><td><div class="lt-name">Jhajha</div><div class="lt-roman">jhaj-haa</div></td><td>Jh</td><td><span class="lt-sound">jh</span></td><td><span class="lt-ex-g">ਝੰਡਾ</span> <span class="lt-ex-e">— flag</span></td></tr>
-        <tr><td><div class="lt-num">15</div></td><td><span class="lt-letter">ਞ</span></td><td><div class="lt-name">Nyanya</div><div class="lt-roman">nya-nyaa</div></td><td>Ny</td><td><span class="lt-sound">ny</span></td><td><span class="lt-ex-g">ਗਿਆਨ</span> <span class="lt-ex-e">— knowledge</span></td></tr>
-        <tr class="group-row"><td colspan="6">Group 4 — Retroflex</td></tr>
-        <tr><td><div class="lt-num">16</div></td><td><span class="lt-letter">ਟ</span></td><td><div class="lt-name">Tanka</div><div class="lt-roman">tan-kaa</div></td><td>Ṭ</td><td><span class="lt-sound">ṭ</span></td><td><span class="lt-ex-g">ਟੋਕਰੀ</span> <span class="lt-ex-e">— basket</span></td></tr>
-        <tr><td><div class="lt-num">17</div></td><td><span class="lt-letter">ਠ</span></td><td><div class="lt-name">Thatha</div><div class="lt-roman">thath-aa</div></td><td>Ṭh</td><td><span class="lt-sound">ṭh</span></td><td><span class="lt-ex-g">ਠੰਡ</span> <span class="lt-ex-e">— cold</span></td></tr>
-        <tr><td><div class="lt-num">18</div></td><td><span class="lt-letter">ਡ</span></td><td><div class="lt-name">Dadda</div><div class="lt-roman">dad-daa</div></td><td>Ḍ</td><td><span class="lt-sound">ḍ</span></td><td><span class="lt-ex-g">ਡੱਡੂ</span> <span class="lt-ex-e">— frog</span></td></tr>
-        <tr><td><div class="lt-num">19</div></td><td><span class="lt-letter">ਢ</span></td><td><div class="lt-name">Dhadha</div><div class="lt-roman">dhad-haa</div></td><td>Ḍh</td><td><span class="lt-sound">ḍh</span></td><td><span class="lt-ex-g">ਢੋਲ</span> <span class="lt-ex-e">— drum</span></td></tr>
-        <tr><td><div class="lt-num">20</div></td><td><span class="lt-letter">ਣ</span></td><td><div class="lt-name">Nanna</div><div class="lt-roman">nan-naa</div></td><td>Ṇ</td><td><span class="lt-sound">ṇ</span></td><td><span class="lt-ex-g">ਬਾਣ</span> <span class="lt-ex-e">— arrow</span></td></tr>
+        <tr>
+          <td><div class="lt-num">1</div></td>
+          <td><span class="lt-letter">ੳ</span></td>
+          <td><div class="lt-name">Ura</div><div class="lt-roman">oo-raa</div></td>
+          <td>U</td>
+          <td><span class="lt-sound">oo</span></td>
+          <td><span class="lt-ex-g">ਊਠ</span> <span class="lt-ex-e">— camel</span></td>
+          <td><button class="listen-btn" onclick="playAudio('audio/alphabets/Ura.m4a',this)">🔊 Hear</button></td>
+        </tr>
+        <tr>
+          <td><div class="lt-num">2</div></td>
+          <td><span class="lt-letter">ਅ</span></td>
+          <td><div class="lt-name">Airaa</div><div class="lt-roman">ay-raa</div></td>
+          <td>A</td>
+          <td><span class="lt-sound">a</span></td>
+          <td><span class="lt-ex-g">ਅੰਬ</span> <span class="lt-ex-e">— mango</span></td>
+          <td><button class="listen-btn" onclick="playAudio('audio/alphabets/Airaa.m4a',this)">🔊 Hear</button></td>
+        </tr>
+        <tr>
+          <td><div class="lt-num">3</div></td>
+          <td><span class="lt-letter">ੲ</span></td>
+          <td><div class="lt-name">Iree</div><div class="lt-roman">ee-ree</div></td>
+          <td>I</td>
+          <td><span class="lt-sound">ee</span></td>
+          <td><span class="lt-ex-g">ਇੱਟ</span> <span class="lt-ex-e">— brick</span></td>
+          <td><button class="listen-btn" onclick="playAudio('audio/alphabets/Iree.m4a',this)">🔊 Hear</button></td>
+        </tr>
+        <tr>
+          <td><div class="lt-num">4</div></td>
+          <td><span class="lt-letter">ਸ</span></td>
+          <td><div class="lt-name">Sassa</div><div class="lt-roman">sas-saa</div></td>
+          <td>S</td>
+          <td><span class="lt-sound">s</span></td>
+          <td><span class="lt-ex-g">ਸੇਬ</span> <span class="lt-ex-e">— apple</span></td>
+          <td><button class="listen-btn" onclick="playAudio('audio/alphabets/Sassa.m4a',this)">🔊 Hear</button></td>
+        </tr>
+        <tr>
+          <td><div class="lt-num">5</div></td>
+          <td><span class="lt-letter">ਹ</span></td>
+          <td><div class="lt-name">Hahaa</div><div class="lt-roman">haa-haa</div></td>
+          <td>H</td>
+          <td><span class="lt-sound">h</span></td>
+          <td><span class="lt-ex-g">ਹੱਥ</span> <span class="lt-ex-e">— hand</span></td>
+          <td><button class="listen-btn" onclick="playAudio('audio/alphabets/Hahaa.m4a',this)">🔊 Hear</button></td>
+        </tr>
       </tbody>
     </table>
   </div>
 </div>
 
-<!-- ══ WORDS ══ -->
+<!-- ══ MUKTA WORDS TAB ══ -->
 <div id="tab-words" class="panel">
-  <div class="word-note"><strong>Mukta Words — No Vowel Signs</strong><br>Every word below uses only mukta form — letters with no matra attached. Read each letter with its short natural sound and blend them together!</div>
 
-  <div class="word-section-title">2-Letter Words — ਦੋ ਅੱਖਰ ਸ਼ਬਦ</div>
+  <!-- Tippi & Bindi box -->
+  <div class="tippi-box">
+    <h3>🪄 Magic Dot Marks!</h3>
+    <p>Some words below have special marks called <strong>Tippi (ੰ)</strong> and <strong>Bindi (ਂ)</strong>. They give letters a "nose voice" — a gentle buzzing sound through your nose, like the <strong>"ng"</strong> in "sing" or the <strong>"m"</strong> in "jump". Look out for the little dot on top!</p>
+    <div class="marks">
+      <div class="tippi-mark">
+        <span class="gur">ੰ</span>
+        <div class="desc"><strong>Tippi</strong><br>little bridge dot</div>
+      </div>
+      <div class="tippi-mark">
+        <span class="gur">ਂ</span>
+        <div class="desc"><strong>Bindi</strong><br>single dot</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Word cards -->
   <div class="words-grid">
-    <div class="word-card"><div class="wc-num">1</div><div class="wc-g">ਅਜ</div><div class="wc-r">aj</div><div class="wc-e">Today</div></div>
-    <div class="word-card"><div class="wc-num">2</div><div class="wc-g">ਅਗ</div><div class="wc-r">ag</div><div class="wc-e">Fire</div></div>
-    <div class="word-card"><div class="wc-num">3</div><div class="wc-g">ਅਖ</div><div class="wc-r">akh</div><div class="wc-e">Eye</div></div>
-    <div class="word-card"><div class="wc-num">4</div><div class="wc-g">ਕਟ</div><div class="wc-r">kat</div><div class="wc-e">Cut</div></div>
-    <div class="word-card"><div class="wc-num">5</div><div class="wc-g">ਕਦ</div><div class="wc-r">kad</div><div class="wc-e">Height</div></div>
-    <div class="word-card"><div class="wc-num">6</div><div class="wc-g">ਕਪ</div><div class="wc-r">kap</div><div class="wc-e">Cup</div></div>
-    <div class="word-card"><div class="wc-num">7</div><div class="wc-g">ਕਲ</div><div class="wc-r">kal</div><div class="wc-e">Yesterday</div></div>
-    <div class="word-card"><div class="wc-num">8</div><div class="wc-g">ਕਰ</div><div class="wc-r">kar</div><div class="wc-e">Do</div></div>
-    <div class="word-card"><div class="wc-num">9</div><div class="wc-g">ਖਟ</div><div class="wc-r">khat</div><div class="wc-e">Earn</div></div>
-    <div class="word-card"><div class="wc-num">10</div><div class="wc-g">ਖਪ</div><div class="wc-r">khap</div><div class="wc-e">Noise</div></div>
-    <div class="word-card"><div class="wc-num">11</div><div class="wc-g">ਖਲ</div><div class="wc-r">khal</div><div class="wc-e">Skin</div></div>
-    <div class="word-card"><div class="wc-num">12</div><div class="wc-g">ਗਲ</div><div class="wc-r">gal</div><div class="wc-e">Neck</div></div>
-    <div class="word-card"><div class="wc-num">13</div><div class="wc-g">ਗਠ</div><div class="wc-r">gath</div><div class="wc-e">Knot</div></div>
-    <div class="word-card"><div class="wc-num">14</div><div class="wc-g">ਘਰ</div><div class="wc-r">ghar</div><div class="wc-e">House</div></div>
-    <div class="word-card"><div class="wc-num">15</div><div class="wc-g">ਘਲ</div><div class="wc-r">ghal</div><div class="wc-e">Send</div></div>
-    <div class="word-card"><div class="wc-num">16</div><div class="wc-g">ਘਟ</div><div class="wc-r">ghat</div><div class="wc-e">Less</div></div>
-    <div class="word-card"><div class="wc-num">17</div><div class="wc-g">ਚਲ</div><div class="wc-r">chal</div><div class="wc-e">Move / Walk</div></div>
-    <div class="word-card"><div class="wc-num">18</div><div class="wc-g">ਚਬ</div><div class="wc-r">chab</div><div class="wc-e">Chew</div></div>
-    <div class="word-card"><div class="wc-num">19</div><div class="wc-g">ਚਖ</div><div class="wc-r">chakh</div><div class="wc-e">Taste</div></div>
-    <div class="word-card"><div class="wc-num">20</div><div class="wc-g">ਛਤ</div><div class="wc-r">chhat</div><div class="wc-e">Roof</div></div>
-    <div class="word-card"><div class="wc-num">21</div><div class="wc-g">ਛਕ</div><div class="wc-r">chhak</div><div class="wc-e">Eat</div></div>
-    <div class="word-card"><div class="wc-num">22</div><div class="wc-g">ਛਲ</div><div class="wc-r">chhal</div><div class="wc-e">Cheating</div></div>
-    <div class="word-card"><div class="wc-num">23</div><div class="wc-g">ਜਲ</div><div class="wc-r">jal</div><div class="wc-e">Water</div></div>
-    <div class="word-card"><div class="wc-num">24</div><div class="wc-g">ਜਗ</div><div class="wc-r">jag</div><div class="wc-e">Jug / World</div></div>
-    <div class="word-card"><div class="wc-num">25</div><div class="wc-g">ਜਟ</div><div class="wc-r">jat</div><div class="wc-e">Farmer</div></div>
-    <div class="word-card"><div class="wc-num">26</div><div class="wc-g">ਝਗ</div><div class="wc-r">jhag</div><div class="wc-e">Bubbles</div></div>
-    <div class="word-card"><div class="wc-num">27</div><div class="wc-g">ਟਬ</div><div class="wc-r">tab</div><div class="wc-e">Tub</div></div>
-    <div class="word-card"><div class="wc-num">28</div><div class="wc-g">ਟਪ</div><div class="wc-r">tap</div><div class="wc-e">Jump</div></div>
-    <div class="word-card"><div class="wc-num">29</div><div class="wc-g">ਠਗ</div><div class="wc-r">thag</div><div class="wc-e">Thug</div></div>
-    <div class="word-card"><div class="wc-num">30</div><div class="wc-g">ਧਰ</div><div class="wc-r">dhar</div><div class="wc-e">Put</div></div>
-    <div class="word-card"><div class="wc-num">31</div><div class="wc-g">ਧਕ</div><div class="wc-r">dhak</div><div class="wc-e">Push</div></div>
-    <div class="word-card"><div class="wc-num">32</div><div class="wc-g">ਦਸ</div><div class="wc-r">das</div><div class="wc-e">Ten / Tell</div></div>
-    <div class="word-card"><div class="wc-num">33</div><div class="wc-g">ਤਕ</div><div class="wc-r">tak</div><div class="wc-e">See / Look</div></div>
-    <div class="word-card"><div class="wc-num">34</div><div class="wc-g">ਤਨ</div><div class="wc-r">tan</div><div class="wc-e">Body</div></div>
-    <div class="word-card"><div class="wc-num">35</div><div class="wc-g">ਥਲ</div><div class="wc-r">thal</div><div class="wc-e">Dry land</div></div>
-    <div class="word-card"><div class="wc-num">36</div><div class="wc-g">ਥਕ</div><div class="wc-r">thak</div><div class="wc-e">Tired</div></div>
-    <div class="word-card"><div class="wc-num">37</div><div class="wc-g">ਨਕ</div><div class="wc-r">nak</div><div class="wc-e">Nose</div></div>
-    <div class="word-card"><div class="wc-num">38</div><div class="wc-g">ਨਟ</div><div class="wc-r">nat</div><div class="wc-e">Nut</div></div>
-    <div class="word-card"><div class="wc-num">39</div><div class="wc-g">ਪਕ</div><div class="wc-r">pak</div><div class="wc-e">Ripe</div></div>
-    <div class="word-card"><div class="wc-num">40</div><div class="wc-g">ਪਗ</div><div class="wc-r">pag</div><div class="wc-e">Dastar / Turban</div></div>
-    <div class="word-card"><div class="wc-num">41</div><div class="wc-g">ਪਰ</div><div class="wc-r">par</div><div class="wc-e">But</div></div>
-    <div class="word-card"><div class="wc-num">42</div><div class="wc-g">ਫਲ</div><div class="wc-r">phal</div><div class="wc-e">Fruit</div></div>
-    <div class="word-card"><div class="wc-num">43</div><div class="wc-g">ਫੜ</div><div class="wc-r">phaṛ</div><div class="wc-e">Hold / Catch</div></div>
-    <div class="word-card"><div class="wc-num">44</div><div class="wc-g">ਬਸ</div><div class="wc-r">bas</div><div class="wc-e">Bus</div></div>
-    <div class="word-card"><div class="wc-num">45</div><div class="wc-g">ਬਲ</div><div class="wc-r">bal</div><div class="wc-e">Power</div></div>
-    <div class="word-card"><div class="wc-num">46</div><div class="wc-g">ਭਰ</div><div class="wc-r">bhar</div><div class="wc-e">Fill</div></div>
-    <div class="word-card"><div class="wc-num">47</div><div class="wc-g">ਮਨ</div><div class="wc-r">man</div><div class="wc-e">Mind / Will</div></div>
-    <div class="word-card"><div class="wc-num">48</div><div class="wc-g">ਰਸ</div><div class="wc-r">ras</div><div class="wc-e">Sap / Syrup</div></div>
-    <div class="word-card"><div class="wc-num">49</div><div class="wc-g">ਸਚ</div><div class="wc-r">sach</div><div class="wc-e">Truth</div></div>
-    <div class="word-card"><div class="wc-num">50</div><div class="wc-g">ਸਭ</div><div class="wc-r">sabh</div><div class="wc-e">All / Everyone</div></div>
-    <div class="word-card"><div class="wc-num">51</div><div class="wc-g">ਸਣ</div><div class="wc-r">saṇ</div><div class="wc-e">Hemp</div></div>
-    <div class="word-card"><div class="wc-num">52</div><div class="wc-g">ਹਸ</div><div class="wc-r">has</div><div class="wc-e">Laugh</div></div>
-    <div class="word-card"><div class="wc-num">53</div><div class="wc-g">ਹਥ</div><div class="wc-r">hath</div><div class="wc-e">Hand</div></div>
-    <div class="word-card"><div class="wc-num">54</div><div class="wc-g">ਹਲ</div><div class="wc-r">hal</div><div class="wc-e">Plough</div></div>
-    <div class="word-card"><div class="wc-num">55</div><div class="wc-g">ਹਕ</div><div class="wc-r">hak</div><div class="wc-e">Right</div></div>
-    <div class="word-card"><div class="wc-num">56</div><div class="wc-g">ਹੜ</div><div class="wc-r">haṛ</div><div class="wc-e">Flood</div></div>
-    <div class="word-card"><div class="wc-num">57</div><div class="wc-g">ਹਨ</div><div class="wc-r">han</div><div class="wc-e">Are</div></div>
-    <div class="word-card"><div class="wc-num">58</div><div class="wc-g">ਤਰ</div><div class="wc-r">tar</div><div class="wc-e">Cucumber</div></div>
-  </div>
-
-  <div class="word-section-title gold">3-Letter Words — ਤਿੰਨ ਅੱਖਰ ਸ਼ਬਦ</div>
-  <div class="words-grid">
-    <div class="word-card"><div class="wc-num">1</div><div class="wc-g">ਅਖਰ</div><div class="wc-r">akhar</div><div class="wc-e">Letter / Word</div></div>
-    <div class="word-card"><div class="wc-num">2</div><div class="wc-g">ਅਰਥ</div><div class="wc-r">arath</div><div class="wc-e">Meaning</div></div>
-    <div class="word-card"><div class="wc-num">3</div><div class="wc-g">ਅਮਰ</div><div class="wc-r">amar</div><div class="wc-e">Immortal</div></div>
-    <div class="word-card"><div class="wc-num">4</div><div class="wc-g">ਕਣਕ</div><div class="wc-r">kaṇak</div><div class="wc-e">Wheat</div></div>
-    <div class="word-card"><div class="wc-num">5</div><div class="wc-g">ਕਲਮ</div><div class="wc-r">kalam</div><div class="wc-e">Pen</div></div>
-    <div class="word-card"><div class="wc-num">6</div><div class="wc-g">ਕਮਰ</div><div class="wc-r">kamar</div><div class="wc-e">Back / Waist</div></div>
-    <div class="word-card"><div class="wc-num">7</div><div class="wc-g">ਕਮਲ</div><div class="wc-r">kamal</div><div class="wc-e">Lotus</div></div>
-    <div class="word-card"><div class="wc-num">8</div><div class="wc-g">ਖਦਰ</div><div class="wc-r">khadar</div><div class="wc-e">Cloth</div></div>
-    <div class="word-card"><div class="wc-num">9</div><div class="wc-g">ਖਰਚ</div><div class="wc-r">kharch</div><div class="wc-e">Spend</div></div>
-    <div class="word-card"><div class="wc-num">10</div><div class="wc-g">ਗਰਮ</div><div class="wc-r">garam</div><div class="wc-e">Hot</div></div>
-    <div class="word-card"><div class="wc-num">11</div><div class="wc-g">ਚਮਕ</div><div class="wc-r">chamak</div><div class="wc-e">Shine</div></div>
-    <div class="word-card"><div class="wc-num">12</div><div class="wc-g">ਚਪਲ</div><div class="wc-r">chapal</div><div class="wc-e">Sandal</div></div>
-    <div class="word-card"><div class="wc-num">13</div><div class="wc-g">ਚਤਰ</div><div class="wc-r">chatar</div><div class="wc-e">Clever</div></div>
-    <div class="word-card"><div class="wc-num">14</div><div class="wc-g">ਝਗੜ</div><div class="wc-r">jhagaṛ</div><div class="wc-e">Quarrel</div></div>
-    <div class="word-card"><div class="wc-num">15</div><div class="wc-g">ਝੜਪ</div><div class="wc-r">jhaṛap</div><div class="wc-e">Argument</div></div>
-    <div class="word-card"><div class="wc-num">16</div><div class="wc-g">ਝਖੜ</div><div class="wc-r">jhakhaṛ</div><div class="wc-e">Storm</div></div>
-    <div class="word-card"><div class="wc-num">17</div><div class="wc-g">ਟਕਰ</div><div class="wc-r">takar</div><div class="wc-e">Collision</div></div>
-    <div class="word-card"><div class="wc-num">18</div><div class="wc-g">ਢਕਣ</div><div class="wc-r">dhakan</div><div class="wc-e">Lid</div></div>
-    <div class="word-card"><div class="wc-num">19</div><div class="wc-g">ਧਰਮ</div><div class="wc-r">dharam</div><div class="wc-e">Religion</div></div>
-    <div class="word-card"><div class="wc-num">20</div><div class="wc-g">ਨਕਲ</div><div class="wc-r">nakal</div><div class="wc-e">Copy</div></div>
-    <div class="word-card"><div class="wc-num">21</div><div class="wc-g">ਨਰਕ</div><div class="wc-r">narak</div><div class="wc-e">Hell</div></div>
-    <div class="word-card"><div class="wc-num">22</div><div class="wc-g">ਨਰਮ</div><div class="wc-r">naram</div><div class="wc-e">Soft</div></div>
-    <div class="word-card"><div class="wc-num">23</div><div class="wc-g">ਨਰਸ</div><div class="wc-r">naras</div><div class="wc-e">Nurse</div></div>
-    <div class="word-card"><div class="wc-num">24</div><div class="wc-g">ਬਲਦ</div><div class="wc-r">balad</div><div class="wc-e">Bull</div></div>
-    <div class="word-card"><div class="wc-num">25</div><div class="wc-g">ਬਰਫ਼</div><div class="wc-r">baraf</div><div class="wc-e">Ice / Snow</div></div>
-    <div class="word-card"><div class="wc-num">26</div><div class="wc-g">ਮਟਰ</div><div class="wc-r">matar</div><div class="wc-e">Peas</div></div>
-    <div class="word-card"><div class="wc-num">27</div><div class="wc-g">ਸਫਰ</div><div class="wc-r">safar</div><div class="wc-e">Journey</div></div>
-    <div class="word-card"><div class="wc-num">28</div><div class="wc-g">ਸੜਕ</div><div class="wc-r">saṛak</div><div class="wc-e">Road</div></div>
-    <div class="word-card"><div class="wc-num">29</div><div class="wc-g">ਸਬਕ</div><div class="wc-r">sabak</div><div class="wc-e">Lesson</div></div>
-    <div class="word-card"><div class="wc-num">30</div><div class="wc-g">ਜਨਮ</div><div class="wc-r">janam</div><div class="wc-e">Birth</div></div>
-    <div class="word-card"><div class="wc-num">31</div><div class="wc-g">ਜਗਤ</div><div class="wc-r">jagat</div><div class="wc-e">World</div></div>
-    <div class="word-card"><div class="wc-num">32</div><div class="wc-g">ਦਰਦ</div><div class="wc-r">darad</div><div class="wc-e">Pain</div></div>
-  </div>
-
-  <div class="word-section-title coral">4-Letter Words — ਚਾਰ ਅੱਖਰ ਸ਼ਬਦ</div>
-  <div class="words-grid">
-    <div class="word-card"><div class="wc-num">1</div><div class="wc-g">ਅਦਰਕ</div><div class="wc-r">adarak</div><div class="wc-e">Ginger</div></div>
-    <div class="word-card"><div class="wc-num">2</div><div class="wc-g">ਗਰਦਨ</div><div class="wc-r">garadan</div><div class="wc-e">Neck</div></div>
-    <div class="word-card"><div class="wc-num">3</div><div class="wc-g">ਗਲਗਲ</div><div class="wc-r">galgal</div><div class="wc-e">Grapefruit</div></div>
-    <div class="word-card"><div class="wc-num">4</div><div class="wc-g">ਗੜਬੜ</div><div class="wc-r">gaṛbaṛ</div><div class="wc-e">Mess</div></div>
-    <div class="word-card"><div class="wc-num">5</div><div class="wc-g">ਝਟਪਟ</div><div class="wc-r">jhatpat</div><div class="wc-e">Instant</div></div>
-    <div class="word-card"><div class="wc-num">6</div><div class="wc-g">ਦਰਜਨ</div><div class="wc-r">darajan</div><div class="wc-e">Dozen</div></div>
-    <div class="word-card"><div class="wc-num">7</div><div class="wc-g">ਦਸਖਤ</div><div class="wc-r">dasakhat</div><div class="wc-e">Signature</div></div>
-    <div class="word-card"><div class="wc-num">8</div><div class="wc-g">ਪਰਬਤ</div><div class="wc-r">parbat</div><div class="wc-e">Mountain</div></div>
-    <div class="word-card"><div class="wc-num">9</div><div class="wc-g">ਬਰਤਨ</div><div class="wc-r">baratan</div><div class="wc-e">Utensils</div></div>
-    <div class="word-card"><div class="wc-num">10</div><div class="wc-g">ਹਰਕਤ</div><div class="wc-r">harakat</div><div class="wc-e">Movement</div></div>
-    <div class="word-card"><div class="wc-num">11</div><div class="wc-g">ਹਰਮਨ</div><div class="wc-r">haraman</div><div class="wc-e">Famous</div></div>
-    <div class="word-card"><div class="wc-num">12</div><div class="wc-g">ਕਸਰਤ</div><div class="wc-r">kasarat</div><div class="wc-e">Exercise</div></div>
-    <div class="word-card"><div class="wc-num">13</div><div class="wc-g">ਖਸਖਸ</div><div class="wc-r">khaskas</div><div class="wc-e">Poppy seed</div></div>
-    <div class="word-card"><div class="wc-num">14</div><div class="wc-g">ਮਤਲਬ</div><div class="wc-r">matalab</div><div class="wc-e">Meaning</div></div>
-    <div class="word-card"><div class="wc-num">15</div><div class="wc-g">ਸਰਕਸ</div><div class="wc-r">sarkas</div><div class="wc-e">Circus</div></div>
-  </div>
-
-  <div class="word-section-title navy">Sentences — ਵਾਕ</div>
-  <div class="sent-list">
-    <div class="sent-card"><div class="sent-g">ਘਰ ਚਲ।</div><div class="sent-body"><div class="sent-r">Ghar chal.</div><div class="sent-e">Go home.</div></div></div>
-    <div class="sent-card"><div class="sent-g">ਫਲ ਫੜ।</div><div class="sent-body"><div class="sent-r">Phal phaṛ.</div><div class="sent-e">Hold the fruit.</div></div></div>
-    <div class="sent-card"><div class="sent-g">ਗਲ ਕਰ।</div><div class="sent-body"><div class="sent-r">Gal kar.</div><div class="sent-e">Say something.</div></div></div>
-    <div class="sent-card"><div class="sent-g">ਜਗ ਫੜ।</div><div class="sent-body"><div class="sent-r">Jag phaṛ.</div><div class="sent-e">Hold the jug.</div></div></div>
-    <div class="sent-card"><div class="sent-g">ਕਪ ਰਖ।</div><div class="sent-body"><div class="sent-r">Kap rakh.</div><div class="sent-e">Place the cup.</div></div></div>
-    <div class="sent-card"><div class="sent-g">ਜਲ ਭਰ।</div><div class="sent-body"><div class="sent-r">Jal bhar.</div><div class="sent-e">Fill the water.</div></div></div>
-    <div class="sent-card"><div class="sent-g">ਜਗ ਭਰ।</div><div class="sent-body"><div class="sent-r">Jag bhar.</div><div class="sent-e">Fill the jug.</div></div></div>
-    <div class="sent-card"><div class="sent-g">ਸਭ ਘਰ ਹਨ।</div><div class="sent-body"><div class="sent-r">Sabh ghar han.</div><div class="sent-e">Everyone is at home.</div></div></div>
-    <div class="sent-card"><div class="sent-g">ਘਰ ਫਲ ਹਨ।</div><div class="sent-body"><div class="sent-r">Ghar phal han.</div><div class="sent-e">There is fruit at home.</div></div></div>
-    <div class="sent-card"><div class="sent-g">ਤਰ ਕਟ।</div><div class="sent-body"><div class="sent-r">Tar kat.</div><div class="sent-e">Cut the cucumber.</div></div></div>
-    <div class="sent-card"><div class="sent-g">ਕਲਮ ਫੜ।</div><div class="sent-body"><div class="sent-r">Kalam phaṛ.</div><div class="sent-e">Hold the pen.</div></div></div>
-    <div class="sent-card"><div class="sent-g">ਮਟਰ ਨਰਮ ਹਨ।</div><div class="sent-body"><div class="sent-r">Matar naram han.</div><div class="sent-e">Peas are soft.</div></div></div>
-    <div class="sent-card"><div class="sent-g">ਦਸ ਨਗ ਹਨ।</div><div class="sent-body"><div class="sent-r">Das nag han.</div><div class="sent-e">There are ten things.</div></div></div>
-    <div class="sent-card"><div class="sent-g">ਹਰਮਨ ਬਣ।</div><div class="sent-body"><div class="sent-r">Haraman ban.</div><div class="sent-e">Be famous.</div></div></div>
-    <div class="sent-card"><div class="sent-g">ਬਰਤਨ ਫੜ।</div><div class="sent-body"><div class="sent-r">Baratan phaṛ.</div><div class="sent-e">Hold the pot.</div></div></div>
-    <div class="sent-card"><div class="sent-g">ਸ਼ਲਗਮ ਨਰਮ ਹਨ।</div><div class="sent-body"><div class="sent-r">Shalgam naram han.</div><div class="sent-e">The turnip is soft.</div></div></div>
-  </div>
-</div>
-
-<!-- ══ GAME ══ -->
-<div id="tab-game" class="panel">
-  <div class="game-wrap">
-    <div class="game-intro">
-      <h2>🎮 Find the Letter!</h2>
-      <p>Listen to the letter name — then tap the correct Gurmukhi letter in the grid. Choose your difficulty level below!</p>
+    <div class="word-card">
+      <div class="wc-gurmukhi">ਹੱਸ</div>
+      <div class="wc-roman">Hass</div>
+      <div class="wc-english">Laugh</div>
+      <button class="wc-hear" onclick="playAudio('audio/muktawords/Hass1.m4a',this)">🔊 Hear word</button>
     </div>
-
-    <div class="section-label">Choose difficulty</div>
-    <div class="diff-row">
-      <button class="diff-btn active" onclick="setDiff(4,this)">🟢 Easy<br><small>4 letters</small></button>
-      <button class="diff-btn" onclick="setDiff(6,this)">🟡 Medium<br><small>6 letters</small></button>
-      <button class="diff-btn" onclick="setDiff(9,this)">🔴 Hard<br><small>9 letters</small></button>
+    <div class="word-card">
+      <div class="wc-gurmukhi">ਹੰਸ</div>
+      <div class="wc-roman">Hans</div>
+      <div class="wc-english">Swan</div>
+      <button class="wc-hear" onclick="playAudio('audio/muktawords/Hans1.m4a',this)">🔊 Hear word</button>
     </div>
-
-    <div class="game-score-bar">
-      <span class="gsb-label">Progress</span>
-      <div class="gsb-prog"><div class="gsb-fill" id="gProgFill" style="width:0%"></div></div>
-      <span class="gsb-q" id="gProgText">0 / 20</span>
-      <div class="gsb-score">
-        <span class="gsb-correct" id="gCorrect">✅ 0</span>
-        <span class="gsb-wrong"   id="gWrong">❌ 0</span>
-      </div>
-    </div>
-
-    <div class="q-area" id="gameArea">
-      <div class="q-listen-label">👂 Listen and find the letter</div>
-      <div class="q-word" id="gWord">—</div>
-      <button class="speak-btn" id="speakBtn" onclick="speakCurrent()">🔊 Hear it again</button>
-    </div>
-
-    <div class="feedback" id="gameFeedback"></div>
-    <div class="letter-grid medium" id="letterGrid"></div>
-
-    <div class="end-screen" id="endScreen">
-      <div class="end-trophy" id="endTrophy">🏆</div>
-      <div class="end-title" id="endTitle">Well done!</div>
-      <div class="end-score" id="endScore"></div>
-      <button class="play-again" onclick="startGame()">🔄 Play Again</button>
-    </div>
-  </div>
-</div>
-
-<!-- ══ QUIZ ══ -->
-<div id="tab-quiz" class="panel">
-  <div class="quiz-wrap">
-    <div class="quiz-head">
-      <div><h3>🧠 Unit 1 Quiz</h3><p>Test your knowledge of the first 20 letters!</p></div>
-      <div class="quiz-score-pill" id="scoreDisplay">0 / 5</div>
-    </div>
-    <div class="quiz-body">
-      <div class="q-card" id="q1">
-        <div class="q-label">Question 1 of 5</div>
-        <div class="q-text">What is the name of this letter?<br><span class="q-g">ਕ</span></div>
-        <div class="options">
-          <button class="opt" onclick="answer(this,'q1',false)">Sassa</button>
-          <button class="opt" onclick="answer(this,'q1',true)">Kakka</button>
-          <button class="opt" onclick="answer(this,'q1',false)">Chacha</button>
-          <button class="opt" onclick="answer(this,'q1',false)">Gagga</button>
-        </div>
-        <div class="q-fb" id="fb-q1"></div>
-      </div>
-      <div class="q-card" id="q2">
-        <div class="q-label">Question 2 of 5</div>
-        <div class="q-text">Which letter makes the <strong>"gh"</strong> sound?</div>
-        <div class="options">
-          <button class="opt" onclick="answer(this,'q2',false)"><span style="font-family:'Noto Sans Gurmukhi',sans-serif;font-size:1.3rem">ਗ</span></button>
-          <button class="opt" onclick="answer(this,'q2',true)"><span style="font-family:'Noto Sans Gurmukhi',sans-serif;font-size:1.3rem">ਘ</span></button>
-          <button class="opt" onclick="answer(this,'q2',false)"><span style="font-family:'Noto Sans Gurmukhi',sans-serif;font-size:1.3rem">ਖ</span></button>
-          <button class="opt" onclick="answer(this,'q2',false)"><span style="font-family:'Noto Sans Gurmukhi',sans-serif;font-size:1.3rem">ਚ</span></button>
-        </div>
-        <div class="q-fb" id="fb-q2"></div>
-      </div>
-      <div class="q-card" id="q3">
-        <div class="q-label">Question 3 of 5</div>
-        <div class="q-text">What does <strong>ਘਰ (Ghar)</strong> mean?</div>
-        <div class="options">
-          <button class="opt" onclick="answer(this,'q3',false)">Water</button>
-          <button class="opt" onclick="answer(this,'q3',false)">Fruit</button>
-          <button class="opt" onclick="answer(this,'q3',true)">House</button>
-          <button class="opt" onclick="answer(this,'q3',false)">Road</button>
-        </div>
-        <div class="q-fb" id="fb-q3"></div>
-      </div>
-      <div class="q-card" id="q4">
-        <div class="q-label">Question 4 of 5</div>
-        <div class="q-text">Which letter is number <strong>16</strong> in the alphabet?</div>
-        <div class="options">
-          <button class="opt" onclick="answer(this,'q4',false)"><span style="font-family:'Noto Sans Gurmukhi',sans-serif;font-size:1.3rem">ਝ</span> Jhajha</button>
-          <button class="opt" onclick="answer(this,'q4',false)"><span style="font-family:'Noto Sans Gurmukhi',sans-serif;font-size:1.3rem">ਡ</span> Dadda</button>
-          <button class="opt" onclick="answer(this,'q4',true)"><span style="font-family:'Noto Sans Gurmukhi',sans-serif;font-size:1.3rem">ਟ</span> Tanka</button>
-          <button class="opt" onclick="answer(this,'q4',false)"><span style="font-family:'Noto Sans Gurmukhi',sans-serif;font-size:1.3rem">ਣ</span> Nanna</button>
-        </div>
-        <div class="q-fb" id="fb-q4"></div>
-      </div>
-      <div class="q-card" id="q5">
-        <div class="q-label">Question 5 of 5</div>
-        <div class="q-text">What does <strong>ਫਲ (Phal)</strong> mean?</div>
-        <div class="options">
-          <button class="opt" onclick="answer(this,'q5',false)">Pen</button>
-          <button class="opt" onclick="answer(this,'q5',true)">Fruit</button>
-          <button class="opt" onclick="answer(this,'q5',false)">Bus</button>
-          <button class="opt" onclick="answer(this,'q5',false)">Road</button>
-        </div>
-        <div class="q-fb" id="fb-q5"></div>
-      </div>
-    </div>
-    <div class="quiz-footer">
-      <div class="quiz-result" id="quizResult">Answer all 5 questions to see your result! ✨</div>
-      <button class="reset-btn" onclick="resetQuiz()">🔄 Try Again</button>
+    <div class="word-card">
+      <div class="wc-gurmukhi">ਸੱਸ</div>
+      <div class="wc-roman">Sass</div>
+      <div class="wc-english">Mother-in-law</div>
+      <button class="wc-hear" onclick="playAudio('audio/muktawords/Sass1.m4a',this)">🔊 Hear word</button>
     </div>
   </div>
 </div>
@@ -600,7 +255,7 @@ function saveProgress(unit, activity, score, total, details) {
     body:JSON.stringify({ unit, activity, score, total, details, student: STUDENT })
   }).catch(()=>{});
 }
-window.addEventListener('load', () => saveProgress('Unit 1','Page Visit',0,0,'Visited Unit 1'));
+window.addEventListener('load', () => saveProgress('Unit 1','Page Visit',0,0,'Visited Unit 1 — First 5 Alphabets'));
 
 /* ── TABS ── */
 function showTab(id, btn) {
@@ -611,231 +266,42 @@ function showTab(id, btn) {
   window.scrollTo({top:0, behavior:'smooth'});
   saveProgress('Unit 1','Tab Visit',0,0,'Opened: ' + id);
 }
-function showTabById(id) {
-  const btn = [...document.querySelectorAll('.tab-btn')].find(b => b.getAttribute('onclick').includes("'"+id+"'"));
-  if (btn) showTab(id, btn);
-}
 
-/* ══════════════════════════
-   FIND THE LETTER GAME
-══════════════════════════ */
-const LETTERS = [
-  { g:'ੳ', name:'Ura',       audio:'Ura.m4a' },
-  { g:'ਅ', name:'Airaa',     audio:'Airaa.m4a' },
-  { g:'ੲ', name:'Iree',      audio:'Iree.m4a' },
-  { g:'ਸ', name:'Sassa',     audio:'Sassa.m4a' },
-  { g:'ਹ', name:'Hahaa',     audio:'Hahaa.m4a' },
-  { g:'ਕ', name:'Kakka',     audio:'Kakka.m4a' },
-  { g:'ਖ', name:'Khakhkha',  audio:'Khakhkha.m4a' },
-  { g:'ਗ', name:'Gagga',     audio:'Gagga.m4a' },
-  { g:'ਘ', name:'Ghagha',    audio:'Ghagha.m4a' },
-  { g:'ਙ', name:'Nganga',    audio:'Nganga.m4a' },
-  { g:'ਚ', name:'Chacha',    audio:'Chacha.m4a' },
-  { g:'ਛ', name:'Chhachha',  audio:'Chhachha.m4a' },
-  { g:'ਜ', name:'Jajja',     audio:'Jajja.m4a' },
-  { g:'ਝ', name:'Jhajha',    audio:'Jhajha.m4a' },
-  { g:'ਞ', name:'Nyanya',    audio:'Nyanya.m4a' },
-  { g:'ਟ', name:'Tanka',     audio:'Tanka.m4a' },
-  { g:'ਠ', name:'Thatha',    audio:'Thatha.m4a' },
-  { g:'ਡ', name:'Dadda',     audio:'Dadda.m4a' },
-  { g:'ਢ', name:'Dhadha',    audio:'Dhadha.m4a' },
-  { g:'ਣ', name:'Nanna',     audio:'Nanna.m4a' },
-];
-
-/* Preload all audio files on page load for zero lag */
-const AUDIO_BASE = 'audio/';
+/* ── AUDIO PLAYER ── */
 let currentAudio = null;
-const audioCache = {};
-
-function preloadAudio() {
-  LETTERS.forEach(l => {
-    if (l.audio) {
-      const a = new Audio(AUDIO_BASE + l.audio);
-      a.preload = 'auto';
-      audioCache[l.audio] = a;
-    }
-  });
-}
-window.addEventListener('load', preloadAudio);
-
-let gDiff     = 4;
-let gQueue    = [];
-let gCurrent  = null;
-let gCorrect  = 0;
-let gWrong    = 0;
-let gTotal    = 20;
-let gAnswered = 0;
-let speaking  = false;
-
-function setDiff(n, btn) {
-  gDiff = n;
-  document.querySelectorAll('.diff-btn').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-  const grid = document.getElementById('letterGrid');
-  grid.className = 'letter-grid ' + (n===4?'easy':n===6?'medium':'hard');
-  startGame();
-}
-
-function shuffle(arr) { return [...arr].sort(() => Math.random() - .5); }
-
-function startGame() {
-  gQueue    = shuffle(LETTERS);
-  gCorrect  = 0;
-  gWrong    = 0;
-  gAnswered = 0;
-  document.getElementById('endScreen').classList.remove('show');
-  document.getElementById('gameFeedback').classList.remove('show');
-  document.getElementById('gCorrect').textContent = '✅ 0';
-  document.getElementById('gWrong').textContent   = '❌ 0';
-  updateGameProgress();
-  nextQuestion();
-}
-
-function nextQuestion() {
-  if (gQueue.length === 0) { endGame(); return; }
-  gCurrent = gQueue.pop();
-  document.getElementById('gWord').textContent = gCurrent.name;
-  document.getElementById('gameFeedback').classList.remove('show');
-
-  // Pick distractors
-  const others  = shuffle(LETTERS.filter(l => l.g !== gCurrent.g)).slice(0, gDiff - 1);
-  const choices = shuffle([gCurrent, ...others]);
-
-  const grid = document.getElementById('letterGrid');
-  grid.innerHTML = '';
-  choices.forEach(ch => {
-    const btn = document.createElement('button');
-    btn.className = 'lg-btn';
-    btn.textContent = ch.g;
-    btn.onclick = () => handleAnswer(btn, ch.g === gCurrent.g);
-    grid.appendChild(btn);
-  });
-
-  // Auto-speak after short delay
-  setTimeout(speakCurrent, 400);
-}
-
-function speakCurrent() {
-  if (!gCurrent) return;
-  const btn = document.getElementById('speakBtn');
-
-  // Stop anything currently playing
+function playAudio(src, btn) {
   if (currentAudio) {
     currentAudio.pause();
     currentAudio.currentTime = 0;
   }
-
-  // Play from preloaded cache — instant, no lag
-  const cached = audioCache[gCurrent.audio];
-  if (cached) {
-    cached.currentTime = 0;
-    currentAudio = cached;
-    btn.classList.add('speaking');
-    cached.onended = () => btn.classList.remove('speaking');
-    cached.play().catch(() => btn.classList.remove('speaking'));
-  }
-}
-
-function handleAnswer(btn, isCorrect) {
-  // Disable all buttons
-  document.querySelectorAll('.lg-btn').forEach(b => b.disabled = true);
-  gAnswered++;
-
-  const fb = document.getElementById('gameFeedback');
-  if (isCorrect) {
-    btn.classList.add('correct');
-    gCorrect++;
-    fb.textContent = '🎉 ਸ਼ਾਬਾਸ਼! That\'s right — ' + gCurrent.name + ' = ' + gCurrent.g;
-    fb.className = 'feedback show correct';
-    document.getElementById('gCorrect').textContent = '✅ ' + gCorrect;
-    setTimeout(nextQuestion, 1200);
-  } else {
-    btn.classList.add('wrong');
-    gWrong++;
-    fb.textContent = '❌ Not quite! ' + gCurrent.name + ' = ' + gCurrent.g + ' — try the next one!';
-    fb.className = 'feedback show wrong';
-    // Highlight correct
-    document.querySelectorAll('.lg-btn').forEach(b => {
-      if (b.textContent === gCurrent.g) b.classList.add('correct');
-    });
-    document.getElementById('gWrong').textContent = '❌ ' + gWrong;
-    setTimeout(nextQuestion, 1800);
-  }
-  updateGameProgress();
-}
-
-function updateGameProgress() {
-  const pct = Math.round((gAnswered / gTotal) * 100);
-  document.getElementById('gProgFill').style.width = pct + '%';
-  document.getElementById('gProgText').textContent  = gAnswered + ' / ' + gTotal;
-}
-
-function endGame() {
-  document.getElementById('letterGrid').innerHTML = '';
-  document.getElementById('gameFeedback').classList.remove('show');
-  const end = document.getElementById('endScreen');
-  end.classList.add('show');
-  const pct = Math.round((gCorrect / gTotal) * 100);
-  document.getElementById('endTrophy').textContent = pct===100?'🏆':pct>=70?'🌟':'💪';
-  document.getElementById('endTitle').textContent  = pct===100?'Perfect! ਸ਼ਾਬਾਸ਼!':pct>=70?'Great work!':'Good try — keep practising!';
-  document.getElementById('endScore').innerHTML    = 'You got <span>' + gCorrect + ' / ' + gTotal + '</span> correct!';
-  saveProgress('Unit 1','Game: Find the Letter', gCorrect, gTotal, 'Score: ' + gCorrect + '/' + gTotal + ' — Difficulty: ' + gDiff + ' letters');
-}
-
-// Start game on page load
-window.addEventListener('load', startGame);
-
-/* ── QUIZ ── */
-const scores = {q1:null,q2:null,q3:null,q4:null,q5:null};
-function answer(btn, qid, isCorrect) {
-  if (scores[qid] !== null) return;
-  scores[qid] = isCorrect;
-  const card = document.getElementById(qid);
-  const fb   = document.getElementById('fb-' + qid);
-  card.querySelectorAll('.opt').forEach(b => {
-    b.disabled = true;
-    if (b === btn) b.classList.add(isCorrect ? 'correct' : 'wrong');
-    else if (b.getAttribute('onclick').includes('true')) b.classList.add('reveal');
+  document.querySelectorAll('.listen-btn.playing, .wc-hear.playing').forEach(b => {
+    b.classList.remove('playing');
+    b.innerHTML = b.classList.contains('wc-hear') ? '🔊 Hear word' : '🔊 Hear';
   });
-  card.classList.add(isCorrect ? 'correct-card' : 'wrong-card');
-  fb.className = 'q-fb show ' + (isCorrect ? 'fb-c' : 'fb-w');
-  fb.innerHTML = isCorrect ? '🎉 Correct — ਸ਼ਾਬਾਸ਼!' : '❌ Not quite — the correct answer is highlighted!';
-  updateScore();
-}
-function updateScore() {
-  const answered = Object.values(scores).filter(v => v !== null).length;
-  const got      = Object.values(scores).filter(v => v === true).length;
-  document.getElementById('scoreDisplay').textContent = got + ' / 5';
-  if (answered === 5) {
-    const el = document.getElementById('quizResult');
-    if (got===5)     { el.innerHTML='🏆 Perfect 5/5! ਸ਼ਾਬਾਸ਼!'; el.style.cssText='background:#E0F7F5;color:#005f5a'; }
-    else if(got>=3)  { el.innerHTML='🌟 Great! '+got+'/5 — almost there!'; el.style.cssText='background:#FFF9C4;color:#7B6000'; }
-    else             { el.innerHTML='💪 Good try! '+got+'/5 — review and retry!'; el.style.cssText='background:#FFEBEE;color:#B71C1C'; }
-    saveProgress('Unit 1','Quiz Completed', got, 5, 'Quiz score: ' + got + '/5');
-  }
-}
-function resetQuiz() {
-  Object.keys(scores).forEach(k => scores[k]=null);
-  document.getElementById('scoreDisplay').textContent='0 / 5';
-  ['q1','q2','q3','q4','q5'].forEach(qid=>{
-    const card=document.getElementById(qid);
-    card.classList.remove('correct-card','wrong-card');
-    card.querySelectorAll('.opt').forEach(b=>{b.disabled=false;b.classList.remove('correct','wrong','reveal');});
-    const fb=document.getElementById('fb-'+qid);
-    fb.className='q-fb'; fb.innerHTML='';
+  const audio = new Audio(src);
+  currentAudio = audio;
+  btn.classList.add('playing');
+  btn.innerHTML = '🔊 ...';
+  audio.onended = () => {
+    btn.classList.remove('playing');
+    btn.innerHTML = btn.classList.contains('wc-hear') ? '🔊 Hear word' : '🔊 Hear';
+  };
+  audio.onerror = () => {
+    btn.classList.remove('playing');
+    btn.innerHTML = btn.classList.contains('wc-hear') ? '🔊 Hear word' : '🔊 Hear';
+  };
+  audio.play().catch(() => {
+    btn.classList.remove('playing');
+    btn.innerHTML = btn.classList.contains('wc-hear') ? '🔊 Hear word' : '🔊 Hear';
   });
-  const el=document.getElementById('quizResult');
-  el.textContent='Answer all 5 questions to see your result! ✨';
-  el.style.cssText='';
-  window.scrollTo({top:0,behavior:'smooth'});
 }
 
-/* ── AUTO RESIZE ── */
-function notifyHeight(){window.parent.postMessage({type:'setHeight',height:document.body.scrollHeight},'*');}
-window.addEventListener('load',notifyHeight);
-window.addEventListener('resize',notifyHeight);
-new MutationObserver(notifyHeight).observe(document.body,{childList:true,subtree:true,attributes:true});
-setInterval(notifyHeight,500);
+/* ── AUTO RESIZE FOR GOOGLE SITES ── */
+function notifyHeight() { window.parent.postMessage({type:'setHeight',height:document.body.scrollHeight},'*'); }
+window.addEventListener('load', notifyHeight);
+window.addEventListener('resize', notifyHeight);
+new MutationObserver(notifyHeight).observe(document.body,{childList:true,subtree:true});
+setInterval(notifyHeight, 500);
 </script>
 </body>
 </html>
