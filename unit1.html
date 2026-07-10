@@ -15,7 +15,7 @@
     --gold-bg: #FEF3E0;
     --coral:   #C2185B;
     --coral-bg:#FDE8EF;
-    --cream:   #F7F4EF;
+    --cream:   #FFFFFF;
     --white:   #FFFFFF;
     --ink:     #1A2744;
     --muted:   #6B7590;
@@ -26,7 +26,7 @@
     --red-bg:  #FFEBEE;
   }
   *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
-  html, body { width:100%; font-family:'Plus Jakarta Sans',sans-serif; background:var(--cream); color:var(--ink); }
+  html, body { width:100%; font-family:'Plus Jakarta Sans',sans-serif; background:#FFFFFF; color:var(--ink); }
 
   /* ══ HERO ══ */
   .hero { background:var(--navy); padding:24px 32px 20px; position:relative; overflow:hidden; }
@@ -51,7 +51,7 @@
   .tab-btn.active { color:var(--teal); border-bottom-color:var(--teal); }
 
   /* ══ PANELS ══ */
-  .panel { display:none; padding:28px 32px 56px; }
+  .panel { display:none; padding:28px 32px 56px; background:#FFFFFF; }
   .panel.active { display:block; }
   .section-label { font-size:.65rem; font-weight:700; letter-spacing:1.4px; text-transform:uppercase; color:var(--muted); margin-bottom:14px; }
 
@@ -134,12 +134,12 @@
 
   /* difficulty */
   .diff-row { display:flex; gap:10px; margin-bottom:24px; flex-wrap:wrap; }
-  .diff-btn { flex:1; min-width:80px; padding:12px 10px; border-radius:12px; border:2px solid var(--border); background:var(--white); font-family:'Plus Jakarta Sans',sans-serif; font-size:.82rem; font-weight:700; cursor:pointer; text-align:center; transition:all .2s; }
+  .diff-btn { flex:1; min-width:80px; padding:12px 10px; border-radius:12px; border:2px solid var(--border); background:#FFFFFF; font-family:'Plus Jakarta Sans',sans-serif; font-size:.82rem; font-weight:700; cursor:pointer; text-align:center; transition:all .2s; }
   .diff-btn:hover   { border-color:var(--teal); background:var(--teal-bg); }
   .diff-btn.active  { background:var(--teal); color:var(--white); border-color:var(--teal); }
 
   /* score bar */
-  .game-score-bar { background:var(--white); border:1.5px solid var(--border); border-radius:14px; padding:14px 18px; margin-bottom:20px; display:flex; align-items:center; gap:16px; flex-wrap:wrap; }
+  .game-score-bar { background:#FFFFFF; border:1.5px solid var(--border); border-radius:14px; padding:14px 18px; margin-bottom:20px; display:flex; align-items:center; gap:16px; flex-wrap:wrap; }
   .gsb-label { font-size:.8rem; font-weight:700; color:var(--muted); }
   .gsb-prog  { flex:1; background:#EEE; border-radius:10px; height:10px; min-width:80px; overflow:hidden; }
   .gsb-fill  { height:100%; background:linear-gradient(90deg,var(--teal),var(--teal-lt)); border-radius:10px; transition:width .4s; }
@@ -149,7 +149,7 @@
   .gsb-q       { font-size:.78rem; color:var(--muted); font-weight:600; }
 
   /* question area */
-  .q-area { background:var(--white); border:1.5px solid var(--border); border-radius:18px; padding:28px 24px; text-align:center; margin-bottom:20px; box-shadow:0 2px 12px rgba(0,0,0,.06); }
+  .q-area { background:#FFFFFF; border:1.5px solid var(--border); border-radius:18px; padding:28px 24px; text-align:center; margin-bottom:20px; box-shadow:0 2px 12px rgba(0,0,0,.06); }
   .q-listen-label { font-size:.7rem; font-weight:700; letter-spacing:1.2px; text-transform:uppercase; color:var(--muted); margin-bottom:12px; }
   .q-word { font-size:2rem; font-weight:800; color:var(--navy); margin-bottom:16px; font-family:'Plus Jakarta Sans',sans-serif; }
   .speak-btn { background:linear-gradient(135deg,var(--coral),#8B0037); color:var(--white); border:none; border-radius:30px; padding:12px 28px; font-family:'Plus Jakarta Sans',sans-serif; font-size:.95rem; font-weight:700; cursor:pointer; display:inline-flex; align-items:center; gap:8px; box-shadow:0 4px 14px rgba(194,24,91,.3); transition:transform .2s,box-shadow .2s; }
@@ -163,7 +163,7 @@
   .letter-grid.medium { grid-template-columns:repeat(3,1fr); }
   .letter-grid.hard   { grid-template-columns:repeat(3,1fr); }
 
-  .lg-btn { background:var(--white); border:2.5px solid var(--border); border-radius:16px; padding:20px 12px; font-family:'Noto Sans Gurmukhi',sans-serif; font-size:2.4rem; font-weight:700; color:var(--teal); cursor:pointer; text-align:center; transition:all .2s; line-height:1; }
+  .lg-btn { background:#FFFFFF; border:2.5px solid var(--border); border-radius:16px; padding:20px 12px; font-family:'Noto Sans Gurmukhi',sans-serif; font-size:2.4rem; font-weight:700; color:var(--teal); cursor:pointer; text-align:center; transition:all .2s; line-height:1; }
   .lg-btn:hover:not(:disabled) { border-color:var(--teal); background:var(--teal-bg); transform:scale(1.04); }
   .lg-btn:disabled { cursor:default; }
   .lg-btn.correct { background:var(--green-bg); border-color:var(--green); color:var(--green); animation:popIn .3s ease; }
@@ -178,7 +178,7 @@
   .feedback.wrong   { background:var(--red-bg);   color:var(--red); }
 
   /* end screen */
-  .end-screen { display:none; text-align:center; background:var(--white); border:1.5px solid var(--border); border-radius:18px; padding:40px 28px; box-shadow:0 2px 14px rgba(0,0,0,.07); }
+  .end-screen { display:none; text-align:center; background:#FFFFFF; border:1.5px solid var(--border); border-radius:18px; padding:40px 28px; box-shadow:0 2px 14px rgba(0,0,0,.07); }
   .end-screen.show { display:block; animation:popIn .4s ease; }
   .end-trophy { font-size:4rem; margin-bottom:12px; }
   .end-title  { font-size:1.5rem; font-weight:800; color:var(--navy); margin-bottom:8px; }
@@ -195,14 +195,14 @@
   .quiz-score-pill { margin-left:auto; background:rgba(255,255,255,.2); border-radius:30px; padding:5px 16px; font-weight:800; font-size:.95rem; }
   .quiz-body   { padding:22px; display:flex; flex-direction:column; gap:18px; }
   .quiz-footer { padding:0 22px 22px; display:flex; align-items:center; gap:12px; flex-wrap:wrap; }
-  .q-card { border:2px solid var(--border); border-radius:14px; padding:18px; background:#FDFAF5; transition:border-color .3s; }
+  .q-card { border:2px solid var(--border); border-radius:14px; padding:18px; background:#FFFFFF; transition:border-color .3s; }
   .q-card.correct-card { border-color:var(--teal); background:#F0FAFA; }
   .q-card.wrong-card   { border-color:#E57373; background:#FFF5F5; }
   .q-label { font-size:.66rem; font-weight:800; color:#C2185B; text-transform:uppercase; letter-spacing:.8px; margin-bottom:7px; }
   .q-text  { font-size:.97rem; font-weight:700; margin-bottom:13px; line-height:1.5; }
   .q-g { font-family:'Noto Sans Gurmukhi',sans-serif; font-size:1.5rem; color:var(--teal); display:block; margin-bottom:3px; }
   .options { display:grid; grid-template-columns:1fr 1fr; gap:8px; }
-  .opt { padding:10px 13px; border-radius:11px; border:2px solid var(--border); background:var(--white); cursor:pointer; font-family:'Plus Jakarta Sans',sans-serif; font-size:.86rem; font-weight:700; text-align:left; transition:all .15s; display:flex; align-items:center; gap:7px; }
+  .opt { padding:10px 13px; border-radius:11px; border:2px solid var(--border); background:#FFFFFF; cursor:pointer; font-family:'Plus Jakarta Sans',sans-serif; font-size:.86rem; font-weight:700; text-align:left; transition:all .15s; display:flex; align-items:center; gap:7px; }
   .opt:hover:not(:disabled) { background:var(--teal-bg); border-color:var(--teal-lt); }
   .opt:disabled { cursor:default; }
   .opt.correct { background:#E0F7F5; border-color:var(--teal); color:#005f5a; }
@@ -212,7 +212,7 @@
   .q-fb.show { display:flex; }
   .fb-c { background:#E0F7F5; color:#005f5a; }
   .fb-w { background:#FFEBEE; color:#C62828; }
-  .quiz-result { flex:1; padding:12px 16px; border-radius:12px; background:#F5F5F5; font-weight:700; font-size:.88rem; color:var(--muted); min-width:140px; }
+  .quiz-result { flex:1; padding:12px 16px; border-radius:12px; background:#F0F0F0; font-weight:700; font-size:.88rem; color:var(--muted); min-width:140px; }
   .reset-btn { padding:11px 24px; background:linear-gradient(135deg,#C2185B,#8B0037); color:var(--white); border:none; border-radius:30px; font-family:'Plus Jakarta Sans',sans-serif; font-size:.88rem; font-weight:700; cursor:pointer; transition:transform .2s; }
   .reset-btn:hover { transform:translateY(-2px); }
 
@@ -642,9 +642,21 @@ const LETTERS = [
   { g:'ਣ', name:'Nanna',     audio:'Nanna.m4a' },
 ];
 
-/* Base URL for audio files on GitHub Pages / Netlify */
+/* Preload all audio files on page load for zero lag */
 const AUDIO_BASE = 'audio/';
 let currentAudio = null;
+const audioCache = {};
+
+function preloadAudio() {
+  LETTERS.forEach(l => {
+    if (l.audio) {
+      const a = new Audio(AUDIO_BASE + l.audio);
+      a.preload = 'auto';
+      audioCache[l.audio] = a;
+    }
+  });
+}
+window.addEventListener('load', preloadAudio);
 
 let gDiff     = 4;
 let gQueue    = [];
@@ -707,37 +719,21 @@ function speakCurrent() {
   if (!gCurrent) return;
   const btn = document.getElementById('speakBtn');
 
-  // Stop any currently playing audio
+  // Stop anything currently playing
   if (currentAudio) {
     currentAudio.pause();
     currentAudio.currentTime = 0;
   }
 
-  // Try recorded audio first
-  if (gCurrent.audio) {
-    const audio = new Audio(AUDIO_BASE + gCurrent.audio);
-    currentAudio = audio;
+  // Play from preloaded cache — instant, no lag
+  const cached = audioCache[gCurrent.audio];
+  if (cached) {
+    cached.currentTime = 0;
+    currentAudio = cached;
     btn.classList.add('speaking');
-    audio.onended  = () => btn.classList.remove('speaking');
-    audio.onerror  = () => {
-      // Fall back to speech synthesis if file not found
-      btn.classList.remove('speaking');
-      fallbackSpeak(gCurrent.name, btn);
-    };
-    audio.play().catch(() => fallbackSpeak(gCurrent.name, btn));
-  } else {
-    fallbackSpeak(gCurrent.name, btn);
+    cached.onended = () => btn.classList.remove('speaking');
+    cached.play().catch(() => btn.classList.remove('speaking'));
   }
-}
-
-function fallbackSpeak(name, btn) {
-  const utt = new SpeechSynthesisUtterance(name);
-  utt.lang  = 'en-GB';
-  utt.rate  = 0.85;
-  btn.classList.add('speaking');
-  utt.onend = () => btn.classList.remove('speaking');
-  window.speechSynthesis.cancel();
-  window.speechSynthesis.speak(utt);
 }
 
 function handleAnswer(btn, isCorrect) {
